@@ -1,8 +1,11 @@
-<h1>Edit your info, <%= @user.first_name %></h1>
-<%= form_with model: @user, local: true do |form| %>
-    <%= render partial: '/users/edit_info', object: form %>
 
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
-  <% end %>
+<div id="edit-info-container">
+  <h1>Profile</h1>
+  <%= form_with model: @user, local: true do |form| %>
+      <%= render partial: '/users/edit_info', object: form %>
+
+      <div class="submit-field">
+        <%= form.submit class: 'btn btn-outline-primary'%>
+      </div>
+    <% end %>
+</div>

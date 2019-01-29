@@ -21,6 +21,12 @@ class UsersController < Clearance::UsersController
         redirect_to user_path(@user.id)
     end
     
+    def destroy
+        @user.destroy
+        redirect_to :root,
+        notice: 'User was successfully destroyed.'
+    end
+
     private
 
     def user_params

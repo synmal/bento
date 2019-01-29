@@ -29,9 +29,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Google Oauth
+# 3rd party login Oauth
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-github'
 
 # Figaro
 gem 'figaro'

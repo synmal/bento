@@ -1,5 +1,6 @@
 class UsersController < Clearance::UsersController
     before_action :set_user, except: [:create, :index]
+    before_action :require_login
 
     def create
         # Create new user instance

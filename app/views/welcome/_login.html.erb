@@ -1,19 +1,16 @@
 <%= form_for :session, url: session_path, html: {class: 'form-inline'} do |form| %>
   <div class="text-field form-group">
-    <%= form.label :email %>
-    <%= form.text_field :email, type: 'email', class:'form-control mb-2 mr-sm-2' %>
+    <%= form.text_field :email, type: 'email', class:'form-control mb-2 mr-sm-2', placeholder:'Email'%>
   </div>
 
   <div class="password-field form-group">
-    <%= form.label :password %>
-    <%= form.password_field :password, class:'form-control mb-2 mr-sm-2' %>
+    <%= form.password_field :password, class:'form-control mb-2 mr-sm-2', placeholder:'Password'%>
   </div>
 
-  <div class="submit-field form-group">
+  <div class="form-group">
     <%= form.submit class:'btn btn-outline-primary mb-2 mr-sm-2' %>
-  </div>
-
-  <div class="other-links">
     <%= link_to t(".forgot_password"), new_password_path, class:'btn btn-outline-danger mb-2 mr-sm-2' %>
   </div>
+    
+
 <% end %>

@@ -15,6 +15,11 @@ class UsersController < Clearance::UsersController
 
     def show
     end
+
+    def update
+        @user.update(user_params)
+        redirect_to user_path(@user.id)
+    end
     
     private
 

@@ -1,16 +1,19 @@
 class UsersController < Clearance::UsersController
     before_action :set_user, except: [:create, :index]
-    before_action :require_login
+    before_action :require_login, except: [:create, :new]
 
     def create
+      
         # Create new user instance
         user = User.new(user_params)
         # if user is valid, redirect to edit their information
         if user.save
+            sign_in(user)
             redirect_to edit_user_path(user.id)
         else
         # otherwise, go back to the sign up form
-            render 'new'
+            redirect_to root_path
+            flash[:notice] = 'Unauthorized'
         end
     end
 

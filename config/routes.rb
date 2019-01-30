@@ -17,10 +17,12 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
 
-  delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
+  delete "/sign_out" => "sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#index'
   # Landing Page 
   resources :welcome, only: [:index]
+  # path to update users programming_level
+  post '/user/:id/programming_level' => 'users#update_programming_level' 
 end

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  has_many :authentications, dependent: :destroy
   include Clearance::User
+  has_many :authentications, dependent: :destroy
+  mount_uploader :avatar, AvatarUploader
   enum programming_level: [:beginner, :intermediate]
  
   def self.create_with_auth_and_hash(authentication, auth_hash)
@@ -18,5 +19,9 @@ class User < ApplicationRecord
   def google_token
     x = self.authentications.find_by(provider: 'google_oauth2')
     return x.token unless x.nil?
+  end
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
   end
  end

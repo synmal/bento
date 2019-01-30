@@ -1,8 +1,8 @@
 footer {
-  position:absolute; 
-  bottom:0; 
-  width:100%; 
-  height: 2.5em;
+  /* position:sticky;  */
+  /* bottom:0;  */
+  /* width:100%;  */
+  height: 3vh;
 }
 
 ul {
@@ -18,3 +18,8 @@ li {
   min-height: 100%;
   min-width: 50%;
 } */
+
+.linkImg {
+  width: 180px;
+  margin-top: 10px;
+}

@@ -11,7 +11,8 @@ class UsersController < Clearance::UsersController
             redirect_to edit_user_path(user.id)
         else
         # otherwise, go back to the sign up form
-            render 'new'
+            redirect_to root_path
+            flash[:notice] = 'Unauthorized'
         end
     end
 
@@ -29,10 +30,21 @@ class UsersController < Clearance::UsersController
         notice: 'User was successfully destroyed.'
     end
 
+    def update_programming_level
+        # user byebug
+        if params[:programming_level] == "0"
+            current_user.beginner!
+            render json:{current_user => 'beginner'}
+        else
+            current_user.intermediate!
+            render json:{current_user => 'intermediate'}
+        end 
+    end
+
     private
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :password, :programming_level, {programming_languages: []}, {developer_type: []}, {interest: []})
+        params.require(:user).permit(:first_name, :last_name, :email, :password, :programming_level, {programming_languages: []}, {developer_type: []}, {interest: []}, :avatar)
     end
 
     def set_user

@@ -1,5 +1,6 @@
 
 <div id="edit-info-container">
+  <%= image_tag current_user.avatar.show.url, class: 'avatar mb-3' %>
   <h1>Profile</h1>
   <%= form_with model: @user, local: true do |form| %>
       <%= render partial: '/users/edit_info', object: form %>

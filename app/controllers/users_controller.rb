@@ -33,7 +33,7 @@ class UsersController < Clearance::UsersController
     private
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :password, :programming_level, {programming_languages: []}, {developer_type: []}, {interest: []})
+        params.require(:user).permit(:first_name, :last_name, :email, :password, :programming_level, {programming_languages: []}, {developer_type: []}, {interest: []}, :avatar)
     end
 
     def set_user

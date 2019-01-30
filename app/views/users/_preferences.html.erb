@@ -1,0 +1,26 @@
+<div class="form">
+    <div class="text-field">
+        <%= preferences.label :programming_level %>
+        <br/>
+        <%# Buttons to select programming level %>
+        <div class="input-group mb-3">
+            <%= button_to "Beginner", action='/', class:'btn btn-outline-success' %>
+            <%= button_to "Intermediate", action='/', class:'btn btn-outline-success' %>
+        </div>
+        <br/>
+        <%# Radios select programming languages %>
+        <%= preferences.label :programming_languages %>
+        <br/>
+        <%= label_tag("Which of these languages do you use?")%>
+        <br/>
+        <input type="checkbox"> Ruby
+        <input type="checkbox"> Python 
+        <%# <%= check_box_tag('Ruby') %>
+        <br/>
+        <%= preferences.label :developer_type %>
+        <%= preferences.text_field :developer_type, class:'form-control'%>
+        <br/>
+        <%= preferences.label :interest %>
+        <%= preferences.text_field :interest, class:'form-control'%>
+    </div>
+</div>

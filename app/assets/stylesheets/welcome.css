@@ -18,3 +18,8 @@ li {
   min-height: 100%;
   min-width: 50%;
 } */
+
+.linkImg {
+  width: 180px;
+  margin-top: 10px;
+}

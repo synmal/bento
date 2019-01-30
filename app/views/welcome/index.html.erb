@@ -19,8 +19,16 @@
       </div>
     <% end %>
   </div>
-  <%= link_to "Sign in with Google", "/auth/google_oauth2", class:'btn btn-outline-primary' %>
-  <%= link_to "Sign in with Github", "/auth/github", class:'btn btn-outline-primary' %>
+  
+  <%= link_to "/auth/github" do %>
+      <%= image_tag "github", class:"linkImg" %>
+  <% end %>
+
+  <br><%= link_to "/auth/google_oauth2" do %>
+      <%= image_tag "google", class:"linkImg" %>
+  <% end %>
+
+
 <% end %>
 
 

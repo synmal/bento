@@ -28,9 +28,14 @@ class SessionsController < Clearance::SessionsController
       if status.success?
         redirect_to user_path(@user.id)
       else
+        redirect_to root_path
         flash.now.notice = status.failure_message
-        render template: "sessions/new", status: :unauthorized
       end
     end
   end
+
+  def destroy
+    sign_out
+    redirect_to root_path
   end
+end

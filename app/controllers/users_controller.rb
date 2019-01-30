@@ -3,7 +3,6 @@ class UsersController < Clearance::UsersController
     before_action :require_login, except: [:create, :new]
 
     def create
-      
         # Create new user instance
         user = User.new(user_params)
         # if user is valid, redirect to edit their information

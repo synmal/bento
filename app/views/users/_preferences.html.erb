@@ -4,17 +4,18 @@
         <br/>
         <%# Buttons to select programming level %>
         <div class="input-group mb-3">
-            <%= button_to "Beginner", action='/', class:'btn btn-outline-success' %>
-            <%= button_to "Intermediate", action='/', class:'btn btn-outline-success' %>
+            <%= button_to "Beginner", action='#', class:'btn btn-outline-success', data_toggle:'button' %>
+            <%= button_to "Intermediate", action='#', class:'btn btn-outline-success' %>
         </div>
         <br/>
-        <%# Radios select programming languages %>
+        <%# Checkbox to select programming languages %>
         <%= preferences.label :programming_languages %>
         <br/>
         <%= label_tag("Which of these languages do you use?")%>
         <br/>
         <input type="checkbox"> Ruby
-        <input type="checkbox"> Python 
+        <input type="checkbox"> Python
+        <%# Doesn't display the language name, don't delete, want to try to make it work  %>
         <%# <%= check_box_tag('Ruby') %>
         <br/>
         <%= preferences.label :developer_type %>

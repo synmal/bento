@@ -18,3 +18,35 @@
     <%= render partial: '/users/preferences', object: form %>
   <% end %>
 </div>
+<script>
+// Ajax to change the programming_level enum value of a particular user 
+  $("#beginner").click((e) => {
+    e.preventDefault()
+    $.ajax({
+        url: "/user/<%= current_user.id %>/programming_level",
+        // url: "<%= edit_user_path(current_user.id) %>",
+        method: "POST",
+        dataType: "JSON",
+        data: {programming_level: 0},
+        success: (result) => {
+            console.log(result)
+            $('#beginner').addClass('active');
+            $('#intermediate').removeClass('active');
+        }
+    })
+})
+$("#intermediate").click((e) => {
+    e.preventDefault()   
+    $.ajax({
+        url: "/user/<%= current_user.id %>/programming_level",
+        method: "POST",
+        dataType: "JSON",
+        data: {programming_level: 1},
+        success: (data) => {
+            console.log(data)
+            $('#intermediate').addClass('active');
+            $('#beginner').removeClass('active');
+        }
+    })
+})
+</script>

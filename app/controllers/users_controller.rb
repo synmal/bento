@@ -30,6 +30,17 @@ class UsersController < Clearance::UsersController
         notice: 'User was successfully destroyed.'
     end
 
+    def update_programming_level
+        # user byebug
+        if params[:programming_level] == "0"
+            current_user.beginner!
+            render json:{current_user => 'beginner'}
+        else
+            current_user.intermediate!
+            render json:{current_user => 'intermediate'}
+        end 
+    end
+
     private
 
     def user_params

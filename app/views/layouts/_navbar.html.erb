@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
   <div class="container">
     <a class="navbar-brand" href="<%= root_path %>">
       <%= image_tag("bento-box.png", size: "24") %>
@@ -12,11 +12,13 @@
         <li class="nav-item">
           <%= link_to 'Home', root_path, class:'nav-link' %>
         </li>
+
         <% if signed_in? %>
           <li class="nav-item">
             <%= link_to 'Dashboard', user_dashboard_path(current_user.id), class:'nav-link' %>
           </li>
         <% end %>
+
       </ul>
 
       <ul class="navbar-nav">
@@ -34,7 +36,9 @@
           </div>
           <% else %>
           <li class="nav-item nav-link">
+
             <%= image_tag 'fallback/thumb_default.png', class: 'avatar navbar-brand' %>
+
             Guest
           </li>
         <% end %>

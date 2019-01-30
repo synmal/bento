@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
   # Landing Page 
   resources :welcome, only: [:index]
+  # path to update users programming_level
+  post '/user/:id/programming_level' => 'users#update_programming_level' 
 end

@@ -12,5 +12,7 @@
 
 <div id="edit-preferences-container">
   <h1>Preferences</h1>
-  
+  <%= form_with model: @user, local: true do |form| %>
+    <%= render partial: '/users/preferences', object: form %>
+  <% end %>
 </div>

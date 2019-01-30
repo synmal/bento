@@ -14,7 +14,7 @@
     })
 })
 $("#intermediate").click((e) => {
-    e.preventDefault()
+    e.preventDefault()   
     $.ajax({
         url: "/user/<%= current_user.id %>/level",
         method: "POST",

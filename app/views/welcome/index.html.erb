@@ -1,24 +1,26 @@
 <h1>Bento</h1>
 
-<div id="clearance" class="sign-in">
-  <h2>Login</h2>
+<% if !signed_in? %>
+  <div id="clearance" class="sign-in">
+    <h2>Login</h2>
 
-  <%= render partial: 'login' %>
+    <%= render partial: 'login' %>
 
-</div>
+  </div>
 
-<div id="clearance" class="sign-up">
-  <h2>Sign Up</h2>
+  <div id="clearance" class="sign-up">
+    <h2>Sign Up</h2>
 
-  <%= form_for @user do |form| %>
-    <%= render partial: 'form', object: form %>
+    <%= form_for @user do |form| %>
+      <%= render partial: 'form', object: form %>
 
-    <div class="submit-field">
-      <%= form.submit class:'btn btn-outline-primary' %>
-    </div>
-  <% end %>
-</div>
+      <div class="submit-field">
+        <%= form.submit class:'btn btn-outline-primary' %>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "Sign in with Google", "/auth/google_oauth2", class:'btn btn-outline-primary' %>
+  <%= link_to "Sign in with Github", "/auth/github", class:'btn btn-outline-primary' %>
+<% end %>
 
-<%= link_to "Sign in with Google", "/auth/google_oauth2", class:'btn btn-outline-primary' %>
-<%= link_to "Sign in with Github", "/auth/github", class:'btn btn-outline-primary' %>
 

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  has_many :authentications, dependent: :destroy
   include Clearance::User
+  has_many :authentications, dependent: :destroy
+  mount_uploader :avatar, AvatarUploader
   enum programming_level: [:beginner, :intermediate]
  
   def self.create_with_auth_and_hash(authentication, auth_hash)

@@ -1,4 +1,4 @@
-class DashboardController < ApplicationController
+class DashboardsController < ApplicationController
   before_action :require_login
   before_action :set_user
 
@@ -7,6 +7,6 @@ class DashboardController < ApplicationController
 
   private
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 end

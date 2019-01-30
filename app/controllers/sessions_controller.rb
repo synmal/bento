@@ -26,7 +26,7 @@ class SessionsController < Clearance::SessionsController
 
     sign_in(@user) do |status|
       if status.success?
-        redirect_to user_path(@user.id)
+        redirect_to user_dashboard_path(@user.id)
       else
         redirect_to root_path
         flash.now.notice = status.failure_message

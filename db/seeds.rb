@@ -21,3 +21,16 @@
 
 # get_quiz(1)
 
+def get_course(level, language)
+  course = {}
+  page = Nokogiri::HTML(open("https://www.skillshare.com/search?query=#{level}%20#{language}"))
+  link_text = page.xpath("//*[@class='ss-card__title']/a")
+  link_text.map { |link|
+    course['title'] = link['href']
+    course['link'] = link.children.text
+    Course.create(course)
+  }
+end
+
+get_course('beginner', 'ruby')
+get_course('beginner', 'python')

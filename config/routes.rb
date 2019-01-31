@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
 
   resources :puzzles, only: [:show, :index]
+
+  resources :courses, only: [:show, :index]
   
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"

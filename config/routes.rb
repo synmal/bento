@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
+
+    resource :dashboard, only: [:show]
   end
+
+  resources :puzzles, only: [:show, :index]
   
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"

@@ -73,3 +73,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'carrierwave'
 gem 'mini_magick'
+
+# For parsing RSS feed
+gem 'rss'
+
+# For pagination
+gem 'kaminari'
+

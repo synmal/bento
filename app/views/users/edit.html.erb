@@ -1,25 +1,27 @@
 
-<div id="edit-info-container">
-  <%= image_tag current_user.avatar.show.url, class: 'avatar mb-3' %>
-  <h1>Profile</h1>
-  <%= form_with model: @user, local: true do |form| %>
-      <%= render partial: '/users/edit_info', object: form %>
-      <%= form.label :programming_level %>
-      <%# <%= form.collection_select :programming_level, User.programming_levels.map{|level| [level.first, level.first]} :first,:second %>
-      <div class="submit-field">
-        <%= form.submit class: 'btn btn-outline-primary'%>
-      </div>
+<div id="edit-container">
+    <div class="edit-info-container">
+    <%= image_tag current_user.avatar.show.url, class: 'avatar mb-3' %>
+    <h1>Profile</h1>
+    <%= form_with model: @user, local: true do |form| %>
+        <%= render partial: '/users/edit_info', object: form %>
+        <%= form.label :programming_level %>
+        <div class="submit-field">
+            <%= form.submit class: 'btn btn-outline-primary'%>
+        </div>
+        <% end %>
+    </div>
+
+    <div class="edit-preferences-container">
+    <h1>Preferences</h1>
+    <%= form_with model: @user, local: true do |form| %>
+        <%= render partial: '/users/preferences', object: form %>
     <% end %>
+    </div>
 </div>
 
-<div id="edit-preferences-container">
-  <h1>Preferences</h1>
-  <%= form_with model: @user, local: true do |form| %>
-    <%= render partial: '/users/preferences', object: form %>
-  <% end %>
-</div>
 <script>
-
+// ––––––––––––– AJAX to set users programming_level ––––––––––––––––
 $(document).ready(function(){
     $("#beginner").click((e) => {
         e.preventDefault()

@@ -5,12 +5,12 @@ footer {
   height: 3vh;
 }
 
-ul {
+footer ul {
   display: flex;
   justify-content: space-evenly;
 }
 
-li {
+footer li {
   list-style-type: none;
 }
 

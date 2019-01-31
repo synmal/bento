@@ -76,5 +76,7 @@ gem 'mini_magick'
 
 # For parsing RSS feed
 gem 'rss'
-# gem 'open-uri'
+
+# For pagination
+gem 'kaminari'
 

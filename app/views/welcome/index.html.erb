@@ -1,33 +1,41 @@
-<h1>Bento</h1>
-
+<h1>Welcome to Bento</h1>
+<br>
 <% if !signed_in? %>
   <div id="clearance" class="sign-in">
-    <h2>Login</h2>
+    <h3>Login</h3>
 
     <%= render partial: 'login' %>
 
   </div>
 
-  <div id="clearance" class="sign-up">
-    <h2>Sign Up</h2>
 
-    <%= form_for @user do |form| %>
-      <%= render partial: 'form', object: form %>
+  <button type="button" class="btn btn-outline-primary mr-sm-2 rounded-pill w-25" data-toggle="modal" data-target="#exampleModal">
+    Log In
+  </button>
 
-      <div class="submit-field">
-        <%= form.submit class:'btn btn-outline-primary' %>
-      </div>
+  <div class=" btn btn-outline-primary mr-sm-2 w-25 rounded-pill" href="/auth/github">
+    <%= link_to "/auth/github" do %>
+    <img style="width:28px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh8AbvCEYFSGfmEawqATSY5sCIlvmsK03Q02vtuaZtcNEmGNGJ " class="rounded float-left">
+    Sign in with Github
+    
     <% end %>
   </div>
-  
-  <%= link_to "/auth/github" do %>
-      <%= image_tag "github", class:"linkImg" %>
-  <% end %>
 
-  <br><%= link_to "/auth/google_oauth2" do %>
-      <%= image_tag "google", class:"linkImg" %>
-  <% end %>
+ <div class="btn btn-outline-primary mr-sm-2 w-25 rounded-pill" href="/auth/github">
+  <%= link_to "/auth/google_oauth2" do %>
+  <img style="width:28px;" src="https://ambientdigitalgroup.com/wp-content/uploads/2017/07/logo-google.png" class="rounded float-left">
+  Sign in with Google
+    
+    <% end %>
+</div>
 
+<br>
+</br>
+    <h3>Have not an account?</h3>
+
+      <form action="/sign_up">
+        <input type="submit" value="Sign up" class="btn btn-outline-primary mb-2 mr-sm-2 w-25 rounded-pill">
+      </form>
 
 <% end %>
 

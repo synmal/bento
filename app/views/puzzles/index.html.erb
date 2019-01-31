@@ -1,0 +1,7 @@
+<% Puzzle.all.each do |a| %>
+  <div class="card my-2 ">
+    <div class="card-body">
+      <p class="card-text"><%= a.description.html_safe %></p>
+    </div>
+  </div>
+<% end %>

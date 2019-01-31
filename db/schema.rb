@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_31_031611) do
+ActiveRecord::Schema.define(version: 2019_01_31_235254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_01_31_031611) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "tags", default: [], array: true
   end
 
   create_table "authentications", force: :cascade do |t|
@@ -38,6 +39,15 @@ ActiveRecord::Schema.define(version: 2019_01_31_031611) do
     t.string "title"
     t.string "link"
     t.text "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "tags", default: [], array: true
+  end
+
+  create_table "podcasts", force: :cascade do |t|
+    t.string "link"
+    t.string "creator"
+    t.text "tags", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

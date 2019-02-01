@@ -21,33 +21,102 @@
 </div>
 
 <script>
-// ––––––––––––– AJAX to set users programming_level ––––––––––––––––
+// ––––––––––––– AJAX to set users programming_level –––––––––––––
 $(document).ready(function(){
-    $("#beginner").click((e) => {
+    $(".ruby-beginner").click((e) => {
         e.preventDefault()
+        console.log(e.target.value);
         $.ajax({
-            url: '/user/<%= current_user.id %>/programming_level',
+            url: '/user/<%= current_user.id %>/update_language_skill',
             method: "POST",
             dataType: "JSON",
-            data: {programming_level: 0},
+            data: {programming_level: 'ruby beginner'},
             success: (result) => {
                 console.log(result)
-                $('#beginner').addClass('active');
-                $('#intermediate').removeClass('active');
+                $('.ruby-beginner').addClass('active');
+                $('.ruby-intermediate').removeClass('active');
+                $('.ruby').addClass('active');
             }
         })
     })
-    $("#intermediate").click((e) => {
+    $(".ruby-intermediate").click((e) => {
         e.preventDefault()   
+        console.log(e.target.value);
         $.ajax({
-            url: "/user/<%= current_user.id %>/programming_level",
+            url: '/user/<%= current_user.id %>/update_language_skill',
             method: "POST",
             dataType: "JSON",
-            data: {programming_level: 1},
-            success: (data) => {
-                console.log(data)
-                $('#intermediate').addClass('active');
-                $('#beginner').removeClass('active');
+            data: {programming_level: 'ruby intermediate'},
+            success: (result) => {
+                console.log(result)
+                $('.ruby-intermediate').addClass('active');
+                $('.ruby-beginner').removeClass('active');
+                $('.ruby').addClass('active');
+            }
+        })
+    })
+})
+</script>
+<script>
+// ––––––––––––– AJAX to set users developer_type –––––––––––––
+$(document).ready(function() {
+    $(".front-end").click((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: '/user/<%= current_user.id %>/update_developer_type',
+            method: "POST",
+            dataType: "JSON",
+            data: {developer_type: "front end"},
+            success: (result) => {
+                console.log(result)
+                $(".front-end").addClass('active');
+                $(".front-end").attr('disabled', 'disabled');
+            }
+        })
+    })
+
+    $(".back-end").click((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: '/user/<%= current_user.id %>/update_developer_type',
+            method: "POST",
+            dataType: "JSON",
+            data: {developer_type: "back end"},
+            success: (result) => {
+                console.log(result)
+                $(".back-end").addClass('active');
+                $(".back-end").attr('disabled', 'disabled');
+            }
+        })
+    })
+})
+</script>
+<script>
+// ––––––––––––– AJAX to set users current interest –––––––––––––
+$(document).ready(function(){
+    $(".pgw").click((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: '/user/<%= current_user.id %>/update_current_interest',
+            method: "POST",
+            dataType: "JSON",
+            data: {current_interest: "progressive web apps"},
+            success: (result) => {
+                console.log(result)
+                $(".pgw").addClass('active');
+            }
+        })
+    })
+    $(".chatbot").click((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: '/user/<%= current_user.id %>/update_current_interest',
+            method: "POST",
+            dataType: "JSON",
+            data: {current_interest: "chatbot"},
+            success: (result) => {
+                console.log(result)
+                $(".chatbot").addClass('active');
             }
         })
     })

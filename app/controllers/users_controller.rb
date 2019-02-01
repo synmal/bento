@@ -1,7 +1,7 @@
 class UsersController < Clearance::UsersController
     before_action :set_user, except: [:create, :index]
     before_action :require_login, except: [:create, :new]
-
+    
     def create
         # Create new user instance
         user = User.new(user_params)
@@ -30,21 +30,50 @@ class UsersController < Clearance::UsersController
         notice: 'User was successfully destroyed.'
     end
 
-    def update_programming_level
-        # user byebug
-        if params[:programming_level] == "0"
-            current_user.beginner!
-            render json:{current_user => 'beginner'}
-        else
-            current_user.intermediate!
-            render json:{current_user => 'intermediate'}
-        end 
+    def update_user_language_skill
+        byebug
+        # –––––––––––– Ruby –––––––––––––
+        if params[:programming_level] == 'ruby beginner'
+            current_user.user_languages_skill.store("ruby", "beginner")
+            current_user.save
+            render json:{"user" => "ruby, beginner"}
+        else params[:programming_level] == 'ruby intermediate'
+            current_user.user_languages_skill.store("ruby", "intermediate")
+            current_user.save
+            render json:{"user" => "ruby, intermediate"}
+        end
+    end
+
+    def update_user_developer_type
+        if  params[:developer_type] == 'front end'
+            current_user.developer_type << 'front end'
+            current_user.save
+            render json:{"developer_type" => "front-end"}  
+        end
+        if  params[:developer_type] == 'back end'
+            current_user.developer_type << 'back end'
+            current_user.save
+            render json:{"developer_type" => "back-end"}  
+        end
+    end
+
+    def update_user_current_interest
+        if  params[:current_interest] == 'progressive web apps'
+            current_user.interest << 'progressive web apps'
+            current_user.save
+            render json:{"interest" => "progressive web apps"}  
+        end
+        if  params[:current_interest] == 'chatbot'
+            current_user.interest << 'chatbot'
+            current_user.save
+            render json:{"interest" => "chatbot"}  
+        end
     end
 
     private
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :password, :programming_level, {programming_languages: []}, {developer_type: []}, {interest: []}, :avatar)
+        params.require(:user).permit(:first_name, :last_name, :email, :password, :user_languages_skill, :developer_type, {developer_type: []}, :interest, {interest: []}, :avatar)
     end
 
     def set_user

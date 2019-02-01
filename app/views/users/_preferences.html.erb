@@ -1,41 +1,36 @@
 <div class="preferences-form">
     <div class="text-field">
-        <%= preferences.label :programming_level %>
         <br/>
-        <%# Select programming level %>
+        <%# Select language and skill level %>
+        <%= label_tag("Choose your language and skill level") %>
         <div class="input-group mb-3">
-            <%= button_to "Beginner", action= '#', class:'btn btn-outline-success', id:'beginner' %>
-            <%= button_to "Intermediate", action='#', class:'btn btn-outline-success', id:'intermediate' %>
+            <%= button_to "Ruby", action='#', class:'ruby btn btn-outline-success'%>
+            <%= button_to "Beginner", action='#', class:'ruby-beginner btn btn-outline-info'%>
+            <%= button_to "Intermediate", action='#', class:'ruby-intermediate btn btn-outline-info'%>
         </div>
-        <br/>
-        <%# Select programming languages %>
-        <%= label_tag("Which of these languages do you use?")%>
-        <br/>
         <div class="input-group mb-3">
-            <%= button_to "Ruby", action='#', class:'btn btn-outline-success' %>
-            <%= button_to "Python", action='#', class:'btn btn-outline-success' %>
-            <%= button_to "JavaScript", action='#', class:'btn btn-outline-success' %>
-            <%= button_to "Objective-C", action='#', class:'btn btn-outline-success' %>
+            <%= button_to "Python", action='#', class:'btn btn-outline-success'%>
+            <%= button_to "Beginner", action='#', class:'btn btn-outline-info disabled'%>
+            <%= button_to "Intermediate", action='#', class:'btn btn-outline-info disabled'%>
         </div>
-        <br/>
         <%# Select developer type %>
         <%= label_tag("What kind of developer are you?")%>
         <br/>
         <div class="input-group mb-3">
-            <%= button_to "Front-End", action='#', class:'btn btn-outline-success' %>
-            <%= button_to "Back-End", action='#', class:'btn btn-outline-success' %>
-            <%= button_to "Full-Stack", action='#', class:'btn btn-outline-success' %>
-            <%= button_to "Mobile", action='#', class:'btn btn-outline-success' %>
+            <%= button_to "Front-End", action='#', class:'front-end btn btn-outline-success' %>
+            <%= button_to "Back-End", action='#', class:'back-end btn btn-outline-success' %>
+            <%= button_to "Full-Stack", action='#', class:'full-stack btn btn-outline-success' %>
+            <%= button_to "Mobile", action='#', class:'mobile btn btn-outline-success' %>
         </div>
         <br/>
         <%# Select developer type %>
         <%= label_tag("What's your current interest?")%>
         <br/>
         <div class="input-group mb-3">
-            <%= button_to "Progressive Web Apps", action='#', class:'btn btn-outline-success' %>
-            <%= button_to "Chatbot", action='#', class:'btn btn-outline-success' %>
-            <%= button_to "Cybersecurity", action='#', class:'btn btn-outline-success' %>
-            <%= button_to "Motion UI", action='#', class:'btn btn-outline-success' %>
+            <%= button_to "Progressive Web Apps", action='#', class:'pgw btn btn-outline-success' %>
+            <%= button_to "Chatbot", action='#', class:'chatbot btn btn-outline-success' %>
+            <%= button_to "Cybersecurity", action='#', class:'cybersecurity btn btn-outline-success' %>
+            <%= button_to "Motion UI", action='#', class:'motionui btn btn-outline-success' %>
         </div>
     </div>
 </div>

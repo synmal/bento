@@ -31,16 +31,26 @@ class UsersController < Clearance::UsersController
     end
 
     def update_user_language_skill
-        byebug
         # –––––––––––– Ruby –––––––––––––
         if params[:programming_level] == 'ruby beginner'
             current_user.user_languages_skill.store("ruby", "beginner")
             current_user.save
             render json:{"user" => "ruby, beginner"}
-        else params[:programming_level] == 'ruby intermediate'
+        elsif params[:programming_level] == 'ruby intermediate'
             current_user.user_languages_skill.store("ruby", "intermediate")
             current_user.save
             render json:{"user" => "ruby, intermediate"}
+        end
+    
+        # –––––––––––– Javascript –––––––––––––
+        if params[:programming_level] == 'js beginner'
+            current_user.user_languages_skill.store("js", "beginner")
+            current_user.save
+            render json:{"user" => "js, beginner"}
+        elsif params[:programming_level] == 'js intermediate'
+            current_user.user_languages_skill.store("js", "intermediate")
+            current_user.save
+            render json:{"user" => "js, intermediate"}
         end
     end
 

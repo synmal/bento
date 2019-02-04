@@ -1,43 +1,46 @@
-<h1>Welcome to Bento</h1>
-<br>
-<% if !signed_in? %>
-  <div id="clearance" class="sign-in">
 
-    <%= render partial: 'login' %>
+<div class="text-center">
+  <h1>Welcome to Bento</h1>
+  <br>
+  <% if !signed_in? %>
+    <div id="clearance" class="sign-in">
+      <h3>Login</h3>
 
-  </div>
+      <%= render partial: 'login' %>
 
- 
-  <div class="d-inline-flex flex-column flex-wrap justify-content-center w-25">
-   <%# LOG-IN => BUTTON %>
-  <button type="button" class="btn btn-outline-primary rounded-pill m-2" data-toggle="modal" data-target="#exampleModal">
-    Log In
-  </button>
+    </div>
 
-  <%# GOOGLE => BUTTON %>
-  <%= link_to "/auth/google_oauth2", class: "btn btn-outline-primary rounded-pill m-2" do %>
-  <img style="width:21px;" src="https://cdn.freebiesupply.com/logos/large/2x/google-icon-logo-png-transparent.png" class="rounded float-left">
-  Sign in with Google
+
+    <button type="button" class="btn btn-outline-primary mr-sm-2 rounded-pill w-25" data-toggle="modal" data-target="#exampleModal">
+      Log In
+    </button>
+
+    <%= link_to "/auth/github" do %>
+      <div class=" btn btn-outline-primary mr-sm-2 w-25 rounded-pill" href="/auth/github">
+      <img style="width:28px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh8AbvCEYFSGfmEawqATSY5sCIlvmsK03Q02vtuaZtcNEmGNGJ " class="rounded float-left">
+      Sign in with Github
+      </div>
     <% end %>
+    
 
-  <%# GITHUB => BUTTON %>
-  <%= link_to "/auth/github", class: "btn btn-outline-primary rounded-pill m-2" do %>
-  <img style="width:21px;" src="https://image.flaticon.com/icons/svg/25/25231.svg" class="rounded float-left">
-  Sign in with Github
-    <% end %>
-  </div>
+  <%= link_to "/auth/google_oauth2" do %>
+   <div class="btn btn-outline-primary mr-sm-2 w-25 rounded-pill" href="/auth/github">
+    <img style="width:28px;" src="https://ambientdigitalgroup.com/wp-content/uploads/2017/07/logo-google.png" class="rounded float-left">
+    Sign in with Google
+      </div>
+  <% end %>
+  
 
-  <br></br>
-  <h4>Don't have an account?</h4>
-  <div class="d-inline-flex flex-column flex-wrap justify-content-center w-25">
-  <%# SIGN UP => BUTTON %>
-  <%= link_to 'Sign Up', sign_up_path, class: "btn btn-outline-primary rounded-pill m-2" %>
-  </div>
+  <br>
+  </br>
+      <h3>Have not an account?</h3>
 
-<br>
-</br>
-
-
-<% end %>
+        <form action="/sign_up">
+          <input type="submit" value="Sign up" class="btn btn-outline-primary mb-2 mr-sm-2 w-25 rounded-pill">
+        </form>
 
 
+  <% end %>
+
+
+</div>

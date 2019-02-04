@@ -1,5 +1,3 @@
-class Article < ApplicationRecord
-
+class Course < ApplicationRecord
   validates :link, uniqueness: true
-
 end

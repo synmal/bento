@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 2019_02_01_101319) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+    t.text "tags", default: [], array: true
+    t.string "parent_url"
+
   end
 
   create_table "authentications", force: :cascade do |t|
@@ -33,6 +37,25 @@ ActiveRecord::Schema.define(version: 2019_02_01_101319) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_authentications_on_user_id"
+  end
+
+
+  create_table "courses", force: :cascade do |t|
+    t.string "title"
+    t.string "link"
+    t.text "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "tags", default: [], array: true
+    t.string "parent_url"
+  end
+
+  create_table "podcasts", force: :cascade do |t|
+    t.string "link"
+    t.string "creator"
+    t.text "tags", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "puzzles", force: :cascade do |t|

@@ -35,13 +35,12 @@ task :sync => :environment do
   
       else
         a = Article.find_by(link: article.link)
-        # byebug
+        
         a.tags.push(interest)
         a.tags.uniq!
         a.save
       end
     end
-  end
 
   def get_podcast(feed, interest)
     feed = Feedjira::Feed.fetch_and_parse feed

@@ -4,19 +4,41 @@
         <%# Select language and skill level %>
         <%= label_tag("Choose your language and skill level") %>
         <div class="input-group mb-3">
+        <%# Check to see if user already has any of the languages selected %>
             <% if current_user.user_languages_skill.has_key?("ruby") %>
-                <script>
-                    $('.ruby').addClass('active');
-                </script>
+                <% if current_user.user_languages_skill.value?("beginner")%>
+                    <script>
+                        $('.ruby').addClass('active');
+                        $('.ruby-beginner').addClass('active');
+                    </script>
+                    <% elsif current_user.user_languages_skill.value?("intermediate") %>
+                    <script>
+                        $('.ruby').addClass('active');
+                        $('.ruby-intermediate').addClass('active');
+                    </script> 
+                <% end %>
             <% end %>
             <%= button_to "Ruby", action='#', class:'ruby btn btn-outline-success'%>
             <%= button_to "Beginner", action='#', class:'ruby-beginner btn btn-outline-info'%>
             <%= button_to "Intermediate", action='#', class:'ruby-intermediate btn btn-outline-info'%>
         </div>
         <div class="input-group mb-3">
-            <%= button_to "Javascript", action='#', class:'btn btn-outline-success'%>
-            <%= button_to "Beginner", action='#', class:'javascript-beginner btn btn-outline-info'%>
-            <%= button_to "Intermediate", action='#', class:'javascript-intermediate btn btn-outline-info'%>
+        <% if current_user.user_languages_skill.has_key?("ruby") %>
+            <% if current_user.user_languages_skill.value?("beginner")%>
+                <script>
+                    $('.javascript').addClass('active');
+                    $('.javascript-beginner').addClass('active');
+                </script>
+                <% elsif current_user.user_languages_skill.value?("intermediate") %>
+                <script>
+                    $('.javascript').addClass('active');
+                    $('.javascript-intermediate').addClass('active');
+                </script> 
+            <% end %>
+        <% end %>
+        <%= button_to "Javascript", action='#', class:'javascript btn btn-outline-success'%>
+        <%= button_to "Beginner", action='#', class:'javascript-beginner btn btn-outline-info'%>
+        <%= button_to "Intermediate", action='#', class:'javascript-intermediate btn btn-outline-info'%>
         </div>
         <%# Select developer type %>
         <%= label_tag("What kind of developer are you?")%>

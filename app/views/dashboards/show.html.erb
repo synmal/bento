@@ -1,0 +1,69 @@
+<div class="container text-center">
+	<h3>Week 1</h3>
+	<div class="d-inline-flex flex-wrap justify-content-center">
+		<div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
+		  
+		  <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
+		  	
+
+			<h5 class="card-title">Article</h5>
+
+		    <div class="container-image d-flex align-items-center">
+		    	<img src="https://cdn-images-1.medium.com/max/2600/1*6isbfHTwPFnUSMI8jyRPaA@2x.jpeg" class="image card-img-top" alt="...">
+			</div>
+			<div class="card-text">
+			    <p class="card-text mt-2">From Ruby to Python - CHANGE</p>
+			    <p>Let's begin</p>
+			    <a href="https://medium.com/sqreen-io/how-i-switched-from-ruby-to-python-ac7038015888" data-check="card-first" target="_blank" class="card-link btn btn-primary rounded w-80">Go to Article</a>
+			    <img src="https://previews.123rf.com/images/johan2011/johan20111309/johan2011130900007/21934213-ok-the-dude-giving-thumb-up-next-to-a-check-mark-blue.jpg" width="30" height="30" id="card-first"class="check d-none">
+			</div>
+		  </div>
+		</div>
+
+		<div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
+		  
+		  <div class="card-body">
+		  	
+		    <h5 class="card-title">Video</h5>
+		    <iframe width="180" height="150" src="https://www.youtube.com/embed/A1nlCN6sMUc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		    <p class="card-text mt-2">From Ruby to Python - CHANGE</p>
+		    <p>Let's begin</p>
+		    <a href="https://www.youtube.com/watch?v=A1nlCN6sMUc" data-check="card-second" target="_blank" class="card-link btn btn-primary rounded w-80">Go to Video</a>
+		    <img src="https://previews.123rf.com/images/johan2011/johan20111309/johan2011130900007/21934213-ok-the-dude-giving-thumb-up-next-to-a-check-mark-blue.jpg" width="30" height="30" id="card-second"class="check d-none">
+		  </div>
+		</div>
+
+		<div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
+		  
+		  <div class="card-body">
+		  	
+		    <h5 class="card-title">Tutorial</h5>
+		    <img src="https://koenig-media.raywenderlich.com/uploads/2018/06/TextRecognitionMLKit-feature.png" class="image card-img-top mb-2" alt="...">
+		    <p class="card-text mt-2">From Ruby to Python - CHANGE</p>
+		    <p>Let's begin</p>
+		    <a href="https://www.raywenderlich.com/5804-text-recognition-with-ml-kit" data-check="card-third" target="_blank" class="card-link btn btn-primary rounded w-80">Go to Tutorial</a>
+		    <img src="https://previews.123rf.com/images/johan2011/johan20111309/johan2011130900007/21934213-ok-the-dude-giving-thumb-up-next-to-a-check-mark-blue.jpg" width="30" height="30" id="card-third" class="check d-none">
+		  </div>
+		</div>
+
+		<div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
+		  
+		  <div class="card-body">
+		  	
+		    <h5 class="card-title">Challenge</h5>
+		    <img src="https://cdn-images.threadless.com/threadless-media/artist_shops/shops/ChallengeMania/products/442827/shirt-1519171642-351d8aab0f64da13e58fbf1e622d966d.png?v=3&d=eyJvbmx5X21ldGEiOiBmYWxzZSwgImZvcmNlIjogZmFsc2UsICJvcHMiOiBbWyJ0cmltIiwgW2ZhbHNlLCBmYWxzZV0sIHt9XSwgWyJyZXNpemUiLCBbXSwgeyJ3aWR0aCI6IDk5Ni4wLCAiYWxsb3dfdXAiOiBmYWxzZSwgImhlaWdodCI6IDk5Ni4wfV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzEyMDAsIDEyMDBdLCB7ImJhY2tncm91bmQiOiAiZmZkOTY2In1dLCBbInJlc2l6ZSIsIFs4MDBdLCB7fV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzgwMCwgODAwLCAiI2ZmZmZmZiJdLCB7fV0sIFsiZW5jb2RlIiwgWyJqcGciLCA4NV0sIHt9XV19" class="image card-img-top mb-2" alt="...">
+		    <p class="card-text mt-2">From Ruby to Python - CHANGE</p>
+		    <p>Let's begin</p>
+		    <a href="https://www.codewars.com/kata/you-only-need-one-beginner" data-check="card-last" target="_blank" class="card-link btn btn-primary rounded w-80">Go to Challenge!</a>
+		    <img src="https://previews.123rf.com/images/johan2011/johan20111309/johan2011130900007/21934213-ok-the-dude-giving-thumb-up-next-to-a-check-mark-blue.jpg" width="30" height="30" id="card-last" class="check d-none">
+		  </div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(".card-link").click(function (e){
+		$("#" + e.target.dataset.check).removeClass("d-none")
+	})
+
+</script>

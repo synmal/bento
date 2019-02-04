@@ -1,42 +1,44 @@
-<h1>Welcome to Bento</h1>
-<br>
-<% if !signed_in? %>
-  <div id="clearance" class="sign-in">
-    <h3>Login</h3>
+<div class="text-center">
+  <h1>Welcome to Bento</h1>
+  <br>
+  <% if !signed_in? %>
+    <div id="clearance" class="sign-in">
+      <h3>Login</h3>
 
-    <%= render partial: 'login' %>
+      <%= render partial: 'login' %>
 
-  </div>
+    </div>
 
 
-  <button type="button" class="btn btn-outline-primary mr-sm-2 rounded-pill w-25" data-toggle="modal" data-target="#exampleModal">
-    Log In
-  </button>
+    <button type="button" class="btn btn-outline-primary mr-sm-2 rounded-pill w-25" data-toggle="modal" data-target="#exampleModal">
+      Log In
+    </button>
 
-  <div class=" btn btn-outline-primary mr-sm-2 w-25 rounded-pill" href="/auth/github">
     <%= link_to "/auth/github" do %>
-    <img style="width:28px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh8AbvCEYFSGfmEawqATSY5sCIlvmsK03Q02vtuaZtcNEmGNGJ " class="rounded float-left">
-    Sign in with Github
-    
+      <div class=" btn btn-outline-primary mr-sm-2 w-25 rounded-pill" href="/auth/github">
+      <img style="width:28px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh8AbvCEYFSGfmEawqATSY5sCIlvmsK03Q02vtuaZtcNEmGNGJ " class="rounded float-left">
+      Sign in with Github
+      </div>
     <% end %>
-  </div>
+    
 
- <div class="btn btn-outline-primary mr-sm-2 w-25 rounded-pill" href="/auth/github">
   <%= link_to "/auth/google_oauth2" do %>
-  <img style="width:28px;" src="https://ambientdigitalgroup.com/wp-content/uploads/2017/07/logo-google.png" class="rounded float-left">
-  Sign in with Google
-    
-    <% end %>
+   <div class="btn btn-outline-primary mr-sm-2 w-25 rounded-pill" href="/auth/github">
+    <img style="width:28px;" src="https://ambientdigitalgroup.com/wp-content/uploads/2017/07/logo-google.png" class="rounded float-left">
+    Sign in with Google
+      </div>
+  <% end %>
+  
+
+  <br>
+  </br>
+      <h3>Have not an account?</h3>
+
+        <form action="/sign_up">
+          <input type="submit" value="Sign up" class="btn btn-outline-primary mb-2 mr-sm-2 w-25 rounded-pill">
+        </form>
+
+  <% end %>
+
+
 </div>
-
-<br>
-</br>
-    <h3>Have not an account?</h3>
-
-      <form action="/sign_up">
-        <input type="submit" value="Sign up" class="btn btn-outline-primary mb-2 mr-sm-2 w-25 rounded-pill">
-      </form>
-
-<% end %>
-
-

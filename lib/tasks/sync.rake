@@ -41,6 +41,7 @@ task :sync => :environment do
         a.save
       end
     end
+  end
 
   def get_podcast(feed, interest)
     feed = Feedjira::Feed.fetch_and_parse feed

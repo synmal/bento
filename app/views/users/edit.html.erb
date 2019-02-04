@@ -23,6 +23,7 @@
 <script>
 // ––––––––––––– AJAX to set users programming_level –––––––––––––
 $(document).ready(function(){
+    // –––––––––––– Ruby –––––––––––––
     $(".ruby-beginner").click((e) => {
         e.preventDefault()
         console.log(e.target.value);
@@ -52,6 +53,39 @@ $(document).ready(function(){
                 $('.ruby-intermediate').addClass('active');
                 $('.ruby-beginner').removeClass('active');
                 $('.ruby').addClass('active');
+            }
+        })
+    })
+    // –––––––––––– Javascript –––––––––––––
+        $(".js-beginner").click((e) => {
+        e.preventDefault()
+        console.log(e.target.value);
+        $.ajax({
+            url: '/user/<%= current_user.id %>/update_language_skill',
+            method: "POST",
+            dataType: "JSON",
+            data: {programming_level: 'js beginner'},
+            success: (result) => {
+                console.log(result)
+                $('.js-beginner').addClass('active');
+                $('.js-intermediate').removeClass('active');
+                $('.js').addClass('active');
+            }
+        })
+    })
+    $(".js-intermediate").click((e) => {
+        e.preventDefault()   
+        console.log(e.target.value);
+        $.ajax({
+            url: '/user/<%= current_user.id %>/update_language_skill',
+            method: "POST",
+            dataType: "JSON",
+            data: {programming_level: 'js intermediate'},
+            success: (result) => {
+                console.log(result)
+                $('.js-intermediate').addClass('active');
+                $('.js-beginner').removeClass('active');
+                $('.js').addClass('active');
             }
         })
     })

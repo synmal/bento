@@ -80,3 +80,9 @@ gem 'rss'
 # For pagination
 gem 'kaminari'
 
+# For testing email
+gem "letter_opener", :group => :development
+gem 'whenever', require: false
+
+gem 'feedjira'
+

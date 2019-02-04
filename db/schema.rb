@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_31_031611) do
+ActiveRecord::Schema.define(version: 2019_02_04_011927) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
@@ -22,6 +23,8 @@ ActiveRecord::Schema.define(version: 2019_01_31_031611) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "tags", default: [], array: true
+    t.string "parent_url"
   end
 
   create_table "authentications", force: :cascade do |t|
@@ -40,6 +43,17 @@ ActiveRecord::Schema.define(version: 2019_01_31_031611) do
     t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "tags", default: [], array: true
+    t.string "parent_url"
+  end
+
+  create_table "podcasts", force: :cascade do |t|
+    t.string "link"
+    t.string "creator"
+    t.text "tags", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
   end
 
   create_table "puzzles", force: :cascade do |t|
@@ -55,15 +69,15 @@ ActiveRecord::Schema.define(version: 2019_01_31_031611) do
     t.string "encrypted_password", limit: 128, null: false
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128, null: false
-    t.integer "programming_level"
-    t.json "programming_languages"
-    t.json "developer_type"
-    t.json "interest"
     t.string "first_name"
     t.string "last_name"
     t.string "avatar"
+    t.string "developer_type", default: [], array: true
+    t.string "interest", default: [], array: true
+    t.hstore "user_languages_skill", default: {}
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
+    t.index ["user_languages_skill"], name: "index_users_on_user_languages_skill", using: :gist
   end
 
   add_foreign_key "authentications", "users"

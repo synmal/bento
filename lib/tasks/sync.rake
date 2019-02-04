@@ -43,13 +43,23 @@ task :sync => :environment do
     end
   end
 
-  def get_podcast(feed)
-    feed = Feedjira::Feed.fetch_and_parse "http://feeds.5by5.tv/rubyonrails"
+  def get_podcast(feed, interest)
+    feed = Feedjira::Feed.fetch_and_parse feed
     feed.entries.each do |entry|
       podcast = Podcast.new
       podcast['link'] = entry.url
       podcast['creator'] = feed.title
       podcast['title'] = entry.title
+      podcast['tags'] = [interest]
+      if podcast.save
+  
+      else
+        a = Podcast.find_by(link: entry.url)
+        # byebug
+        a.tags.push(interest)
+        a.tags.uniq!
+        a.save
+      end
     end
   end
 
@@ -71,6 +81,6 @@ task :sync => :environment do
   get_article('python')
   get_article('ios')
 
-  get_podcast('http://feeds.5by5.tv/rubyonrails')
+  get_podcast('http://feeds.5by5.tv/rubyonrails', 'ruby')
   puts 'Done'
 end

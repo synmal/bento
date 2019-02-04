@@ -44,14 +44,14 @@ class UsersController < Clearance::UsersController
         end
     
         # –––––––––––– Javascript –––––––––––––
-        if params[:programming_level] == 'js beginner'
-            current_user.user_languages_skill.store("js", "beginner")
+        if params[:programming_level] == 'javascript beginner'
+            current_user.user_languages_skill.store("javascript", "beginner")
             current_user.save
-            render json:{"user" => "js, beginner"}
-        elsif params[:programming_level] == 'js intermediate'
-            current_user.user_languages_skill.store("js", "intermediate")
+            render json:{"user" => "javascript, beginner"}
+        elsif params[:programming_level] == 'javascript intermediate'
+            current_user.user_languages_skill.store("javascript", "intermediate")
             current_user.save
-            render json:{"user" => "js, intermediate"}
+            render json:{"user" => "javascript, intermediate"}
         end
     end
 

@@ -5,7 +5,6 @@
     <h1>Profile</h1>
     <%= form_with model: @user, local: true do |form| %>
         <%= render partial: '/users/edit_info', object: form %>
-        <%= form.label :programming_level %>
         <div class="submit-field">
             <%= form.submit class: 'btn btn-outline-primary'%>
         </div>

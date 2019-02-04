@@ -4,14 +4,19 @@
         <%# Select language and skill level %>
         <%= label_tag("Choose your language and skill level") %>
         <div class="input-group mb-3">
+            <% if current_user.user_languages_skill.has_key?("ruby") %>
+                <script>
+                    $('.ruby').addClass('active');
+                </script>
+            <% end %>
             <%= button_to "Ruby", action='#', class:'ruby btn btn-outline-success'%>
             <%= button_to "Beginner", action='#', class:'ruby-beginner btn btn-outline-info'%>
             <%= button_to "Intermediate", action='#', class:'ruby-intermediate btn btn-outline-info'%>
         </div>
         <div class="input-group mb-3">
             <%= button_to "Javascript", action='#', class:'btn btn-outline-success'%>
-            <%= button_to "Beginner", action='#', class:'js-beginner btn btn-outline-info'%>
-            <%= button_to "Intermediate", action='#', class:'js-intermediate btn btn-outline-info'%>
+            <%= button_to "Beginner", action='#', class:'javascript-beginner btn btn-outline-info'%>
+            <%= button_to "Intermediate", action='#', class:'javascript-intermediate btn btn-outline-info'%>
         </div>
         <%# Select developer type %>
         <%= label_tag("What kind of developer are you?")%>

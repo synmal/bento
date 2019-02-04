@@ -27,4 +27,24 @@ class User < ApplicationRecord
   def full_name
     "#{self.first_name} #{self.last_name}"
   end
+
+  def user_article
+    list = []
+    self.user_languages_skill.keys.each do |lang|
+      Article.where(tags: [lang]).each do |i|
+        list << i
+      end
+    end
+    list
+  end
+
+  def user_podcast
+    list = []
+    self.user_languages_skill.keys.each do |lang|
+      Podcast.where(tags: [lang]).each do |i|
+        list << i
+      end
+    end
+    list
+  end
  end

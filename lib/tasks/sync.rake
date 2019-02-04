@@ -67,10 +67,6 @@ task :sync => :environment do
   get_course('intermediate', 'javascript')
   get_course('beginner', 'ruby')
   get_course('intermediate', 'ruby')
-  get_course('beginner', 'python')
-  get_course('intermediate', 'python')
-  get_course('beginner', 'ios')
-  get_course('intermediate', 'ios')
   
   get_article('front-end')
   get_article('back-end')
@@ -78,9 +74,8 @@ task :sync => :environment do
   get_article('mobile-development')
   get_article('ruby')
   get_article('javascript')
-  get_article('python')
-  get_article('ios')
 
   get_podcast('http://feeds.5by5.tv/rubyonrails', 'ruby')
+  get_podcast('https://feeds.feedwrench.com/JavaScriptJabber.rss', 'javascript')
   puts 'Done'
 end

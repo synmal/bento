@@ -3,7 +3,10 @@ class User < ApplicationRecord
   has_many :authentications, dependent: :destroy
   mount_uploader :avatar, AvatarUploader
   enum programming_level: [:beginner, :intermediate]
- 
+  
+  # allows access to the hash in the migration
+  store_accessor :user_languages_skill
+
   def self.create_with_auth_and_hash(authentication, auth_hash)
     user = self.create!(
       first_name: auth_hash["info"]["first_name"],

@@ -1,0 +1,10 @@
+.avatar {
+  /* width: 24px; */
+  border-radius: 50%;
+}
+
+#edit-container {
+  background-color: white;
+  margin: 10px;
+  padding: 15px;
+}

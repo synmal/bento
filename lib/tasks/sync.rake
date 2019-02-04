@@ -1,26 +1,26 @@
 task :sync => :environment do
   # puts "Sup"
-  def get_course(level, language)
-    page = Nokogiri::HTML(open("https://www.skillshare.com/search?query=#{level}%20#{language}"))
-    link_text = page.xpath("//*[@class='ss-card__title']/a")
-    link_text.map { |link|
-      course = Course.new
-      course['title'] = link.children.text
-      course['link'] = link['href']
-      course['parent_url'] = 'https://www.skillshare.com/'
-      course.tags.push(level, language)
+  # def get_course(level, language)
+  #   page = Nokogiri::HTML(open("https://www.skillshare.com/search?query=#{level}%20#{language}"))
+  #   link_text = page.xpath("//*[@class='ss-card__title']/a")
+  #   link_text.map { |link|
+  #     course = Course.new
+  #     course['title'] = link.children.text
+  #     course['link'] = link['href']
+  #     course['parent_url'] = 'https://www.skillshare.com/'
+  #     course.tags.push(level, language)
   
-      if course.save
+  #     if course.save
   
-      else
-        a = Course.find_by(link: course.link)
-        # byebug
-        a.tags.push(level, language)
-        a.tags.uniq!
-        a.save
-      end
-    }
-  end
+  #     else
+  #       a = Course.find_by(link: course.link)
+  #       # byebug
+  #       a.tags.push(level, language)
+  #       a.tags.uniq!
+  #       a.save
+  #     end
+  #   }
+  # end
   
   def get_article(interest)
     rss = RSS::Parser.parse(open("https://medium.com/feed/tag/#{interest}"))
@@ -63,10 +63,10 @@ task :sync => :environment do
     end
   end
 
-  get_course('beginner', 'javascript')
-  get_course('intermediate', 'javascript')
-  get_course('beginner', 'ruby')
-  get_course('intermediate', 'ruby')
+  # get_course('beginner', 'javascript')
+  # get_course('intermediate', 'javascript')
+  # get_course('beginner', 'ruby')
+  # get_course('intermediate', 'ruby')
   
   get_article('front-end')
   get_article('back-end')

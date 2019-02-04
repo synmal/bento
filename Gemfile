@@ -37,6 +37,9 @@ gem 'omniauth-github'
 # Figaro
 gem 'figaro'
 
+# For thumbnails
+gem 'link_thumbnailer'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

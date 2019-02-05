@@ -29,8 +29,11 @@ class User < ApplicationRecord
   end
 
   def user_article
+    # empty array to hold Article obj
     list = []
+    # loop through each language
     self.user_languages_skill.keys.each do |lang|
+      # find article with tags based on language
       Article.where(tags: [lang]).each do |i|
         list << i
       end

@@ -54,5 +54,25 @@ class User < ApplicationRecord
   def feed
     article = []
     podcast = []
+    podcast_article = {}
+
+    # Podcast
+    self.user_languages_skill.keys.each do |lang|
+      Podcast.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).limit(3).order(published_at: :desc).each do |i|
+        podcast << i
+      end
+    end
+
+    # Articles
+    self.user_languages_skill.keys.each do |lang|
+      Article.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).limit(3).order(published_at: :desc).each do |i|
+        article << i
+      end
+    end
+
+    # Put in hash
+    podcast_article['podcast'] = podcast
+    podcast_article['article'] = article
+    podcast_article
   end
- end
+end

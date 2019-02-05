@@ -2,32 +2,26 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   </head>
   <body>
+    <% feed = @user.feed %>
     <h1>Welcome to BENTO, <%= "#{@user.first_name} #{@user.last_name}" %></h1>
     <p>
       Here are the things you missed!
     </p>
     
     <h3>Articles might interest you</h3>
-    <% @user.user_article.each do |i| %>
-      <%= link_to i.title, i.link %><br>
+    <% feed['article'].each do |article| %>
+      <%= link_to article.title, article.link %><br>
     <% end %>
-
-    <h3>Podcasts might interest you</h3>
-    <% @user.user_podcast.each do |i| %>
-      <%= link_to i.title, i.link %><br>
+    <h3>Podcast that might interest you</h3>
+    <% feed['podcast'].each do |podcast| %>
+      <%= link_to podcast.title, podcast.link %><br>
     <% end %>
-
-    <div class="card" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
     
+    <p>
+    From,<br>
+    The <strong>BENTO</strong> team
+    </p>
   </body>
 </html>

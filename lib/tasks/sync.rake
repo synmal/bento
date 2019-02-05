@@ -28,8 +28,9 @@ task :sync => :environment do
       article = Article.new
       article['title'] = item.title
       article['link'] = item.link
-      article['content'] = item.content_encoded
+      # article['content'] = item.content_encoded
       article['parent_url'] = 'https://medium.com/'
+      article['image'] = LinkThumbnailer.generate(item.link).images.first.src.to_s
       article['published_at'] = item.pubDate
       article.tags.push(interest)
       if article.save
@@ -53,6 +54,7 @@ task :sync => :environment do
       podcast['title'] = entry.title
       podcast['tags'] = [interest]
       podcast['published_at'] = entry.published
+      podcast['images'] = feed.itunes_image
       if podcast.save
   
       else
@@ -83,5 +85,6 @@ task :sync => :environment do
 
   get_podcast('http://feeds.5by5.tv/rubyonrails', 'ruby')
   get_podcast('https://feeds.feedwrench.com/JavaScriptJabber.rss', 'javascript')
+  get_podcast('https://talkpython.fm/episodes/rss', 'python')
   puts 'Done'
 end

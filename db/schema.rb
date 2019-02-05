@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_031014) do
+ActiveRecord::Schema.define(version: 2019_02_05_061852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2019_02_05_031014) do
     t.string "title"
     t.string "link"
     t.string "image"
-    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "tags", default: [], array: true
@@ -56,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_031014) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.datetime "published_at"
+    t.text "images"
   end
 
   create_table "puzzles", force: :cascade do |t|

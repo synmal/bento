@@ -56,35 +56,68 @@ $(document).ready(function(){
         })
     })
     // –––––––––––– Javascript –––––––––––––
-        $(".js-beginner").click((e) => {
+        $(".javascript-beginner").click((e) => {
         e.preventDefault()
         console.log(e.target.value);
         $.ajax({
             url: '/user/<%= current_user.id %>/update_language_skill',
             method: "POST",
             dataType: "JSON",
-            data: {programming_level: 'js beginner'},
+            data: {programming_level: 'javascript beginner'},
             success: (result) => {
                 console.log(result)
-                $('.js-beginner').addClass('active');
-                $('.js-intermediate').removeClass('active');
-                $('.js').addClass('active');
+                $('.javascript-beginner').addClass('active');
+                $('.javascript-intermediate').removeClass('active');
+                $('.javascript').addClass('active');
             }
         })
     })
-    $(".js-intermediate").click((e) => {
+    $(".javascript-intermediate").click((e) => {
         e.preventDefault()   
         console.log(e.target.value);
         $.ajax({
             url: '/user/<%= current_user.id %>/update_language_skill',
             method: "POST",
             dataType: "JSON",
-            data: {programming_level: 'js intermediate'},
+            data: {programming_level: 'javascript intermediate'},
             success: (result) => {
                 console.log(result)
-                $('.js-intermediate').addClass('active');
-                $('.js-beginner').removeClass('active');
-                $('.js').addClass('active');
+                $('.javascript-intermediate').addClass('active');
+                $('.javascript-beginner').removeClass('active');
+                $('.javascript').addClass('active');
+            }
+        })
+    })
+    // –––––––––––– Python –––––––––––––
+    $(".python-beginner").click((e) => {
+        e.preventDefault()
+        console.log(e.target.value);
+        $.ajax({
+            url: '/user/<%= current_user.id %>/update_language_skill',
+            method: "POST",
+            dataType: "JSON",
+            data: {programming_level: 'python beginner'},
+            success: (result) => {
+                console.log(result)
+                $('.python-beginner').addClass('active');
+                $('.python-intermediate').removeClass('active');
+                $('.python').addClass('active');
+            }
+        })
+    })
+    $(".python-intermediate").click((e) => {
+        e.preventDefault()   
+        console.log(e.target.value);
+        $.ajax({
+            url: '/user/<%= current_user.id %>/update_language_skill',
+            method: "POST",
+            dataType: "JSON",
+            data: {programming_level: 'python intermediate'},
+            success: (result) => {
+                console.log(result)
+                $('.python-intermediate').addClass('active');
+                $('.python-beginner').removeClass('active');
+                $('.python').addClass('active');
             }
         })
     })
@@ -92,6 +125,7 @@ $(document).ready(function(){
 </script>
 <script>
 // ––––––––––––– AJAX to set users developer_type –––––––––––––
+// Front End
 $(document).ready(function() {
     $(".front-end").click((e) => {
         e.preventDefault()
@@ -107,7 +141,7 @@ $(document).ready(function() {
             }
         })
     })
-
+// Back End 
     $(".back-end").click((e) => {
         e.preventDefault()
         $.ajax({
@@ -119,6 +153,36 @@ $(document).ready(function() {
                 console.log(result)
                 $(".back-end").addClass('active');
                 $(".back-end").attr('disabled', 'disabled');
+            }
+        })
+    })
+// Full Stack
+    $(".full-stack").click((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: '/user/<%= current_user.id %>/update_developer_type',
+            method: "POST",
+            dataType: "JSON",
+            data: {developer_type: "full stack"},
+            success: (result) => {
+                console.log(result)
+                $(".full-stack").addClass('active');
+                $(".full-stack").attr('disabled', 'disabled');
+            }
+        })
+    })
+// Mobile End
+    $(".mobile").click((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: '/user/<%= current_user.id %>/update_developer_type',
+            method: "POST",
+            dataType: "JSON",
+            data: {developer_type: "mobile"},
+            success: (result) => {
+                console.log(result)
+                $(".mobile").addClass('active');
+                $(".mobile").attr('disabled', 'disabled');
             }
         })
     })
@@ -150,6 +214,32 @@ $(document).ready(function(){
             success: (result) => {
                 console.log(result)
                 $(".chatbot").addClass('active');
+            }
+        })
+    })
+    $(".cybersecurity").click((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: '/user/<%= current_user.id %>/update_current_interest',
+            method: "POST",
+            dataType: "JSON",
+            data: {current_interest: "cybersecurity"},
+            success: (result) => {
+                console.log(result)
+                $(".cybersecurity").addClass('active');
+            }
+        })
+    })
+    $(".motionui").click((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: '/user/<%= current_user.id %>/update_current_interest',
+            method: "POST",
+            dataType: "JSON",
+            data: {current_interest: "motionui"},
+            success: (result) => {
+                console.log(result)
+                $(".motionui").addClass('active');
             }
         })
     })

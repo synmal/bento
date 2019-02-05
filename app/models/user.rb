@@ -33,10 +33,8 @@ class User < ApplicationRecord
     list = []
     # loop through each language
     self.user_languages_skill.keys.each do |lang|
-
       # find article with tags based on language
       Article.where(tags: [lang]).each do |i|
-
         list << i
       end
     end
@@ -46,10 +44,15 @@ class User < ApplicationRecord
   def user_podcast
     list = []
     self.user_languages_skill.keys.each do |lang|
-      Podcast.where(tags: [lang], created_at: 1.week.ago..Time.now).each do |i|
+      Podcast.where(tags: [lang]).each do |i|
         list << i
       end
     end
     list
+  end
+
+  def feed
+    article = []
+    podcast = []
   end
  end

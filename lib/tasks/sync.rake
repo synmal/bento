@@ -30,6 +30,7 @@ task :sync => :environment do
       article['link'] = item.link
       article['content'] = item.content_encoded
       article['parent_url'] = 'https://medium.com/'
+      article['published_at'] = item.pubDate
       article.tags.push(interest)
       if article.save
   
@@ -51,6 +52,7 @@ task :sync => :environment do
       podcast['creator'] = feed.title
       podcast['title'] = entry.title
       podcast['tags'] = [interest]
+      podcast['published_at'] = entry.published
       if podcast.save
   
       else

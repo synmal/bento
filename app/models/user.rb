@@ -31,7 +31,7 @@ class User < ApplicationRecord
   def user_article
     list = []
     self.user_languages_skill.keys.each do |lang|
-      Article.where(tags: [lang]).each do |i|
+      Article.where(tags: [lang], created_at: 1.week.ago..Time.now).each do |i|
         list << i
       end
     end
@@ -41,7 +41,7 @@ class User < ApplicationRecord
   def user_podcast
     list = []
     self.user_languages_skill.keys.each do |lang|
-      Podcast.where(tags: [lang]).each do |i|
+      Podcast.where(tags: [lang], created_at: 1.week.ago..Time.now).each do |i|
         list << i
       end
     end

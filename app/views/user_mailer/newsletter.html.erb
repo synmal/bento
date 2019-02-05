@@ -2,19 +2,32 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   </head>
   <body>
     <h1>Welcome to BENTO, <%= "#{@user.first_name} #{@user.last_name}" %></h1>
     <p>
-      You have successfully signed up to BENTO,
-    </p>
-    <p>
-      To login to the site, just follow this link: <%= @url %>.
+      Here are the things you missed!
     </p>
     
-    <p>Articles might interest you</p>
-    <% Article.all.each do |a| %>
-    <a href="<%= a.link %>"> <%= a.title %> </a>
+    <h3>Articles might interest you</h3>
+    <% @user.user_article.each do |i| %>
+      <%= link_to i.title, i.link %><br>
     <% end %>
+
+    <h3>Podcasts might interest you</h3>
+    <% @user.user_podcast.each do |i| %>
+      <%= link_to i.title, i.link %><br>
+    <% end %>
+
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+    
   </body>
 </html>

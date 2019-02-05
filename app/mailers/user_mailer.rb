@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
     # @user = params[:user]
     @url  = 'http://localhost:3000'
     @user = User.last
-    mail(to: "test@example.com", subject: 'Your Weekly Bento is Here')
+    mail(to: @user.email, subject: 'Your Weekly Bento is Here')
   end
 
   def welcome_mail(user)

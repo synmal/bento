@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :projects, through: :feeds, dependent: :destroy
   mount_uploader :avatar, AvatarUploader
   enum programming_level: [:beginner, :intermediate]
+  enum roles: [:user, :admin]
   
   # allows access to the hash in the migration
   store_accessor :user_languages_skill

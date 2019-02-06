@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :feeds
   has_many :articles, through: :feeds
   has_many :podcasts, through: :feeds
+  has_many :projects, through: :feeds
   mount_uploader :avatar, AvatarUploader
   enum programming_level: [:beginner, :intermediate]
   

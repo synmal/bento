@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_06_043635) do
+ActiveRecord::Schema.define(version: 2019_02_06_064910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -51,8 +51,10 @@ ActiveRecord::Schema.define(version: 2019_02_06_043635) do
     t.bigint "user_id"
     t.bigint "article_id"
     t.bigint "podcast_id"
+    t.bigint "project_id"
     t.index ["article_id"], name: "index_feeds_on_article_id"
     t.index ["podcast_id"], name: "index_feeds_on_podcast_id"
+    t.index ["project_id"], name: "index_feeds_on_project_id"
     t.index ["user_id"], name: "index_feeds_on_user_id"
   end
 
@@ -65,6 +67,13 @@ ActiveRecord::Schema.define(version: 2019_02_06_043635) do
     t.string "title"
     t.datetime "published_at"
     t.text "images"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "puzzles", force: :cascade do |t|
@@ -94,5 +103,6 @@ ActiveRecord::Schema.define(version: 2019_02_06_043635) do
   add_foreign_key "authentications", "users"
   add_foreign_key "feeds", "articles"
   add_foreign_key "feeds", "podcasts"
+  add_foreign_key "feeds", "projects"
   add_foreign_key "feeds", "users"
 end

@@ -70,9 +70,8 @@ task :sync => :environment do
   def get_project
     list = Nokogiri::HTML(open('https://github.com/karan/Projects/blob/master/README.md'))
     title = list.xpath("//p/strong/text()")
-
     title.each do |t|
-      next if title.index(t) < 2
+      next if title.index(t) < 2 || Project.find_by(title: t.text)
       description = list.xpath("//p[#{title.index(t) + 5}]/text()")
       project = Project.new(title: t.text, description: description)
       project.save

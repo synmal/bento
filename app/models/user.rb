@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   include Clearance::User
   has_many :authentications, dependent: :destroy
+  has_many :feeds
+  has_many :articles, through: :feeds
+  has_many :podcasts, through: :feeds
   mount_uploader :avatar, AvatarUploader
   enum programming_level: [:beginner, :intermediate]
   
@@ -58,14 +61,14 @@ class User < ApplicationRecord
 
     # Podcast
     self.user_languages_skill.keys.each do |lang|
-      Podcast.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).limit(3).order(published_at: :desc).each do |i|
+      Podcast.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).each do |i|
         podcast << i
       end
     end
 
     # Articles
     self.user_languages_skill.keys.each do |lang|
-      Article.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).limit(3).order(published_at: :desc).each do |i|
+      Article.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).each do |i|
         article << i
       end
     end

@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2019_02_06_082203) do
     t.string "developer_type", default: [], array: true
     t.string "interest", default: [], array: true
     t.hstore "user_languages_skill", default: {}
-    t.integer "roles"
+    t.integer "roles", default: 0
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
     t.index ["user_languages_skill"], name: "index_users_on_user_languages_skill", using: :gist

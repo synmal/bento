@@ -10,10 +10,12 @@
     </p>
     
     <h3>Articles might interest you</h3>
-      <%= link_to @user.articles.last.title, @user.articles.last.link %><br>
+    <%= link_to @user.articles.last.title, @user.articles.last.link %><br>
     <h3>Podcast that might interest you</h3>
-      <%= link_to @user.podcasts.last.title, @user.podcasts.last.link %><br>
-    
+    <%= link_to @user.podcasts.last.title, @user.podcasts.last.link %><br>
+    <h3>Try this project</h3>
+    <p><strong><%= @user.projects.last.title %></strong> <%= @user.projects.last.description %></p><br>
+
     <p>
     From,<br>
     The <strong>BENTO</strong> team

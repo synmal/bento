@@ -67,6 +67,18 @@ task :sync => :environment do
     end
   end
 
+  def get_project
+    list = Nokogiri::HTML(open('https://github.com/karan/Projects/blob/master/README.md'))
+    title = list.xpath("//p/strong/text()")
+
+    title.each do |t|
+      next if title.index(t) < 2
+      description = list.xpath("//p[#{title.index(t) + 5}]/text()")
+      project = Project.new(title: t.text, description: description)
+      project.save
+    end
+  end
+
   get_course('beginner', 'javascript')
   get_course('intermediate', 'javascript')
   get_course('beginner', 'ruby')
@@ -86,5 +98,8 @@ task :sync => :environment do
   get_podcast('http://feeds.5by5.tv/rubyonrails', 'ruby')
   get_podcast('https://feeds.feedwrench.com/JavaScriptJabber.rss', 'javascript')
   get_podcast('https://talkpython.fm/episodes/rss', 'python')
+
+  get_project
+
   puts 'Done'
 end

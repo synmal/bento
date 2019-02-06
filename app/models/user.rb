@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   include Clearance::User
   has_many :authentications, dependent: :destroy
-  has_many :articles
-  has_many :podcasts
+  has_many :feeds
+  has_many :articles, through: :feeds
+  has_many :podcasts, through: :feeds
   mount_uploader :avatar, AvatarUploader
   enum programming_level: [:beginner, :intermediate]
   

@@ -1,4 +1,4 @@
 class Podcast < ApplicationRecord
-  belongs_to :user
+  has_many :users, through: :feeds
   validates :link, uniqueness: true
 end

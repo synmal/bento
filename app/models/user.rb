@@ -61,14 +61,14 @@ class User < ApplicationRecord
 
     # Podcast
     self.user_languages_skill.keys.each do |lang|
-      Podcast.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).limit(3).order(published_at: :desc).each do |i|
+      Podcast.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).each do |i|
         podcast << i
       end
     end
 
     # Articles
     self.user_languages_skill.keys.each do |lang|
-      Article.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).limit(3).order(published_at: :desc).each do |i|
+      Article.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).each do |i|
         article << i
       end
     end

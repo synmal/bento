@@ -4,20 +4,15 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <% feed = @user.feed %>
     <h1>Welcome to BENTO, <%= "#{@user.first_name} #{@user.last_name}" %></h1>
     <p>
       Here are the things you missed!
     </p>
     
     <h3>Articles might interest you</h3>
-    <% feed['article'].each do |article| %>
-      <%= link_to article.title, article.link %><br>
-    <% end %>
+      <%= link_to @user.articles.last.title, @user.articles.last.link %><br>
     <h3>Podcast that might interest you</h3>
-    <% feed['podcast'].each do |podcast| %>
-      <%= link_to podcast.title, podcast.link %><br>
-    <% end %>
+      <%= link_to @user.podcasts.last.title, @user.podcasts.last.link %><br>
     
     <p>
     From,<br>

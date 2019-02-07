@@ -22,11 +22,11 @@ set :output, "log/development.log"
 
 set :environment, "development"
 
-every 1.week do # 1.minute 1.day 1.week 1.month 1.year is also supported
-  rake "update_feed"
-  rake "send_newsletter"
-end
+# every 1.week do # 1.minute 1.day 1.week 1.month 1.year is also supported
+#   rake "update_feed"
+#   rake "send_newsletter"
+# end
 
-every 1.day do
-  rake "sync"
-end
+# every 10.minute do
+#   rake "sync"
+# end

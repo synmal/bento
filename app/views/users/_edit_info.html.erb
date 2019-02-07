@@ -1,16 +1,22 @@
 <div class="form-group">
   <div class="text-field">
-    <%= edit_info.label :first_name %>
-    <%= edit_info.text_field :first_name, class:'form-control' %>
-    <br/>
-    <%= edit_info.label :last_name %>
-    <%= edit_info.text_field :last_name, class:'form-control' %>
-    <br/>
+    <div class="form-row">
+        <div class="col">
+            <%= edit_info.label :first_name %>
+            <%= edit_info.text_field :first_name, class:'form-control' %>
+        </div>
+        <br/>
+        <div class="col">
+            <%= edit_info.label :last_name %>
+            <%= edit_info.text_field :last_name, class:'form-control' %>
+        <br/>
+        </div>
+    </div>
     <%= edit_info.label :email %>
     <%= edit_info.text_field :email, class:'form-control'  %>
     <br/>
     <%= edit_info.label :avatar %>
     <br/>
-    <%= edit_info.file_field :avatar %>
+    <%= edit_info.file_field :avatar, class: 'w-100' %>
   </div>
 </div>

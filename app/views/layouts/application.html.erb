@@ -24,11 +24,13 @@
   <body>
   
     <%= render 'layouts/navbar' %>
-    <div class="container p-4">
-        <div class="bg-white p-4">
+
+    <div class="container">
+        <div class="bg-white">
             <%= yield %>
         </div>
     </div>
+
     <%= render 'layouts/footer' %>
   </body>
 </html>

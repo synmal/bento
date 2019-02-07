@@ -1,6 +1,5 @@
-<div class="preferences-form">
+<div class="preferences-form p-3">
     <div class="text-field">
-        <br/>
         <%# Select language and skill level %>
         <%= label_tag("Choose your language and skill level") %>
         <div class="input-group mb-3">
@@ -13,6 +12,7 @@
             <%= button_to "Beginner", action='#', class:'js-beginner btn btn-outline-info'%>
             <%= button_to "Intermediate", action='#', class:'js-intermediate btn btn-outline-info'%>
         </div>
+        </br>
         <%# Select developer type %>
         <%= label_tag("What kind of developer are you?")%>
         <br/>

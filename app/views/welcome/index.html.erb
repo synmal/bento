@@ -10,22 +10,23 @@
 
     </div>
 
-
-    <button type="button" class="btn btn-outline-primary mr-sm-2 rounded-pill w-25" data-toggle="modal" data-target="#exampleModal">
-      Log In
+    
+    <button type="button" class="btn btn-outline-primary mr-sm-2 rounded-pill col-sm-3" data-toggle="modal" data-target="#exampleModal">
+     <%= image_tag "bento-box.png", class: 'rounded float-left login-icon' %>
+      Log In into BENTO
     </button>
 
     <%= link_to "/auth/github" do %>
-      <div class=" btn btn-outline-primary mr-sm-2 w-25 rounded-pill" href="/auth/github">
-      <img style="width:28px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh8AbvCEYFSGfmEawqATSY5sCIlvmsK03Q02vtuaZtcNEmGNGJ " class="rounded float-left">
+      <div class=" btn btn-outline-primary mr-sm-2 col-sm-3 rounded-pill" href="/auth/github">
+      <img style="width:28px;" src="https://www.techgirlz.org/wp-content/uploads/2016/12/github-logo.png" class="rounded float-left">
       Sign in with Github
       </div>
     <% end %>
     
 
   <%= link_to "/auth/google_oauth2" do %>
-   <div class="btn btn-outline-primary mr-sm-2 w-25 rounded-pill" href="/auth/github">
-    <img style="width:28px;" src="https://ambientdigitalgroup.com/wp-content/uploads/2017/07/logo-google.png" class="rounded float-left">
+   <div class="btn btn-outline-primary mr-sm-2 col-sm-3 rounded-pill" href="/auth/github">
+    <img style="width:28px;" src="https://www.appythings.nl/wp-content/uploads/2018/06/google-logo-icon-PNG-Transparent-Background.png" class="rounded float-left">
     Sign in with Google
       </div>
   <% end %>
@@ -36,7 +37,7 @@
       <h3>Have not an account?</h3>
 
         <form action="/sign_up">
-          <input type="submit" value="Sign up" class="btn btn-outline-primary mb-2 mr-sm-2 w-25 rounded-pill">
+          <input type="submit" value="Sign up" class="btn btn-outline-primary mb-2 mr-sm-2 col-sm-3 rounded-pill">
         </form>
 
 

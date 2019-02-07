@@ -16,7 +16,9 @@
 
  html, body {
    background-color: #F3F3F3;
-   margin: 0px;
-   padding: 0px;
+ }
+
+ .login-icon {
+ 	width: 25px;
  }
 

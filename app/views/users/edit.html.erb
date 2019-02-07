@@ -1,28 +1,38 @@
-
 <div id="edit-container">
     <div class="edit-info-container">
-    <%= image_tag current_user.avatar.show.url, class: 'avatar mb-3' %>
-    <h1>Profile</h1>
-    <%= form_with model: @user, local: true do |form| %>
-        <%= render partial: '/users/edit_info', object: form %>
-        <div class="submit-field">
-            <%= form.submit class: 'btn btn-outline-primary'%>
-        </div>
-        <% end %>
-    </div>
 
-    <div class="edit-preferences-container">
-    <h1>Preferences</h1>
-    <%= form_with model: @user, local: true do |form| %>
-        <%= render partial: '/users/preferences', object: form %>
-    <% end %>
+        <div class="form-row w-100 m-0 p-0">
+            <div class="col p-3">
+                <div class="d-flex justify-content-center">
+                    <%= image_tag current_user.avatar.show.url, class: 'avatar-big mb-3 border-danger' %>
+                </div>
+                <h3 class="text-center"><span style="font-weight: bold;"><%= @user.first_name%>'s </span> information</h3>
+                    <%= form_with model: @user,class: :"w-100 p-2", local: true do |form| %>
+                        <%= render partial: '/users/edit_info', object: form %>
+                        <%#= form.label :programming_level %>
+                        <div class="submit-field d-flex justify-content-center">
+                            <%= form.submit class: 'btn btn-danger bg-mutted'%>
+                        </div>
+                    <% end %>
+            </div>
+            <div class="col p-3">
+                <div class="edit-preferences-container">
+                    <h3 class="text-center">Preferences</h3>
+                    <%= form_with model: @user, local: true do |form| %>
+                        <%= render partial: '/users/preferences', object: form %>
+                    <% end %>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
+
 
 <script>
 // ––––––––––––– AJAX to set users programming_level –––––––––––––
 $(document).ready(function(){
-    // –––––––––––– Ruby –––––––––––––
+    // –––––––––––– Ruby –––––––––––––-
     $(".ruby-beginner").click((e) => {
         e.preventDefault()
         console.log(e.target.value);

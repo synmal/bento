@@ -1,39 +1,41 @@
 
-<div class="container d-flex flex-row justify-content-around">
-  <div class="">
+<div class="container d-md-flex flex-row justify-content-around">
+  <div class="m-2">
     <h5>Do you know the situation?<br><span style="font-weight: bold;"> Change it!</span><br>Sign up into our Bento!</h5>
-    <img src="http://1.bp.blogspot.com/-LKKJSDcnA5Y/UFokf-p9vhI/AAAAAAAAVaQ/QwSWElPclHM/s1600/imgres-12.jpeg">
+    <img src="http://1.bp.blogspot.com/-LKKJSDcnA5Y/UFokf-p9vhI/AAAAAAAAVaQ/QwSWElPclHM/s1600/imgres-12.jpeg" class="rounded-circle">
   </div>
   <div class="">
 
-    <form>
-      <div class="form-row">
-        <div class="col">
-          <label>First name</label>      
-          <input type="text" class="form-control" placeholder="First name" name="user[first_name]" id="user_first_name">
-            <%#= form.label :first_name %>
-            <%#= form.text_field :first_name %>
+    <div class="m-2">
+      <form>
+        <div class="form-row">
+          <div class="col">
+              <%= form.label :first_name %>
+              <%= form.text_field :first_name, class:'form-control' %>
+          </div>
+          <div class="col">
+            <%= form.label :last_name %>
+            <%= form.text_field :last_name, class:'form-control' %>
+          </div>
         </div>
-        <div class="col">
-          <label>Last name</label>
-          <input type="text" class="form-control" placeholder="Last name" name="user[last_name]" id="user_last_name">
-          <%#= form.label :last_name %>
-          <%#= form.text_field :last_name %>
+        <div>
+            <%= form.label :email %>
+            <%= form.text_field :email, type: 'email', class:'form-control' %>
         </div>
+        <div class="password-field">
+            <%= form.label :password %>
+            <%= form.password_field :password, class:'form-control' %>
+        </div>
+      </form>
+      <div class="submit-field m-4 float-right ">
+        <%= form.submit 'Sign up', class:'btn btn-primary' %>
       </div>
-      <div>
-        <label>Email</label>
-        <input type="text" class="form-control" placeholder="Email" name="user[email]" id="user_email">
-          <%#= form.label :email %>
-          <%#= form.text_field :email, type: 'email' %>
+        <div class="other-links m-4 ">
+        <%= link_to t(".log_in"), root_path %>
       </div>
-      <div class="password-field">
-          <label>Password</label>
-          <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="user[password]" id="user_password">
-          <%#= form.label :password %>
-          <%#= form.password_field :password %>
-      </div>
+
       <button>Submit</button>
     </form>
+
   </div>
 </div>

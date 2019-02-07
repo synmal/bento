@@ -5,7 +5,7 @@ class NewsletterJob < ApplicationJob
     # Do something later
     update_feed
     User.all.each do |user|
-      UserMailer.newsletter(user).deliver_now
+      UserMailer.newsletter(user).deliver_later
     end
   end
 

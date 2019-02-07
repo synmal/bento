@@ -6,68 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-def get_quiz(num)
-  quiz = Nokogiri::HTML(open("https://projecteuler.net/problem=#{num}"))
-  quiz_info = quiz.xpath("//*[@class='problem_content']").to_html
-  quiz_img = quiz_info.gsub(/src=./, 'img src="https://projecteuler.net/')
-  Puzzle.create(description: quiz_img)
-
-  if open("https://projecteuler.net/problem=#{num}").base_uri.path == "/problem=#{num}"
-    get_quiz(num+1)
-  else
-    p "Done"
-  end
-end
-
-get_quiz(1)
-
-# def get_quiz(num)
-#   quiz = Nokogiri::HTML(open("https://projecteuler.net/problem=#{num}"))
-#   quiz_info = quiz.xpath("//*[@class='problem_content']").to_html
-#   quiz_img = quiz_info.gsub(/src=./, 'img src="https://projecteuler.net/')
-#   Puzzle.create(description: quiz_img)
-
-#   if open("https://projecteuler.net/problem=#{num}").base_uri.path == "/problem=#{num}"
-#     get_quiz(num+1)
-#   else
-#     p "Done"
-#   end
-# end
-
-# get_quiz(1)
-
-# def get_course(level, language)
-#   page = Nokogiri::HTML(open("https://www.skillshare.com/search?query=#{level}%20#{language}"))
-#   link_text = page.xpath("//*[@class='ss-card__title']/a")
-#   link_text.map { |link|
-#     course = Course.new
-#     course['title'] = link.children.text
-#     course['link'] = link['href']
-#     course['parent_url'] = 'https://www.skillshare.com/'
-#     course.tags.push(level, language)
-
-#     if course.save
-
-#     else
-#       a = Course.find_by(link: course.link)
-#       # byebug
-#       a.tags.push(level, language)
-#       a.tags.uniq!
-#       a.save
-#     end
-#   }
-# end
-
-# get_course('beginner', 'javascript')
-# get_course('intermediate', 'javascript')
-# get_course('beginner', 'ruby')
-# get_course('intermediate', 'ruby')
-# get_course('beginner', 'python')
-# get_course('intermediate', 'python')
-# get_course('beginner', 'ios')
-# get_course('intermediate', 'ios')
-
 # def get_article(interest)
 #   rss = RSS::Parser.parse(open("https://medium.com/feed/tag/#{interest}"))
 #   rss.items.each do |item|

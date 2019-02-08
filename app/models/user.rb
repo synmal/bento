@@ -21,7 +21,7 @@ class User < ApplicationRecord
       password: SecureRandom.hex(10)
     )
     user.authentications << authentication
-    UserMailer.welcome_mail(user).deliver_later
+    UserMailer.welcome_mail(user).deliver_now
     return user
   end
  

@@ -91,7 +91,7 @@ channel_ids.each do |channel_id|
   video_ids = videos.map &:id
   video_titles = videos.map &:title
   video_ids.each_with_index do |video_id, i|
-    next if Video.where(url: "https://www.youtube.com/watch?v=#{video_id}")
+    next if Video.find_by(url: "https://www.youtube.com/watch?v=#{video_id}")
     video = Video.new(title: video_titles[i], channel: channel.title, url: "https://www.youtube.com/watch?v=#{video_id}")
     video.tags << channel_id[1]
     video.save

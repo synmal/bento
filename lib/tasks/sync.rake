@@ -1,26 +1,5 @@
 task :sync => :environment do
   # puts "Sup"
-  def get_course(level, language)
-    page = Nokogiri::HTML(open("https://www.skillshare.com/search?query=#{level}%20#{language}"))
-    link_text = page.xpath("//*[@class='ss-card__title']/a")
-    link_text.map { |link|
-      course = Course.new
-      course['title'] = link.children.text
-      course['link'] = link['href']
-      course['parent_url'] = 'https://www.skillshare.com/'
-      course.tags.push(level, language)
-  
-      if course.save
-  
-      else
-        a = Course.find_by(link: course.link)
-        # byebug
-        a.tags.push(level, language)
-        a.tags.uniq!
-        a.save
-      end
-    }
-  end
   
   def get_article(interest)
     rss = RSS::Parser.parse(open("https://medium.com/feed/tag/#{interest}"))
@@ -77,28 +56,29 @@ task :sync => :environment do
       project.save
     end
   end
+  
+  get_project
 
-  # get_course('beginner', 'javascript')
-  # get_course('intermediate', 'javascript')
-  # get_course('beginner', 'ruby')
-  # get_course('intermediate', 'ruby')
-  # get_course('beginner', 'python')
-  # get_course('intermediate', 'python')
+  get_course('beginner', 'javascript')
+  get_course('intermediate', 'javascript')
+  get_course('beginner', 'ruby')
+  get_course('intermediate', 'ruby')
+  get_course('beginner', 'python')
+  get_course('intermediate', 'python')
   
   
-  # get_article('front-end')
-  # get_article('back-end')
-  # get_article('web-development')
-  # get_article('mobile-development')
-  # get_article('ruby')
-  # get_article('javascript')
-  # get_article('python')
+  get_article('front-end')
+  get_article('back-end')
+  get_article('web-development')
+  get_article('mobile-development')
+  get_article('ruby')
+  get_article('javascript')
+  get_article('python')
 
-  # get_podcast('http://feeds.5by5.tv/rubyonrails', 'ruby')
-  # get_podcast('https://feeds.feedwrench.com/JavaScriptJabber.rss', 'javascript')
-  # get_podcast('https://talkpython.fm/episodes/rss', 'python')
+  get_podcast('http://feeds.5by5.tv/rubyonrails', 'ruby')
+  get_podcast('https://feeds.feedwrench.com/JavaScriptJabber.rss', 'javascript')
+  get_podcast('https://talkpython.fm/episodes/rss', 'python')
 
-  # get_project
 
   puts 'Done'
 end

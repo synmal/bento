@@ -69,4 +69,8 @@ class User < ApplicationRecord
     # p podcast_article_video['video']
     podcast_article_video
   end
+
+  def feed_count
+    self.feeds.count
+  end
 end

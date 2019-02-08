@@ -1,47 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%# meta tags from bootstrap %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bento</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-<div class="text-center">
-  <h1>Welcome to Bento</h1>
-  <br>
-  <% if !signed_in? %>
-    <div id="clearance" class="sign-in">
-      <h3>Login</h3>
+    <%# bootstrap css %>
+    <%= favicon_link_tag asset_path('bento-box.png') %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-      <%= render partial: 'login' %>
+    <%# JS from bootstrap and jQuery CDN %>
+    <%# jQuery must come first! %>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
+<body class="w3-content" style="max-width:1300px">
+<!-- First Grid: Logo & Account Login -->
+
+<div class="w3-row">
+    <div class="w3-half w3-white w3-container w3-center" style="height:700px">
+    <div class="w3-padding-64">
+      <h1>Welcome to Bento</h1>
     </div>
 
+    <% if !signed_in? %>
+    <div id="clearance" class="sign-in">
+    <%= render partial: 'login' %>
+    </div>
     
-    <button type="button" class="btn btn-outline-primary mr-sm-2 rounded-pill col-sm-3" data-toggle="modal" data-target="#exampleModal">
+
+    <div class="w3-padding-54">
+    <button type="button" class="w3-button w3-white w3-block w3-hover-brown w3-padding-16"
+    data-toggle="modal" data-target="#exampleModal">
      <%= image_tag "bento-box.png", class: 'rounded float-left login-icon' %>
-      Log In into BENTO
+      Log In to BENTO
     </button>
 
     <%= link_to "/auth/github" do %>
-      <div class=" btn btn-outline-primary mr-sm-2 col-sm-3 rounded-pill" href="/auth/github">
+      <div class="w3-button w3-white w3-block w3-hover-brown w3-padding-16" href="/auth/github">
       <img style="width:28px;" src="https://www.techgirlz.org/wp-content/uploads/2016/12/github-logo.png" class="rounded float-left">
       Sign in with Github
       </div>
     <% end %>
-    
 
-  <%= link_to "/auth/google_oauth2" do %>
-   <div class="btn btn-outline-primary mr-sm-2 col-sm-3 rounded-pill" href="/auth/github">
-    <img style="width:28px;" src="https://www.appythings.nl/wp-content/uploads/2018/06/google-logo-icon-PNG-Transparent-Background.png" class="rounded float-left">
-    Sign in with Google
+    <%= link_to "/auth/google_oauth2" do %>
+      <div class="w3-button w3-white w3-block w3-hover-brown w3-padding-16" href="/auth/github">
+      <img style="width:28px;" src="https://www.appythings.nl/wp-content/uploads/2018/06/google-logo-icon-PNG-Transparent-Background.png" class="rounded float-left">
+      Sign in with Google
       </div>
-  <% end %>
-  
+    <% end %>
 
-  <br>
-  </br>
-      <h3>Have not an account?</h3>
+        <br><H4 style="font-size: 12px; font-family: Open Sans; margin:0;">Don't have an account?</H4>
 
         <form action="/sign_up">
-          <input type="submit" value="Sign up" class="btn btn-outline-primary mb-2 mr-sm-2 col-sm-3 rounded-pill">
+        <input type="submit" value="Sign up" class="w3-button w3-white w3-block w3-hover-gray w3-padding-10">
         </form>
+    </div>
 
+    <% else %>
 
-  <% end %>
+    <div class="w3-padding-54">
 
+    <%= link_to 'Dashboard', user_dashboard_path(current_user.id), class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %>
 
-</div>
+    <%= link_to "Edit Profile", edit_user_path(current_user.id), class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %>
+
+    <%= link_to "Sign Out", sign_out_path, method: :delete, class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %>
+
+    </div>
+
+    <% end %>
+  </div>
+  <div class="w3-half w3-blue-grey w3-container" style="height:700px">
+    <div class="w3-padding-64 w3-center">
+      <img src="https://cdn.iconscout.com/icon/free/png-256/bento-box-food-plate-fastfood-symbol-emoj-30704.png"
+       class="w3-margin w3" alt="Photo" style="width:50%">
+      <div class="w3-center-align w3-padding-large">
+        <p>Eat.</p>
+        <p>Sleep.</p>
+        <p>Code.</p>
+      </div>
+    </div>
+  </div>
+</div>    
+    
+    <%= render 'layouts/footer' %>
+  </body>
+</html>

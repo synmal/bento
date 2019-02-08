@@ -2,11 +2,9 @@
 <div class="container d-md-flex flex-row justify-content-around">
   <div class="m-2">
     <h5>Do you know the situation?<br><span style="font-weight: bold;"> Change it!</span><br>Sign up into our Bento!</h5>
-    <img src="http://1.bp.blogspot.com/-LKKJSDcnA5Y/UFokf-p9vhI/AAAAAAAAVaQ/QwSWElPclHM/s1600/imgres-12.jpeg" class="rounded-circle">
+    <img src="http://1.bp.blogspot.com/-LKKJSDcnA5Y/UFokf-p9vhI/AAAAAAAAVaQ/QwSWElPclHM/s1600/imgres-12.jpeg" class="rounded-circle p-2">
   </div>
-  <div class="">
-
-    <div class="m-2">
+    <div class="">
       <form>
         <div class="form-row">
           <div class="col">
@@ -27,15 +25,13 @@
             <%= form.password_field :password, class:'form-control' %>
         </div>
       </form>
-      <div class="submit-field m-4 float-right ">
-        <%= form.submit 'Sign up', class:'btn btn-primary' %>
-      </div>
-        <div class="other-links m-4 ">
+
+        <div class="other-links p-4">
+          <div class="submit-field float-right ">
+             <%= form.submit 'Sign up', class:'btn btn-primary' %>
+          </div>
         <%= link_to t(".log_in"), root_path %>
       </div>
-
-      <button>Submit</button>
     </form>
-
   </div>
 </div>

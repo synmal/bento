@@ -3,17 +3,10 @@ class SyncJob < ApplicationJob
 
   def perform(*args)
     # Do something later
-    get_article('front-end')
-    get_article('back-end')
-    get_article('web-development')
-    get_article('mobile-development')
-    get_article('ruby')
-    get_article('javascript')
-    get_article('python')
-
-    get_podcast('http://feeds.5by5.tv/rubyonrails', 'ruby')
-    get_podcast('https://feeds.feedwrench.com/JavaScriptJabber.rss', 'javascript')
-    get_podcast('https://talkpython.fm/episodes/rss', 'python')
+    all_topics = ['front-end', 'back-end', 'web-development', 'mobile-development', 'ruby', 'javascript', 'python']
+    all_topics.each do |topic|
+      get_article(topic)
+    end
   end
 
   def get_article(interest)
@@ -22,7 +15,6 @@ class SyncJob < ApplicationJob
       article = Article.new
       article['title'] = item.title
       article['link'] = item.link
-      # article['content'] = item.content_encoded
       article['parent_url'] = 'https://medium.com/'
       article['image'] = LinkThumbnailer.generate(item.link).images.first.src.to_s
       article['published_at'] = item.pubDate
@@ -36,39 +28,6 @@ class SyncJob < ApplicationJob
         a.tags.uniq!
         a.save
       end
-    end
-  end
-
-  def get_podcast(feed, interest)
-    feed = Feedjira::Feed.fetch_and_parse feed
-    feed.entries.each do |entry|
-      podcast = Podcast.new
-      podcast['link'] = entry.url
-      podcast['creator'] = feed.title
-      podcast['title'] = entry.title
-      podcast['tags'] = [interest]
-      podcast['published_at'] = entry.published
-      podcast['images'] = feed.itunes_image
-      if podcast.save
-  
-      else
-        a = Podcast.find_by(link: entry.url)
-        # byebug
-        a.tags.push(interest)
-        a.tags.uniq!
-        a.save
-      end
-    end
-  end
-
-  def get_project
-    list = Nokogiri::HTML(open('https://github.com/karan/Projects/blob/master/README.md'))
-    title = list.xpath("//p/strong/text()")
-    title.each do |t|
-      next if title.index(t) < 2 || Project.find_by(title: t.text)
-      description = list.xpath("//p[#{title.index(t) + 5}]/text()")
-      project = Project.new(title: t.text, description: description)
-      project.save
     end
   end
 

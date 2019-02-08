@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_06_082203) do
+ActiveRecord::Schema.define(version: 2019_02_08_003227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -52,10 +52,12 @@ ActiveRecord::Schema.define(version: 2019_02_06_082203) do
     t.bigint "article_id"
     t.bigint "podcast_id"
     t.bigint "project_id"
+    t.bigint "video_id"
     t.index ["article_id"], name: "index_feeds_on_article_id"
     t.index ["podcast_id"], name: "index_feeds_on_podcast_id"
     t.index ["project_id"], name: "index_feeds_on_project_id"
     t.index ["user_id"], name: "index_feeds_on_user_id"
+    t.index ["video_id"], name: "index_feeds_on_video_id"
   end
 
   create_table "podcasts", force: :cascade do |t|
@@ -101,9 +103,19 @@ ActiveRecord::Schema.define(version: 2019_02_06_082203) do
     t.index ["user_languages_skill"], name: "index_users_on_user_languages_skill", using: :gist
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.string "title"
+    t.string "channel"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "tags", default: [], array: true
+  end
+
   add_foreign_key "authentications", "users"
   add_foreign_key "feeds", "articles"
   add_foreign_key "feeds", "podcasts"
   add_foreign_key "feeds", "projects"
   add_foreign_key "feeds", "users"
+  add_foreign_key "feeds", "videos"
 end

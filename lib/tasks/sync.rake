@@ -56,6 +56,8 @@ task :sync => :environment do
       project.save
     end
   end
+  
+  get_project
 
   get_course('beginner', 'javascript')
   get_course('intermediate', 'javascript')
@@ -77,7 +79,6 @@ task :sync => :environment do
   get_podcast('https://feeds.feedwrench.com/JavaScriptJabber.rss', 'javascript')
   get_podcast('https://talkpython.fm/episodes/rss', 'python')
 
-  get_project
 
   puts 'Done'
 end

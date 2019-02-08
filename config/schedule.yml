@@ -6,6 +6,6 @@ sync:
   cron: "*/10 * * * *"
   class: "SyncJob"
 
-# feed:
-#   cron: "*/5 * * * *"
-#   class: "HardWorker"
+sync_video_podcast:
+  cron: "30 8 * * *"
+  class: "SyncVideosPodcastJob"

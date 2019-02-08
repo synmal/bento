@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :articles, through: :feeds, dependent: :destroy
   has_many :podcasts, through: :feeds, dependent: :destroy
   has_many :projects, through: :feeds, dependent: :destroy
+  has_many :videos, through: :feeds, dependent: :destroy
   mount_uploader :avatar, AvatarUploader
   enum programming_level: [:beginner, :intermediate]
   enum roles: [:user, :admin]
@@ -34,33 +35,11 @@ class User < ApplicationRecord
     "#{self.first_name} #{self.last_name}"
   end
 
-  def user_article
-    # empty array to hold Article obj
-    list = []
-    # loop through each language
-    self.user_languages_skill.keys.each do |lang|
-      # find article with tags based on language
-      Article.where(tags: [lang]).each do |i|
-        list << i
-      end
-    end
-    list
-  end
-
-  def user_podcast
-    list = []
-    self.user_languages_skill.keys.each do |lang|
-      Podcast.where(tags: [lang]).each do |i|
-        list << i
-      end
-    end
-    list
-  end
-
   def feed
     article = []
     podcast = []
-    podcast_article = {}
+    video = []
+    podcast_article_video = {}
 
     # Podcast
     self.user_languages_skill.keys.each do |lang|
@@ -76,9 +55,18 @@ class User < ApplicationRecord
       end
     end
 
+    # Video
+    self.user_languages_skill.keys.each do |lang|
+      Video.where(tags: [lang]).each do |i|
+        video << i
+      end
+    end
+
     # Put in hash
-    podcast_article['podcast'] = podcast
-    podcast_article['article'] = article
-    podcast_article
+    podcast_article_video['podcast'] = podcast
+    podcast_article_video['article'] = article
+    podcast_article_video['video'] = video
+    # p podcast_article_video['video']
+    podcast_article_video
   end
 end

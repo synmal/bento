@@ -15,6 +15,8 @@
     <%= link_to @user.podcasts.last.title, @user.podcasts.last.link %><br>
     <h3>Try this project</h3>
     <p><strong><%= @user.projects.last.title %></strong> <%= @user.projects.last.description %></p><br>
+    <h3>Watch this video</h3>
+    <%= link_to @user.videos.last.title, @user.videos.last.url %><br>
 
     <p>
     From,<br>

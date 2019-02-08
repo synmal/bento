@@ -93,3 +93,6 @@ gem 'feedjira'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 # gem 'sidekiq-cron-tasks'
+
+# Youtube
+gem 'yt-core'

@@ -1,79 +1,86 @@
 <div class="all articles">
 	<h1>All YOUR Articles</h1>
-	<% random_article = @user.user_article.sample %>
-	<% random_article_info = LinkThumbnailer.generate(random_article.link) %>
-	<% random_podcast = @user.user_podcast.sample %>
-	<% random_podcast_info = LinkThumbnailer.generate(random_podcast.link) %>
-
 </div>
 
-<div class="container text-center">
-	<h3>Week 1</h3>
-	<div class="d-inline-flex flex-wrap justify-content-center">
-		<div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
-		  
-		  <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
-		  	
-		<%# ––––––––– Article –––––––––– %>
-			<h5 class="card-title">Article</h5>
-			<%# Article thumbnail %>
-		    <div class="container-image d-flex align-items-center">
-		    	<img src="<%= random_article_info.images.first.src.to_s %>" class="image card-img-top" alt="...">
-			</div>
-			<%# Article details %>
-			<div class="card-text">
-					<%# Article headline %>
-			    <p class="card-text mt-2 font-weight-bolder"><%=random_article.title%></p>
-					<%# Article link %>
-			    <a href="<%=random_article.link%>" data-check="card-first" target="_blank" class="card-link btn btn-primary rounded w-80">Go to Article</a>
-			    <img src="https://previews.123rf.com/images/johan2011/johan20111309/johan2011130900007/21934213-ok-the-dude-giving-thumb-up-next-to-a-check-mark-blue.jpg" width="30" height="30" id="card-first"class="check d-none">
-			</div>
-		  </div>
-		</div>
-		<%# ––––––––– Video/Podcast –––––––––– %>
-		<div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
-		  
-		  <div class="card-body">
-		    <h5 class="card-title">Podcast</h5>
-				<%# Podcast thumbnail %>
-				<div class="container-image d-flex align-items-center">
-		    	<img src="<%= random_podcast_info.images.first.src.to_s %>" class="image card-img-top" alt="...">
-				</div>
-				<%# Podcast headline %>
-		    <p class="card-text mt-2 font-weight-bolder"><%=random_podcast.creator%></p>
-				<%# Podcast link %>
-		    <a href="<%=random_podcast.link%>" data-check="card-second" target="_blank" class="card-link btn btn-primary rounded w-80">Go to Podcast</a>
-		    <img src="https://previews.123rf.com/images/johan2011/johan20111309/johan2011130900007/21934213-ok-the-dude-giving-thumb-up-next-to-a-check-mark-blue.jpg" width="30" height="30" id="card-second"class="check d-none">
-		  </div>
-		</div>
+<% count = current_user.feed_count %>
+<% current_user.feeds.reverse.each do |feed| %>
 
-		<div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
-		  
-		  <div class="card-body">
-		  	
-		    <h5 class="card-title">Tutorial</h5>
-		    <img src="https://koenig-media.raywenderlich.com/uploads/2018/06/TextRecognitionMLKit-feature.png" class="image card-img-top mb-2" alt="...">
-		    <p class="card-text mt-2">From Ruby to Python - CHANGE</p>
-		    <p>Let's begin</p>
-		    <a href="https://www.raywenderlich.com/5804-text-recognition-with-ml-kit" data-check="card-third" target="_blank" class="card-link btn btn-primary rounded w-80">Go to Tutorial</a>
-		    <img src="https://previews.123rf.com/images/johan2011/johan20111309/johan2011130900007/21934213-ok-the-dude-giving-thumb-up-next-to-a-check-mark-blue.jpg" width="30" height="30" id="card-third" class="check d-none">
-		  </div>
-		</div>
 
-		<div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
-		  
-		  <div class="card-body">
-		  	
-		    <h5 class="card-title">Challenge</h5>
-		    <img src="https://cdn-images.threadless.com/threadless-media/artist_shops/shops/ChallengeMania/products/442827/shirt-1519171642-351d8aab0f64da13e58fbf1e622d966d.png?v=3&d=eyJvbmx5X21ldGEiOiBmYWxzZSwgImZvcmNlIjogZmFsc2UsICJvcHMiOiBbWyJ0cmltIiwgW2ZhbHNlLCBmYWxzZV0sIHt9XSwgWyJyZXNpemUiLCBbXSwgeyJ3aWR0aCI6IDk5Ni4wLCAiYWxsb3dfdXAiOiBmYWxzZSwgImhlaWdodCI6IDk5Ni4wfV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzEyMDAsIDEyMDBdLCB7ImJhY2tncm91bmQiOiAiZmZkOTY2In1dLCBbInJlc2l6ZSIsIFs4MDBdLCB7fV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzgwMCwgODAwLCAiI2ZmZmZmZiJdLCB7fV0sIFsiZW5jb2RlIiwgWyJqcGciLCA4NV0sIHt9XV19" class="image card-img-top mb-2" alt="...">
-		    <p class="card-text mt-2">From Ruby to Python - CHANGE</p>
-		    <p>Let's begin</p>
-		    <a href="https://www.codewars.com/kata/you-only-need-one-beginner" data-check="card-last" target="_blank" class="card-link btn btn-primary rounded w-80">Go to Challenge!</a>
-		    <img src="https://previews.123rf.com/images/johan2011/johan20111309/johan2011130900007/21934213-ok-the-dude-giving-thumb-up-next-to-a-check-mark-blue.jpg" width="30" height="30" id="card-last" class="check d-none">
-		  </div>
-		</div>
-	</div>
-</div>
+  <div class="container text-center">
+    <h3>Week <%= count %></h3>
+    <div class="d-inline-flex flex-wrap justify-content-center">
+
+      <% if feed.article %>
+      <div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
+        <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
+      <%# ––––––––– Article –––––––––– %>
+        <h5 class="card-title">Article</h5>
+        <%# Article thumbnail %>
+          <div class="container-image d-flex align-items-center">
+            <img src="<%= feed.article.image %>" class="image card-img-top">
+        </div>
+        <%# Article details %>
+        <div class="card-text">
+            <%# Article headline %>
+            <p class="card-text mt-2 font-weight-bolder"><%= feed.article.title %></p>
+            <%# Article link %>
+            <a href="<%= feed.article.link %>" data-check="card-first" target="_blank" class="card-link btn btn-primary rounded w-80">Go to Article</a>
+            <img src="https://previews.123rf.com/images/johan2011/johan20111309/johan2011130900007/21934213-ok-the-dude-giving-thumb-up-next-to-a-check-mark-blue.jpg" width="30" height="30" id="card-first"class="check d-none">
+        </div>
+        </div>
+      </div>
+      <hr>
+      <% end %>
+
+      <% if feed.podcast %>
+      <%# ––––––––– Video/Podcast –––––––––– %>
+      <div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
+        <div class="card-body">
+          <h5 class="card-title">Podcast</h5>
+          <%# Podcast thumbnail %>
+          <div class="container-image d-flex align-items-center">
+            <img src="<%= feed.podcast.images %>" class="image card-img-top" alt="...">
+          </div>
+          <%# Podcast headline %>
+          <p class="card-text mt-2 font-weight-bolder"><%= feed.podcast.creator %></p>
+          <%# Podcast link %>
+          <a href="<%= feed.podcast.link %>" data-check="card-second" target="_blank" class="card-link btn btn-primary rounded w-80">Go to Podcast</a>
+          <img src="https://previews.123rf.com/images/johan2011/johan20111309/johan2011130900007/21934213-ok-the-dude-giving-thumb-up-next-to-a-check-mark-blue.jpg" width="30" height="30" id="card-second"class="check d-none">
+        </div>
+      </div>
+      <% end %>
+
+
+      <% if feed.video %>
+        <div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
+          
+          <div class="card-body">
+            <h5 class="card-title">Video</h5>
+            <iframe width="180rem" src="<%= feed.video.url.gsub(/watch\?v=/, 'embed/') %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p class="card-text mt-2 font-weight-bolder"><%= feed.video.title %></p>
+            <p>Let's begin</p>
+            <a href="<%= feed.video.url %>" data-check="card-third" target="_blank" class="card-link btn btn-primary rounded w-80">Go to Tutorial</a>
+            <img src="https://previews.123rf.com/images/johan2011/johan20111309/johan2011130900007/21934213-ok-the-dude-giving-thumb-up-next-to-a-check-mark-blue.jpg" width="30" height="30" id="card-third" class="check d-none">
+          </div>
+        </div>
+      <% end %>
+
+      <% if feed.project %>
+      <div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
+        <div class="card-body">
+          <h5 class="card-title">Project</h5>
+          <img src="https://cdn-images.threadless.com/threadless-media/artist_shops/shops/ChallengeMania/products/442827/shirt-1519171642-351d8aab0f64da13e58fbf1e622d966d.png?v=3&d=eyJvbmx5X21ldGEiOiBmYWxzZSwgImZvcmNlIjogZmFsc2UsICJvcHMiOiBbWyJ0cmltIiwgW2ZhbHNlLCBmYWxzZV0sIHt9XSwgWyJyZXNpemUiLCBbXSwgeyJ3aWR0aCI6IDk5Ni4wLCAiYWxsb3dfdXAiOiBmYWxzZSwgImhlaWdodCI6IDk5Ni4wfV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzEyMDAsIDEyMDBdLCB7ImJhY2tncm91bmQiOiAiZmZkOTY2In1dLCBbInJlc2l6ZSIsIFs4MDBdLCB7fV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzgwMCwgODAwLCAiI2ZmZmZmZiJdLCB7fV0sIFsiZW5jb2RlIiwgWyJqcGciLCA4NV0sIHt9XV19" class="image card-img-top mb-2" alt="...">
+          <p class="card-text mt-2 font-weight-bolder"><%= feed.project.title %></p>
+          <p><%= feed.project.description %></p>
+          <img src="https://previews.123rf.com/images/johan2011/johan20111309/johan2011130900007/21934213-ok-the-dude-giving-thumb-up-next-to-a-check-mark-blue.jpg" width="30" height="30" id="card-last" class="check d-none">
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <% count -= 1 %>
+  <hr>
+<% end %>
 
 <script>
 	$(".card-link").click(function (e){

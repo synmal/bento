@@ -6,7 +6,7 @@ class NewsletterJob < ApplicationJob
     update_feed
     User.all.each do |user|
         next if !user.feeds.find_by(created_at: DateTime.now-7..DateTime.now)
-        UserMailer.newsletter(user).deliver
+        UserMailer.newsletter(user).deliver_now
     end
   end
 

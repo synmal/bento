@@ -9,7 +9,6 @@
     <%= csp_meta_tag %>
 
     <%# bootstrap css %>
-    <%= favicon_link_tag asset_path('bento-box.png') %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -22,76 +21,70 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<body class="w3-content" style="max-width:1300px">
-<!-- First Grid: Logo & Account Login -->
+<body>
+  
 
-<div class="w3-row">
-    <div class="w3-half w3-white w3-container w3-center" style="height:700px">
-    <div class="w3-padding-64">
-      <h1>Welcome to Bento</h1>
-    </div>
+    <div class="container-fluid text-center">
 
-    <% if !signed_in? %>
-    <div id="clearance" class="sign-in">
-    <%= render partial: 'login' %>
-    </div>
-    
+      <div class="row">
+          
+          <div class="col-xs-6 col-md-6" id="rightbox">
+            <div class="containerright">
+              <h1 class="display-3">Welcome to Bento</h1>
+                <% if !signed_in? %>
+                  <div id="clearance" class="sign-in">
+                    <%= render partial: 'login' %>
+                  </div>
+                <div class="buttoncontainer">
+                <button type="button" class="w3-button w3-white w3-block w3-hover-bluegray"
+                data-toggle="modal" data-target="#exampleModal" >
+                 <H2><%= image_tag "https://www.emoji.co.uk/files/twitter-emojis/food-drink-twitter/10801-bento-box.png",
+                 class: 'logo', style: 'width:7%' %>
+                  Log In to Bento</H2>
+                </button>
 
-    <div class="w3-padding-54">
-    <button type="button" class="w3-button w3-white w3-block w3-hover-brown w3-padding-16"
-    data-toggle="modal" data-target="#exampleModal">
-     <%= image_tag "bento-box.png", class: 'rounded float-left login-icon' %>
-      Log In to BENTO
-    </button>
+                <%= link_to "/auth/github" do %>
+                   <div class="w3-button w3-white w3-block w3-hover-bluegray" a href="/auth/github">
+                  <H2><img style="width:7%;" src="https://www.techgirlz.org/wp-content/uploads/2016/12/github-logo.png"
+                  class="logo">
+                  Sign in with Github</H2>
+                  </div>
+                <% end %>
 
-    <%= link_to "/auth/github" do %>
-      <div class="w3-button w3-white w3-block w3-hover-brown w3-padding-16" href="/auth/github">
-      <img style="width:28px;" src="https://www.techgirlz.org/wp-content/uploads/2016/12/github-logo.png" class="rounded float-left">
-      Sign in with Github
-      </div>
-    <% end %>
+                <%= link_to "/auth/google_oauth2" do %>
+                   <div class="w3-button w3-white w3-block w3-hover-bluegray" a href="/auth/google_oauth2">
+                  <H2><img style="width:7%;" src="https://www.appythings.nl/wp-content/uploads/2018/06/google-logo-icon-PNG-Transparent-Background.png"
+                  class="logo">
+                  Sign in with Google</H2>
+                  </div>
+                <% end %>
 
-    <%= link_to "/auth/google_oauth2" do %>
-      <div class="w3-button w3-white w3-block w3-hover-brown w3-padding-16" href="/auth/github">
-      <img style="width:28px;" src="https://www.appythings.nl/wp-content/uploads/2018/06/google-logo-icon-PNG-Transparent-Background.png" class="rounded float-left">
-      Sign in with Google
-      </div>
-    <% end %>
+                    <br><H4>Don't have an account?</H4>
 
-        <br><H4 style="font-size: 12px; font-family: Open Sans; margin:0;">Don't have an account?</H4>
+                    <H2><form action="/sign_up">
+                    <input type="submit" value="Sign up with Bento" class="w3-button w3-white w3-block w3-hover-bluegray">
+                    </form></H2>
+                  </div>
 
-        <form action="/sign_up">
-        <input type="submit" value="Sign up" class="w3-button w3-white w3-block w3-hover-gray w3-padding-10">
-        </form>
-    </div>
+              <% else %>
+                    <div class="buttoncontainer">
+                    <H2><%= link_to 'Dashboard', user_dashboard_path(current_user.id), class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %></H2>
+                    <H2><%= link_to "Edit Profile", edit_user_path(current_user.id), class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %></H2>
+                    <H2><%= link_to "Sign Out", sign_out_path, method: :delete, class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %></H2>
+                    </div>
+              <% end %>
+            </div>
+          </div>
 
-    <% else %>
-
-    <div class="w3-padding-54">
-
-    <%= link_to 'Dashboard', user_dashboard_path(current_user.id), class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %>
-
-    <%= link_to "Edit Profile", edit_user_path(current_user.id), class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %>
-
-    <%= link_to "Sign Out", sign_out_path, method: :delete, class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %>
-
-    </div>
-
-    <% end %>
-  </div>
-  <div class="w3-half w3-blue-grey w3-container" style="height:700px">
-    <div class="w3-padding-64 w3-center">
-      <img src="https://cdn.iconscout.com/icon/free/png-256/bento-box-food-plate-fastfood-symbol-emoj-30704.png"
-       class="w3-margin w3" alt="Photo" style="width:50%">
-      <div class="w3-center-align w3-padding-large">
-        <p>Eat.</p>
-        <p>Sleep.</p>
-        <p>Code.</p>
+          <div class="col-xs-6 col-md-6" id="leftbox">
+            <div class="containerleft">
+              <img src="https://www.emoji.co.uk/files/twitter-emojis/food-drink-twitter/10801-bento-box.png" style="width:50%">
+              <H2 class="mt-3" style=>This</H2>
+              <H2 class="mt-3">Is</H2>
+              <H2 class="mt-3">Bento</H2>
+            </div>
+          </div>
       </div>
     </div>
-  </div>
-</div>    
-    
-    <%= render 'layouts/footer' %>
-  </body>
+</body>
 </html>

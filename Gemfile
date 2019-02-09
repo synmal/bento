@@ -96,3 +96,6 @@ gem 'sidekiq-cron'
 
 # Youtube
 gem 'yt-core'
+
+# Sendgrid
+gem 'sendgrid-ruby'

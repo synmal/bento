@@ -15,11 +15,14 @@ class User < ApplicationRecord
 
   def self.create_with_auth_and_hash(authentication, auth_hash)
     user = self.create!(
-      first_name: auth_hash["info"]["first_name"],
-      last_name: auth_hash["info"]["last_name"],
+      first_name: auth_hash["info"]["name"].split[0],
+      last_name: auth_hash["info"]["name"].split[1],
       email: auth_hash["info"]["email"],
+      avatar: auth_hash["info"]["image"],
       password: SecureRandom.hex(10)
     )
+    user.remote_avatar_url = auth_hash["info"]["image"]
+    user.save
     user.authentications << authentication
     UserMailer.welcome_mail(user).deliver_now
     return user
@@ -66,7 +69,6 @@ class User < ApplicationRecord
     podcast_article_video['podcast'] = podcast
     podcast_article_video['article'] = article
     podcast_article_video['video'] = video
-    # p podcast_article_video['video']
     podcast_article_video
   end
 

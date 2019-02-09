@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_08_060400) do
+ActiveRecord::Schema.define(version: 2019_02_09_082647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2019_02_08_060400) do
     t.bigint "podcast_id"
     t.bigint "project_id"
     t.bigint "video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_feeds_on_article_id"
     t.index ["podcast_id"], name: "index_feeds_on_podcast_id"
     t.index ["project_id"], name: "index_feeds_on_project_id"

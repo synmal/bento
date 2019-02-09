@@ -45,31 +45,33 @@ class User < ApplicationRecord
     podcast_article_video = {}
 
     # Podcast
-    self.user_languages_skill.keys.each do |lang|
-      Podcast.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).each do |i|
-        podcast << i
+    if self.user_languages_skill
+      self.user_languages_skill.keys.each do |lang|
+        Podcast.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).each do |i|
+          podcast << i
+        end
       end
-    end
 
-    # Articles
-    self.user_languages_skill.keys.each do |lang|
-      Article.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).each do |i|
-        article << i
+      # Articles
+      self.user_languages_skill.keys.each do |lang|
+        Article.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).each do |i|
+          article << i
+        end
       end
-    end
 
-    # Video
-    self.user_languages_skill.keys.each do |lang|
-      Video.where(tags: [lang]).each do |i|
-        video << i
+      # Video
+      self.user_languages_skill.keys.each do |lang|
+        Video.where(tags: [lang]).each do |i|
+          video << i
+        end
       end
-    end
 
-    # Put in hash
-    podcast_article_video['podcast'] = podcast
-    podcast_article_video['article'] = article
-    podcast_article_video['video'] = video
-    podcast_article_video
+      # Put in hash
+      podcast_article_video['podcast'] = podcast
+      podcast_article_video['article'] = article
+      podcast_article_video['video'] = video
+      podcast_article_video
+    end
   end
 
   def feed_count

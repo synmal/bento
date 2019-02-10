@@ -1,6 +1,6 @@
 task :sync => :environment do
   # puts "Sup"
-<<<<<<< HEAD
+
   # def get_course(level, language)
   #   page = Nokogiri::HTML(open("https://www.skillshare.com/search?query=#{level}%20#{language}"))
   #   link_text = page.xpath("//*[@class='ss-card__title']/a")
@@ -22,8 +22,6 @@ task :sync => :environment do
   #     end
   #   }
   # end
-=======
->>>>>>> upstream/master
   
   def get_article(interest)
     rss = RSS::Parser.parse(open("https://medium.com/feed/tag/#{interest}"))
@@ -83,12 +81,12 @@ task :sync => :environment do
   
   get_project
 
-  get_course('beginner', 'javascript')
-  get_course('intermediate', 'javascript')
-  get_course('beginner', 'ruby')
-  get_course('intermediate', 'ruby')
-  get_course('beginner', 'python')
-  get_course('intermediate', 'python')
+  # get_course('beginner', 'javascript')
+  # get_course('intermediate', 'javascript')
+  # get_course('beginner', 'ruby')
+  # get_course('intermediate', 'ruby')
+  # get_course('beginner', 'python')
+  # get_course('intermediate', 'python')
   
   
   get_article('front-end')
@@ -103,10 +101,7 @@ task :sync => :environment do
   get_podcast('https://feeds.feedwrench.com/JavaScriptJabber.rss', 'javascript')
   get_podcast('https://talkpython.fm/episodes/rss', 'python')
 
-<<<<<<< HEAD
   get_project
-=======
->>>>>>> upstream/master
 
   puts 'Done'
 end

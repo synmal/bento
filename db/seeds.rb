@@ -19,7 +19,6 @@ def get_article(interest)
     article.tags.push(interest)
     if article.save
 
-<<<<<<< HEAD
 # def get_quiz(num)
 #   quiz = Nokogiri::HTML(open("https://projecteuler.net/problem=#{num}"))
 #   quiz_info = quiz.xpath("//*[@class='problem_content']").to_html
@@ -47,7 +46,7 @@ def get_article(interest)
 #     p "Done"
 #   end
 # end
-=======
+
     else
       a = Article.find_by(link: article.link)
       
@@ -69,7 +68,6 @@ def get_podcast(feed, interest)
     podcast['published_at'] = entry.published
     podcast['images'] = feed.itunes_image
     if podcast.save
->>>>>>> upstream/master
 
     else
       a = Podcast.find_by(link: entry.url)
@@ -92,27 +90,19 @@ def get_project
   end
 end
 
-get_project
+# get_project
 
-get_course('beginner', 'javascript')
-get_course('intermediate', 'javascript')
-get_course('beginner', 'ruby')
-get_course('intermediate', 'ruby')
-get_course('beginner', 'python')
-get_course('intermediate', 'python')
+# get_article('front-end')
+# get_article('back-end')
+# get_article('web-development')
+# get_article('mobile-development')
+# get_article('ruby')
+# get_article('javascript')
+# get_article('python')
 
-
-get_article('front-end')
-get_article('back-end')
-get_article('web-development')
-get_article('mobile-development')
-get_article('ruby')
-get_article('javascript')
-get_article('python')
-
-get_podcast('http://feeds.5by5.tv/rubyonrails', 'ruby')
-get_podcast('https://feeds.feedwrench.com/JavaScriptJabber.rss', 'javascript')
-get_podcast('https://talkpython.fm/episodes/rss', 'python')
+# get_podcast('http://feeds.5by5.tv/rubyonrails', 'ruby')
+# get_podcast('https://feeds.feedwrench.com/JavaScriptJabber.rss', 'javascript')
+# get_podcast('https://talkpython.fm/episodes/rss', 'python')
 
 channel_ids = [['UCxJaNyXCQw0mghY0hA1wA9w', 'ruby'], ['UCyU5wkjgQYGRB0hIHMwm2Sg', 'javascript'], ['UCRjTEkDLPREZNlREZMlotMQ', 'python']]
 channel_ids.each do |channel_id|
@@ -121,7 +111,7 @@ channel_ids.each do |channel_id|
   video_ids = videos.map &:id
   video_titles = videos.map &:title
   video_ids.each_with_index do |video_id, i|
-    next if Video.where(url: "https://www.youtube.com/watch?v=#{video_id}")
+    # next if Video.where(url: "https://www.youtube.com/watch?v=#{video_id}")
     video = Video.new(title: video_titles[i], channel: channel.title, url: "https://www.youtube.com/watch?v=#{video_id}")
     video.tags << channel_id[1]
     video.save

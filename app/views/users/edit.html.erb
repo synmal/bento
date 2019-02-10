@@ -4,7 +4,7 @@
         <div class="form-row w-100 m-0 p-0">
             <div class="col p-3">
                 <div class="d-flex justify-content-center">
-                    <%= image_tag current_user.avatar.show.url, class: 'avatar-big mb-3 border border-danger' %>
+                    <%= image_tag current_user.avatar.show.url, class: ' mb-3 border border-danger rounded-circle' %>
                 </div>
                 <h3 class="text-center"><span style="font-weight: bold;"><%= @user.first_name%>'s </span> information</h3>
                     <%= form_with model: @user,class: :"w-100 p-2", local: true do |form| %>

@@ -22,3 +22,17 @@
  	width: 25px;
  }
 
+
+footer {
+  height: 3vh;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+footer li {
+  list-style-type: none;
+}
+

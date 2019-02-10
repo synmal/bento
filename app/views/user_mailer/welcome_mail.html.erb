@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Welcome to BENTO, <%= "#{@user.first_name} #{@user.last_name}" %></h1>
-    <p>
-      You have successfully signed up to BENTO,
-    </p>
-    <p>
-      To login to the site, just follow this link: <%= @url %>.
-    </p>
-    
-    <p>Articles might interest you</p>
-    <% Article.all.each do |a| %>
-    <a href="<%= a.link %>"> <%= a.title %> </a>
-    <% end %>
-  </body>
+ <head>
+   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+ </head>
+
+ <body style="margin: 0; padding: 0;">
+   <table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+     <tr>
+      <td align="center">
+            <img src="https://cdn.iconscout.com/icon/free/png-256/bento-box-food-plate-fastfood-symbol-emoj-30704.png" style="z-index: -1; width: 200px;">
+             <h1 style="z-index: 0; margin-top: -71px; margin-left: -15px; font-size: 70px; color: lightgray; text-shadow: 6px 2px black; margin-bottom: 0px;">Welcome</h1>
+       </td>
+     </tr>
+     <tr>
+       <td align="center">
+           <h2>to BENTO,</h2>
+           <h1> <%= "#{@user.first_name} #{@user.last_name}" %></h1>
+       </td>
+      </tr>
+      <tr>
+       <td align="center" style="padding-bottom: 20px;">
+           You have successfully signed up to BENTO!
+       </td>
+     </tr>
+     <tr>
+       <table align="center" width="300px" border="0" cellpadding="0" cellspacing="0" >
+         <tr>
+           <td align="center" style="width: 300px; border:2px solid gray; padding: 5px; border-radius:20px;" >
+             <img src="https://janellohm.files.wordpress.com/2013/07/programmers-funny-pictures-coding-jokes.jpg?w=300&h=262
+https://janellohm.files.wordpress.com/2013/07/programmers-funny-pictures-coding-jokes.jpg?w=300&h=262
+" style="display: block; height: 250px; border-radius:20px; border:2px solid gray; padding: 5px;">
+             <h3 style="">Past with us!</h3>
+           </td>
+         </tr>
+         <tr>
+           <td align="center" style="padding-top: 20px;"">
+               To login to the site, just follow this link: <span style="font-weight: bold"><%= link_to 'Bento', @url %>.</span>
+           </td>
+         </tr>
+     </table>
+   </table>
+ </body>
 </html>

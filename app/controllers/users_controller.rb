@@ -9,6 +9,8 @@ class UsersController < Clearance::UsersController
         if user.save
             sign_in(user)
             UserMailer.welcome_mail(user).deliver_now
+            user.feed
+            UserMailer.newsletter(user).deliver_now
             redirect_to edit_user_path(user.id)
         else
         # otherwise, go back to the sign up form

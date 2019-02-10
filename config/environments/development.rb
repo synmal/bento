@@ -72,4 +72,5 @@ Rails.application.configure do
     authentication:       'plain',
     enable_starttls_auto: true
   }
+
 end

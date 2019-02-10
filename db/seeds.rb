@@ -64,12 +64,12 @@ end
 
 get_project
 
-get_course('beginner', 'javascript')
-get_course('intermediate', 'javascript')
-get_course('beginner', 'ruby')
-get_course('intermediate', 'ruby')
-get_course('beginner', 'python')
-get_course('intermediate', 'python')
+# get_course('beginner', 'javascript')
+# get_course('intermediate', 'javascript')
+# get_course('beginner', 'ruby')
+# get_course('intermediate', 'ruby')
+# get_course('beginner', 'python')
+# get_course('intermediate', 'python')
 
 
 get_article('front-end')

@@ -5,18 +5,31 @@ class NewsletterJob < ApplicationJob
     # Do something later
     update_feed
     User.all.each do |user|
+        next if !user.feeds.find_by(created_at: DateTime.now-7..DateTime.now)
         UserMailer.newsletter(user).deliver_now
     end
   end
 
   def update_feed
     User.all.each do |user|
+      feed = user.feeds.new
       all_feed = user.feed
-      article = all_feed['article'].sample if !user.developer_type.empty? && !user.interest.empty? && !user.user_languages_skill.empty?
-      podcast = all_feed['podcast'].sample if !user.user_languages_skill.empty?
+
+      if !user.developer_type.empty? && !user.interest.empty? && !user.user_languages_skill.empty?
+        article = all_feed['article'].sample
+        feed['article_id'] = article.id
+      end
+
+      if !user.user_languages_skill.empty?
+        podcast = all_feed['podcast'].sample
+        video = all_feed['video'].sample
+        feed['podcast_id'] = podcast.id
+        feed['video_id'] = video.id
+      end
+      
       project = Project.all.sample
-      video = all_feed['video'].sample if !user.user_languages_skill.empty?
-      feed = user.feeds.new(article_id: article.id, podcast_id: podcast.id, project_id: project.id, video_id: video.id)
+      feed['project_id'] = project.id
+
       feed.save
     end
   end

@@ -64,14 +64,6 @@ end
 
 get_project
 
-# get_course('beginner', 'javascript')
-# get_course('intermediate', 'javascript')
-# get_course('beginner', 'ruby')
-# get_course('intermediate', 'ruby')
-# get_course('beginner', 'python')
-# get_course('intermediate', 'python')
-
-
 get_article('front-end')
 get_article('back-end')
 get_article('web-development')
@@ -91,7 +83,7 @@ channel_ids.each do |channel_id|
   video_ids = videos.map &:id
   video_titles = videos.map &:title
   video_ids.each_with_index do |video_id, i|
-    next if Video.where(url: "https://www.youtube.com/watch?v=#{video_id}")
+    next if Video.find_by(url: "https://www.youtube.com/watch?v=#{video_id}")
     video = Video.new(title: video_titles[i], channel: channel.title, url: "https://www.youtube.com/watch?v=#{video_id}")
     video.tags << channel_id[1]
     video.save

@@ -171,69 +171,101 @@ class UsersController < Clearance::UsersController
         if  params[:developer_type] == 'front end'
             if current_user.developer_type.include?('front end')
                 current_user.developer_type.delete('front end')
+                current_user.save
+                render json:{"developer_type" => "removed front end"}
             else
                 current_user.developer_type << 'front end'
                 current_user.save
-                render json:{"developer_type" => "front-end"}  
+                render json:{"developer_type" => "added front end"}  
             end
         end
 
         if  params[:developer_type] == 'back end'
             if current_user.developer_type.include?('back end')
                 current_user.developer_type.delete('back end')
+                current_user.save
+                render json:{"developer_type" => "removed back end"}
             else
                 current_user.developer_type << 'back end'
                 current_user.save
-                render json:{"developer_type" => "back-end"}  
+                render json:{"developer_type" => "added back end"}  
             end
         end
 
         if  params[:developer_type] == 'full stack'
             if current_user.developer_type.include?('full stack')
                 current_user.developer_type.delete('full stack')
+                current_user.save
+                render json:{"developer_type" => "removed full stack"}
             else
                 current_user.developer_type << 'full stack'
                 current_user.save
-                render json:{"developer_type" => "full-stack"}  
+                render json:{"developer_type" => "added full stack"}  
             end
         end
 
         if  params[:developer_type] == 'mobile'
             if current_user.developer_type.include?('mobile')
                 current_user.developer_type.delete('mobile')
+                current_user.save
+                render json:{"developer_type" => "removed mobile"}
             else
                 current_user.developer_type << 'mobile'
                 current_user.save
-                render json:{"developer_type" => "mobile"}  
+                render json:{"developer_type" => "added mobile"}  
             end
         end     
     end
 
     def update_user_current_interest
-        if  params[:current_interest] == 'progressive web apps'
-            current_user.interest << 'progressive web apps'
-            current_user.interest.uniq!
-            current_user.save
-            render json:{"interest" => "progressive web apps"}  
+        # Progressive Web Apps
+        if  params[:interest] == 'progressive web apps'
+            if current_user.interest.include?('progressive web apps')
+                current_user.interest.delete('progressive web apps')
+                current_user.save
+                render json:{"interest" => "removed progressive web apps"}
+            else
+                current_user.interest << 'progressive web apps'
+                current_user.save
+                render json:{"interest" => "added progressive web apps"}  
+            end
         end
-        if  params[:current_interest] == 'chatbot'
-            current_user.interest << 'chatbot'
-            current_user.interest.uniq!
-            current_user.save
-            render json:{"interest" => "chatbot"}  
+        # Chatbot
+        if  params[:interest] == 'chatbot'
+            if current_user.interest.include?('chatbot')
+                current_user.interest.delete('chatbot')
+                current_user.save
+                render json:{"interest" => "removed chatbot"}
+            else
+                current_user.interest << 'chatbot'
+                current_user.save
+                render json:{"interest" => "added chatbot"}  
+            end
         end
-        if  params[:current_interest] == 'cybersecurity'
-            current_user.interest << 'cybersecurity'
-            current_user.interest.uniq!
-            current_user.save
-            render json:{"interest" => "cybersecurity"}  
+        # Cybersecurity
+        if  params[:interest] == 'cybersecurity'
+            if current_user.interest.include?('cybersecurity')
+                current_user.interest.delete('cybersecurity')
+                current_user.save
+                render json:{"interest" => "removed cybersecurity"}
+            else
+                current_user.interest << 'cybersecurity'
+                current_user.save
+                render json:{"interest" => "added cybersecurity"}  
+            end
         end
-        if  params[:current_interest] == 'motionui'
-            current_user.interest << 'motionui'
-            current_user.interest.uniq!
-            current_user.save
-            render json:{"interest" => "motionui"}  
-        end
+        # Motion UI
+        if  params[:interest] == 'motion ui'
+            if current_user.interest.include?('motion ui')
+                current_user.interest.delete('motion ui')
+                current_user.save
+                render json:{"interest" => "removed motion ui"}
+            else
+                current_user.interest << 'motion ui'
+                current_user.save
+                render json:{"interest" => "added motion ui"}  
+            end
+        end     
     end
 
     private

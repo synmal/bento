@@ -41,12 +41,8 @@ $(document).ready(function(){
             data: {programming_level: 'ruby beginner'},
             success: (result) => {
                 console.log(result)
-                if (<%= current_user.user_languages_skill.assoc('ruby').to_json.html_safe %> == ["ruby","beginner"]) {
-                    $('.ruby-beginner').addClass('active');
-                    $('.ruby-intermediate').removeClass('active');
-                } else if (<%= current_user.user_languages_skill.assoc('ruby').to_json.html_safe %> == ["ruby","intermediate"]){
-                    $('.ruby-beginner').removeClass('active');
-                }
+                $('.ruby-beginner').addClass('active');
+                $('.ruby-intermediate').removeClass('active');
             }
         })
     })
@@ -60,12 +56,8 @@ $(document).ready(function(){
             data: {programming_level: 'ruby intermediate'},
             success: (result) => {
                 console.log(result)
-                 if (<%= current_user.user_languages_skill.assoc('ruby').to_json.html_safe %> == ['ruby','intermediate']) {
-                    $('.ruby-intermediate').addClass('active');
-                    $('.ruby-beginner').removeClass('active');
-                } else if (<%= current_user.user_languages_skill.assoc('ruby').to_json.html_safe %> == ["ruby","beginner"]) {
-                    $('.ruby-intermediate').removeClass('active');
-                }
+                $('.ruby-intermediate').addClass('active');
+                $('.ruby-beginner').removeClass('active');
             }
         })
     })
@@ -97,7 +89,6 @@ $(document).ready(function(){
                 console.log(result)
                 $('.javascript-beginner').addClass('active');
                 $('.javascript-intermediate').removeClass('active');
-                $('.javascript').addClass('active');
             }
         })
     })
@@ -113,7 +104,6 @@ $(document).ready(function(){
                 console.log(result)
                 $('.javascript-intermediate').addClass('active');
                 $('.javascript-beginner').removeClass('active');
-                $('.javascript').addClass('active');
             }
         })
     })
@@ -145,7 +135,6 @@ $(document).ready(function(){
                 console.log(result)
                 $('.python-beginner').addClass('active');
                 $('.python-intermediate').removeClass('active');
-                $('.python').addClass('active');
             }
         })
     })
@@ -161,7 +150,6 @@ $(document).ready(function(){
                 console.log(result)
                 $('.python-intermediate').addClass('active');
                 $('.python-beginner').removeClass('active');
-                $('.python').addClass('active');
             }
         })
     })
@@ -195,7 +183,11 @@ $(document).ready(function() {
             data: {developer_type: "front end"},
             success: (result) => {
                 console.log(result)
-                $(".front-end").addClass('active');
+                if ($(".front-end").hasClass('active')) {
+                    $(".front-end").removeClass('active');
+                } else {
+                    $(".front-end").addClass('active');
+                }
             }
         })
     })
@@ -209,8 +201,11 @@ $(document).ready(function() {
             data: {developer_type: "back end"},
             success: (result) => {
                 console.log(result)
-                $(".back-end").addClass('active');
-    
+                if ($(".back-end").hasClass('active')) {
+                    $(".back-end").removeClass('active');
+                } else {
+                    $(".back-end").addClass('active');
+                }
             }
         })
     })
@@ -224,8 +219,11 @@ $(document).ready(function() {
             data: {developer_type: "full stack"},
             success: (result) => {
                 console.log(result)
-                $(".full-stack").addClass('active');
-            
+                if ($(".full-stack").hasClass('active')) {
+                    $(".full-stack").removeClass('active');
+                } else {
+                    $(".full-stack").addClass('active');
+                }            
             }
         })
     })
@@ -239,7 +237,12 @@ $(document).ready(function() {
             data: {developer_type: "mobile"},
             success: (result) => {
                 console.log(result)
-                $(".mobile").addClass('active');
+                if ($(".mobile").hasClass('active')) {
+                    $(".mobile").removeClass('active');
+                } else {
+                    
+                    $(".mobile").addClass('active');
+                }
             }
         })
     })
@@ -247,56 +250,76 @@ $(document).ready(function() {
 </script>
 <script>
 // ––––––––––––– AJAX to set users current interest –––––––––––––
-$(document).ready(function(){
+// Progressive Web Apps
+$(document).ready(function() {
     $(".pgw").click((e) => {
         e.preventDefault()
         $.ajax({
             url: '/user/<%= current_user.id %>/update_current_interest',
             method: "POST",
             dataType: "JSON",
-            data: {current_interest: "progressive web apps"},
+            data: {interest: "progressive web apps"},
             success: (result) => {
                 console.log(result)
-                $(".pgw").addClass('active');
+                if ($(".pgw").hasClass('active')) {
+                    $(".pgw").removeClass('active');
+                } else {
+                    $(".pgw").addClass('active');
+                }
             }
         })
     })
+// Chatbot 
     $(".chatbot").click((e) => {
         e.preventDefault()
         $.ajax({
             url: '/user/<%= current_user.id %>/update_current_interest',
             method: "POST",
             dataType: "JSON",
-            data: {current_interest: "chatbot"},
+            data: {interest: "chatbot"},
             success: (result) => {
                 console.log(result)
-                $(".chatbot").addClass('active');
+                if ($(".chatbot").hasClass('active')) {
+                    $(".chatbot").removeClass('active');
+                } else {
+                    $(".chatbot").addClass('active');
+                }
             }
         })
     })
+// Cybersecurity
     $(".cybersecurity").click((e) => {
         e.preventDefault()
         $.ajax({
             url: '/user/<%= current_user.id %>/update_current_interest',
             method: "POST",
             dataType: "JSON",
-            data: {current_interest: "cybersecurity"},
+            data: {interest: "cybersecurity"},
             success: (result) => {
                 console.log(result)
-                $(".cybersecurity").addClass('active');
+                if ($(".cybersecurity").hasClass('active')) {
+                    $(".cybersecurity").removeClass('active');
+                } else {
+                    $(".cybersecurity").addClass('active');
+                }            
             }
         })
     })
+// Motion UI
     $(".motionui").click((e) => {
         e.preventDefault()
         $.ajax({
             url: '/user/<%= current_user.id %>/update_current_interest',
             method: "POST",
             dataType: "JSON",
-            data: {current_interest: "motionui"},
+            data: {interest: "motionui"},
             success: (result) => {
                 console.log(result)
-                $(".motionui").addClass('active');
+                if ($(".motionui").hasClass('active')) {
+                    $(".motionui").removeClass('active');
+                } else {
+                    $(".motionui").addClass('active');
+                }
             }
         })
     })

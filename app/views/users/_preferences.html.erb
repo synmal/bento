@@ -89,6 +89,10 @@
             <script>
                 $(".front-end").addClass('active');
             </script>  
+        <% else %>
+            <script>
+                $(".front-end").removeClass('active');
+            </script>
         <% end %>
         <% if current_user.developer_type.include?("back end") %>
             <script>

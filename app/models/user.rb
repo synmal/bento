@@ -25,6 +25,8 @@ class User < ApplicationRecord
     user.save
     user.authentications << authentication
     UserMailer.welcome_mail(user).deliver_now
+    user.update_feed
+    UserMailer.newsletter(user).deliver_now
     return user
   end
  
@@ -77,4 +79,29 @@ class User < ApplicationRecord
   def feed_count
     self.feeds.count
   end
+
+  def update_feed
+      feed = self.feeds.new
+      all_feed = self.feed
+
+      if !self.developer_type.empty? || !self.interest.empty? || !self.user_languages_skill.empty?
+        article = all_feed['article'].sample
+        feed['article_id'] = article.id
+      end
+
+      if !self.user_languages_skill.empty?
+        podcast = all_feed['podcast'].sample
+        video = all_feed['video'].sample
+        feed['podcast_id'] = podcast.id
+        feed['video_id'] = video.id
+      end
+      
+      project = Project.all.sample
+      feed['project_id'] = project.id
+
+      if feed.save
+      else
+        p feed.errors.full_messages
+      end
+    end
 end

@@ -1,6 +1,7 @@
 <h1 class="all articles p-4 m-0 text-center">All YOUR tasks</h1>
-<% count = current_user.feed_count %>
-<% current_user.feeds.reverse.each do |feed| %>
+<%= paginate @feeds %>
+<% @feeds.each do |feed| %>
+  <% count = feed.week %>
     <div class="container text-center">
       <h3 class="p-2">Week <%= count %></h3>
       <div class="d-inline-flex flex-wrap justify-content-center">
@@ -8,7 +9,7 @@
           <div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
             <div class="card-body d-flex justify-content-between flex-column align-items-center">
               <h5 class="card-title mb-2">Article</h5>
-                <div class="container-image d-flex align-items-center" style="height: 9rem; overflow: hidden;">
+                <div class="container-image d-flex align-items-center" style="height: 9rem;">
                   <img src="<%= feed.article.image %>" class="image card-img-top" >
                   </div>
                 <p class="card-text mt-2 d-flex align-items-center" style="height: 5rem;"><%= feed.article.title %></p>
@@ -21,7 +22,7 @@
           <div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
             <div class="card-body d-flex justify-content-between flex-column align-items-center">
               <h5 class="card-title mb-2">Podcast</h5>
-              <div class="container-image d-flex align-items-center" style="height: 9rem; overflow: hidden;">
+              <div class="container-image d-flex align-items-center" style="height: 9rem;">
                 <img src="<%= feed.podcast.images %>" class="image card-img-top" alt="...">
               </div>
               <p class="card-text mt-2 d-flex align-items-center" style="height: 5rem;"><%= feed.podcast.creator %></p>
@@ -46,7 +47,7 @@
           <div class="card-body d-flex justify-content-between flex-column align-items-center">
             <h5 class="card-title">Project</h5>
             <img src="https://c10.patreonusercontent.com/3/eyJ3Ijo0MDB9/patreon-media/p/reward/2405863/34751822ea764582b281025eb818ea47/1?token-time=2145916800&token-hash=jRgeu052RAcUd-v33db60Wt4HmE2fGy0l4V7p-gyCSM%3D" class="image card-img-top" alt="...">
-            <p class="card-text mt-2  d-flex align-items-center" style="height: 5rem; overflow: hidden;"><%= feed.project.title %></p>
+            <p class="card-text mt-2  d-flex align-items-center" style="height: 5rem;"><%= feed.project.title %></p>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary w-75" data-toggle="modal" data-target="#modal<%= count %>" >
               Go to Challenge
@@ -73,9 +74,10 @@
       <% end %>
     </div>
   </div>
-  <% count -= 1 %>
   <hr>
 <% end %>
+<%= paginate @feeds %>
+
 <script>
     $(".card-link").click(function (e){
         $("#" + e.target.dataset.check).removeClass("d-none")

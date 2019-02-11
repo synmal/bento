@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
 
 	def welcome_mail(user)
       @user = user
-	    @url  = 'http://localhost:3000'
+	    @url  = 'https://bento-next.herokuapp.com'
 	    mail(to: @user.email, subject: 'Welcome to Bento')
 	end
 end

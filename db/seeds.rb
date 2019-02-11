@@ -101,9 +101,9 @@ get_article('ruby')
 get_article('javascript')
 get_article('python')
 
-# get_podcast('http://feeds.5by5.tv/rubyonrails', 'ruby')
-# get_podcast('https://feeds.feedwrench.com/JavaScriptJabber.rss', 'javascript')
-# get_podcast('https://talkpython.fm/episodes/rss', 'python')
+get_podcast('http://feeds.5by5.tv/rubyonrails', 'ruby')
+get_podcast('https://feeds.feedwrench.com/JavaScriptJabber.rss', 'javascript')
+get_podcast('https://talkpython.fm/episodes/rss', 'python')
 
 channel_ids = [['UCxJaNyXCQw0mghY0hA1wA9w', 'ruby'], ['UCyU5wkjgQYGRB0hIHMwm2Sg', 'javascript'], ['UCRjTEkDLPREZNlREZMlotMQ', 'python']]
 channel_ids.each do |channel_id|

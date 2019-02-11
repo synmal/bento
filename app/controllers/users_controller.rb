@@ -12,25 +12,24 @@ class UsersController < Clearance::UsersController
             user.update_feed
             UserMailer.newsletter(user).deliver_now
             redirect_to edit_user_path(user.id)
+            flash[:success] = 'Your account have successfully created'
         else
         # otherwise, go back to the sign up form
             redirect_to root_path
-            flash[:notice] = 'Unauthorized'
+            flash[:error] = 'Something is wrong'
         end
-    end
-
-    def show
     end
 
     def update
         @user.update(user_params)
-        redirect_to user_path(@user.id)
+        redirect_to edit_user_path(@user.id)
+        flash[:success] = 'Your account have successfully updated'
     end
     
     def destroy
         @user.destroy
         redirect_to :root,
-        notice: 'User was successfully destroyed.'
+        flash[:success] = 'Your account have successfully deleted'
     end
 
     def update_user_language_skill

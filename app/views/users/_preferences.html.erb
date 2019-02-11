@@ -8,17 +8,18 @@
             <%= button_to "Beginner", action='#', class:'ruby-beginner btn btn-outline-info'%>
             <%= button_to "Intermediate", action='#', class:'ruby-intermediate btn btn-outline-info btn-outline-info'%>
             <%= button_to "Clear", action='#', class:'ruby-clear btn btn-danger'%>
-            <%# Check to see if user has already selected a language %>
-            <% if current_user.user_languages_skill.assoc('ruby').to_json.html_safe == ["ruby","beginner"] %>
-                <script>
-                    $('.ruby-beginner').addClass('active');
-                </script>
-                <% elsif current_user.user_languages_skill.assoc('ruby').to_json.html_safe == ["ruby","intermediate"] %>
-                <script>
-                    $('.ruby-intermediate').addClass('active');
-                </script> 
-            <% end %>
         </div>
+            <%# Check to see if user has already selected a language %>
+            <% if current_user.user_languages_skill['ruby'] == 'beginner' %>
+              <script>
+                    $('.ruby-beginner').addClass('active');
+              </script>
+            <% elsif current_user.user_languages_skill['ruby'] == 'intermediate' %>
+              <script>
+                    $('.ruby-intermediate').addClass('active');
+              </script>
+            <% end %>
+        
         <%# ––––––––––––––– Javascript –––––––––––––– %>
         <div class="input-group mb-3">
             <%= button_to "Javascript", action='#', class:'javascript btn btn-outline-success',:disabled => true %>
@@ -27,31 +28,14 @@
             <%= button_to "Clear", action='#', class:'javascript-clear btn btn-danger'%>
         </div>
         <%# Check to see if user has alread selected Javascript %>
-        <% if current_user.user_languages_skill.has_key?("javascript") %>
-            <% if current_user.user_languages_skill.value?("beginner")%>
-                <script>
-                    $('.javascript').addClass('active');
-                    $('.javascript-beginner').addClass('active');
-                </script>
-                <% elsif current_user.user_languages_skill.value?("intermediate") %>
-                <script>
-                    $('.javascript').addClass('active');
-                    $('.javascript-intermediate').addClass('active');
-                </script> 
-            <% end %>
-        <% end %>
-        <% if current_user.user_languages_skill.has_key?("javascript") %>
-            <% if current_user.user_languages_skill.value?("beginner")%>
-                <script>
-                    $('.javascript').addClass('active');
-                    $('.javascript-beginner').addClass('active');
-                </script>
-                <% elsif current_user.user_languages_skill.value?("intermediate") %>
-                <script>
-                    $('.javascript').addClass('active');
-                    $('.javascript-intermediate').addClass('active');
-                </script> 
-            <% end %>
+        <% if current_user.user_languages_skill['javascript'] == 'beginner' %>
+          <script>
+                $('.javascript-beginner').addClass('active');
+          </script>
+        <% elsif current_user.user_languages_skill['javascript'] == 'intermediate' %>
+          <script>
+                $('.javascript-intermediate').addClass('active');
+          </script>
         <% end %>
         <%# ––––––––––––––– Python –––––––––––––– %>
         <div class="input-group mb-3">
@@ -60,20 +44,17 @@
         <%= button_to "Intermediate", action='#', class:'python-intermediate btn btn-outline-info'%>
         <%= button_to "Clear", action='#', class:'python-clear btn btn-danger'%>
         <%# Check to see if user has alread selected Ruby %>
-        <% if current_user.user_languages_skill.has_key?("python") %>
-            <% if current_user.user_languages_skill.value?("beginner")%>
-                <script>
-                    $('.python').addClass('active');
-                    $('.python-beginner').addClass('active');
-                </script>
-                <% elsif current_user.user_languages_skill.value?("intermediate") %>
-                <script>
-                    $('.python').addClass('active');
-                    $('.python-intermediate').addClass('active');
-                </script> 
-            <% end %>
-        <% end %>
         </div>
+        <% if current_user.user_languages_skill['python'] == 'beginner' %>
+          <script>
+                $('.python-beginner').addClass('active');
+          </script>
+        <% elsif current_user.user_languages_skill['python'] == 'intermediate' %>
+          <script>
+                $('.python-intermediate').addClass('active');
+          </script>
+        <% end %>
+        
         <br/>
         <%# Select developer type %>
         <%= label_tag("What kind of developer are you?")%>

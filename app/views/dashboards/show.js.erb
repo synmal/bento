@@ -1,0 +1,5 @@
+$(document).ready(function(){
+  $("#feed-container").html("<%= j render("show") %>")
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
+});

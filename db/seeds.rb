@@ -19,34 +19,6 @@ def get_article(interest)
     article.tags.push(interest)
     if article.save
 
-# def get_quiz(num)
-#   quiz = Nokogiri::HTML(open("https://projecteuler.net/problem=#{num}"))
-#   quiz_info = quiz.xpath("//*[@class='problem_content']").to_html
-#   quiz_img = quiz_info.gsub(/src=./, 'img src="https://projecteuler.net/')
-#   Puzzle.create(description: quiz_img)
-
-#   if open("https://projecteuler.net/problem=#{num}").base_uri.path == "/problem=#{num}"
-#     get_quiz(num+1)
-#   else
-#     p "Done"
-#   end
-# end
-
-# get_quiz(1)
-
-# def get_quiz(num)
-#   quiz = Nokogiri::HTML(open("https://projecteuler.net/problem=#{num}"))
-#   quiz_info = quiz.xpath("//*[@class='problem_content']").to_html
-#   quiz_img = quiz_info.gsub(/src=./, 'img src="https://projecteuler.net/')
-#   Puzzle.create(description: quiz_img)
-
-#   if open("https://projecteuler.net/problem=#{num}").base_uri.path == "/problem=#{num}"
-#     get_quiz(num+1)
-#   else
-#     p "Done"
-#   end
-# end
-
     else
       a = Article.find_by(link: article.link)
       
@@ -121,12 +93,5 @@ channel_ids.each do |channel_id|
   end
   sleep(15)
 end
-
-# User.all.each do |user|
-#   30.times do
-#     feed = user.feeds.new(article_id: Article.all.sample.id, podcast_id: Podcast.all.sample.id, video_id: Video.all.sample.id, project_id: Project.all.sample.id, week: user.feeds.count + 1)
-#     feed.save
-#   end
-# end
 
 puts 'Done'

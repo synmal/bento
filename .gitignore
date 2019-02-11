@@ -31,3 +31,5 @@
 
 # Ignore dump.rdb
 /dump.rdb
+
+/public/uploads/*

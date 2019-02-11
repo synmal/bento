@@ -1,14 +1,14 @@
 newsletter:
-  cron: "0 21 * * *"
+  cron: "30 21 * * *"
   class: "NewsletterJob"
   active_job: true
 
 sync:
-  cron: "*/10 * * * *"
+  cron: "0 */1 * * *"
   class: "SyncJob"
   active_job: true
 
 sync_video_podcast:
-  cron: "0 23 * * *"
+  cron: "30 23 * * *"
   class: "SyncVideosPodcastJob"
   active_job: true

@@ -9,6 +9,7 @@
     <%= csp_meta_tag %>
 
     <%# bootstrap css %>
+    <%= favicon_link_tag asset_path('bento-box.png') %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -22,7 +23,17 @@
   </head>
 
 <body>
-  
+    <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>">
+            <%= value %>
+      </div>
+    <% end %>
+
+    <div class="container mt-3">
+        <div class="bg-white">
+            <%= yield %>
+        </div>
+    </div>
 
     <div class="container-fluid text-center">
 

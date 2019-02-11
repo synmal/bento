@@ -101,3 +101,6 @@ gem 'yt-core'
 
 # Sendgrid
 gem 'sendgrid-ruby'
+
+# To start rails server and sidekiq
+gem 'foreman'

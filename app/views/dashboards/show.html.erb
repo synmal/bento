@@ -1,5 +1,7 @@
 <h1 class="all articles p-4 m-0 text-center">All YOUR tasks</h1>
-<%= paginate @feeds %>
+<div class=" d-flex justify-content-center">
+ <%= paginate @feeds %>
+</div>
 <% @feeds.each do |feed| %>
   <% count = feed.week %>
     <div class="container text-center">
@@ -9,7 +11,7 @@
           <div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
             <div class="card-body d-flex justify-content-between flex-column align-items-center">
               <h5 class="card-title mb-2">Article</h5>
-                <div class="container-image d-flex align-items-center" style="height: 9rem;">
+                <div class="container-image d-flex align-items-center" style="height: 9rem; overflow:hidden;">
                   <img src="<%= feed.article.image %>" class="image card-img-top" >
                   </div>
                 <p class="card-text mt-2 d-flex align-items-center" style="height: 5rem;"><%= feed.article.title %></p>
@@ -22,7 +24,7 @@
           <div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
             <div class="card-body d-flex justify-content-between flex-column align-items-center">
               <h5 class="card-title mb-2">Podcast</h5>
-              <div class="container-image d-flex align-items-center" style="height: 9rem;">
+              <div class="container-image d-flex align-items-center" style="height: 9rem; overflow:hidden;">
                 <img src="<%= feed.podcast.images %>" class="image card-img-top" alt="...">
               </div>
               <p class="card-text mt-2 d-flex align-items-center" style="height: 5rem;"><%= feed.podcast.creator %></p>
@@ -36,7 +38,7 @@
             <div class="card-body d-flex justify-content-between flex-column align-items-center">
               <h5 class="card-title">Video</h5>
               <iframe width="180rem" src="<%= feed.video.url.gsub(/watch\?v=/, 'embed/') %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <p class="card-text mt-2  d-flex align-items-center" style="height: 5rem;"><%= feed.video.title %></p>
+              <p class="card-text mt-2  d-flex align-items-center" style="height: 5rem; overflow:hidden;"><%= feed.video.title %></p>
               <a href="<%= feed.video.url %>" data-check="card-third<%= count %>" target="_blank" class="card-link btn btn-primary w-75">Go to Tutorial</a>
               <img src="https://previews.123rf.com/images/johan2011/johan20111309/johan2011130900007/21934213-ok-the-dude-giving-thumb-up-next-to-a-check-mark-blue.jpg" width="30" height="30" id="card-third<%= count %>" class="check d-none  mt-2">
             </div>
@@ -47,7 +49,7 @@
           <div class="card-body d-flex justify-content-between flex-column align-items-center">
             <h5 class="card-title">Project</h5>
             <img src="https://c10.patreonusercontent.com/3/eyJ3Ijo0MDB9/patreon-media/p/reward/2405863/34751822ea764582b281025eb818ea47/1?token-time=2145916800&token-hash=jRgeu052RAcUd-v33db60Wt4HmE2fGy0l4V7p-gyCSM%3D" class="image card-img-top" alt="...">
-            <p class="card-text mt-2  d-flex align-items-center" style="height: 5rem;"><%= feed.project.title %></p>
+            <p class="card-text mt-2  d-flex align-items-center" style="height: 5rem; overflow:hidden;"><%= feed.project.title %></p>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary w-75" data-toggle="modal" data-target="#modal<%= count %>" >
               Go to Challenge
@@ -76,7 +78,9 @@
   </div>
   <hr>
 <% end %>
-<%= paginate @feeds %>
+<div class=" d-flex justify-content-center">
+ <%= paginate @feeds %>
+</div>
 
 <script>
     $(".card-link").click(function (e){

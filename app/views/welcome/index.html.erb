@@ -1,47 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%# meta tags from bootstrap %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bento</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-<div class="text-center">
-  <h1>Welcome to Bento</h1>
-  <br>
-  <% if !signed_in? %>
-    <div id="clearance" class="sign-in">
-      <h3>Login</h3>
+    <%# bootstrap css %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-      <%= render partial: 'login' %>
+    <%# JS from bootstrap and jQuery CDN %>
+    <%# jQuery must come first! %>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-    </div>
-
-    
-    <button type="button" class="btn btn-outline-primary mr-sm-2 rounded-pill col-sm-3" data-toggle="modal" data-target="#exampleModal">
-     <%= image_tag "bento-box.png", class: 'rounded float-left login-icon' %>
-      Log In into BENTO
-    </button>
-
-    <%= link_to "/auth/github" do %>
-      <div class=" btn btn-outline-primary mr-sm-2 col-sm-3 rounded-pill" href="/auth/github">
-      <img style="width:28px;" src="https://www.techgirlz.org/wp-content/uploads/2016/12/github-logo.png" class="rounded float-left">
-      Sign in with Github
-      </div>
-    <% end %>
-    
-
-  <%= link_to "/auth/google_oauth2" do %>
-   <div class="btn btn-outline-primary mr-sm-2 col-sm-3 rounded-pill" href="/auth/github">
-    <img style="width:28px;" src="https://www.appythings.nl/wp-content/uploads/2018/06/google-logo-icon-PNG-Transparent-Background.png" class="rounded float-left">
-    Sign in with Google
-      </div>
-  <% end %>
+<body>
   
 
-  <br>
-  </br>
-      <h3>Have not an account?</h3>
+    <div class="container-fluid text-center">
 
-        <form action="/sign_up">
-          <input type="submit" value="Sign up" class="btn btn-outline-primary mb-2 mr-sm-2 col-sm-3 rounded-pill">
-        </form>
+      <div class="row">
+          
+          <div class="col-xs-6 col-md-6" id="rightbox">
+            <div class="containerright">
+              <h1 class="display-3">Welcome to Bento</h1>
+                <% if !signed_in? %>
+                  <div id="clearance" class="sign-in">
+                    <%= render partial: 'login' %>
+                  </div>
+                <div class="buttoncontainer">
+                <button type="button" class="w3-button w3-white w3-block w3-hover-bluegray"
+                data-toggle="modal" data-target="#exampleModal" >
+                 <H2><%= image_tag "https://www.emoji.co.uk/files/twitter-emojis/food-drink-twitter/10801-bento-box.png",
+                 class: 'logo', style: 'width:7%' %>
+                  Log In to Bento</H2>
+                </button>
 
+                <%= link_to "/auth/github" do %>
+                   <div class="w3-button w3-white w3-block w3-hover-bluegray" a href="/auth/github">
+                  <H2><img style="width:7%;" src="https://www.techgirlz.org/wp-content/uploads/2016/12/github-logo.png"
+                  class="logo">
+                  Sign in with Github</H2>
+                  </div>
+                <% end %>
 
-  <% end %>
+                <%= link_to "/auth/google_oauth2" do %>
+                   <div class="w3-button w3-white w3-block w3-hover-bluegray" a href="/auth/google_oauth2">
+                  <H2><img style="width:7%;" src="https://www.appythings.nl/wp-content/uploads/2018/06/google-logo-icon-PNG-Transparent-Background.png"
+                  class="logo">
+                  Sign in with Google</H2>
+                  </div>
+                <% end %>
 
+                    <br><H4>Don't have an account?</H4>
 
-</div>
+                    <H2><form action="/sign_up">
+                    <input type="submit" value="Sign up with Bento" class="w3-button w3-white w3-block w3-hover-bluegray">
+                    </form></H2>
+                  </div>
+
+              <% else %>
+                    <div class="buttoncontainer">
+                    <H2><%= link_to 'Dashboard', user_dashboard_path(current_user.id), class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %></H2>
+                    <H2><%= link_to "Edit Profile", edit_user_path(current_user.id), class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %></H2>
+                    <H2><%= link_to "Sign Out", sign_out_path, method: :delete, class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %></H2>
+                    </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="col-xs-6 col-md-6" id="leftbox">
+            <div class="containerleft">
+              <img src="https://www.emoji.co.uk/files/twitter-emojis/food-drink-twitter/10801-bento-box.png" style="width:50%">
+              <H2 class="mt-3" style=>This</H2>
+              <H2 class="mt-3">Is</H2>
+              <H2 class="mt-3">Bento</H2>
+            </div>
+          </div>
+      </div>
+    </div>
+        <%#= render "layouts/footer" %>
+</body>
+</html>

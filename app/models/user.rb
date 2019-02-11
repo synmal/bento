@@ -15,13 +15,18 @@ class User < ApplicationRecord
 
   def self.create_with_auth_and_hash(authentication, auth_hash)
     user = self.create!(
-      first_name: auth_hash["info"]["first_name"],
-      last_name: auth_hash["info"]["last_name"],
+      first_name: auth_hash["info"]["name"].split[0],
+      last_name: auth_hash["info"]["name"].split[1],
       email: auth_hash["info"]["email"],
+      avatar: auth_hash["info"]["image"],
       password: SecureRandom.hex(10)
     )
+    user.remote_avatar_url = auth_hash["info"]["image"]
+    user.save
     user.authentications << authentication
-    UserMailer.welcome_mail(user).deliver_later
+    UserMailer.welcome_mail(user).deliver_now
+    user.update_feed
+    UserMailer.newsletter(user).deliver_now
     return user
   end
  
@@ -42,35 +47,62 @@ class User < ApplicationRecord
     podcast_article_video = {}
 
     # Podcast
-    self.user_languages_skill.keys.each do |lang|
-      Podcast.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).each do |i|
-        podcast << i
+    if self.user_languages_skill
+      self.user_languages_skill.keys.each do |lang|
+        Podcast.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).each do |i|
+          podcast << i
+        end
       end
-    end
 
-    # Articles
-    self.user_languages_skill.keys.each do |lang|
-      Article.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).each do |i|
-        article << i
+      # Articles
+      self.user_languages_skill.keys.each do |lang|
+        Article.where(tags: [lang], published_at: ((Time.now-7.day)..Time.now)).each do |i|
+          article << i
+        end
       end
-    end
 
-    # Video
-    self.user_languages_skill.keys.each do |lang|
-      Video.where(tags: [lang]).each do |i|
-        video << i
+      # Video
+      self.user_languages_skill.keys.each do |lang|
+        Video.where(tags: [lang]).each do |i|
+          video << i
+        end
       end
-    end
 
-    # Put in hash
-    podcast_article_video['podcast'] = podcast
-    podcast_article_video['article'] = article
-    podcast_article_video['video'] = video
-    # p podcast_article_video['video']
-    podcast_article_video
+      # Put in hash
+      podcast_article_video['podcast'] = podcast
+      podcast_article_video['article'] = article
+      podcast_article_video['video'] = video
+      podcast_article_video
+    end
   end
 
   def feed_count
     self.feeds.count
   end
+
+  def update_feed
+      feed = self.feeds.new
+      all_feed = self.feed
+
+      if !self.developer_type.empty? || !self.interest.empty? || !self.user_languages_skill.empty?
+        article = all_feed['article'].sample
+        feed['article_id'] = article.id
+      end
+
+      if !self.user_languages_skill.empty?
+        podcast = all_feed['podcast'].sample
+        video = all_feed['video'].sample
+        feed['podcast_id'] = podcast.id
+        feed['video_id'] = video.id
+      end
+      
+      project = Project.all.sample
+      feed['project_id'] = project.id
+      feed['week'] = self.feeds.count + 1
+
+      if feed.save
+      else
+        p feed.errors.full_messages
+      end
+    end
 end

@@ -3,11 +3,11 @@ class DashboardsController < ApplicationController
   before_action :set_user
 
   def show
-    @url = 'https://medium.freecodecamp.org/feed?fbclid=IwAR32766uTBd3WhMZrcskT1bLI1S1STDpzbhJllPOOTQTOhPZEkqGe53UHqs'
+    @feeds = @user.feeds.order(created_at: :desc).page params[:page]
   end
-
+  
   private
   def set_user
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
 end

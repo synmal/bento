@@ -1,4 +1,5 @@
 <h1 class="all articles p-4 m-0 text-center">All YOUR tasks</h1>
+<<<<<<< HEAD
 
 <% count = current_user.feed_count %>
 <% current_user.feeds.reverse.each do |feed| %>
@@ -7,6 +8,14 @@
       <h3 class="p-2">Week <%= count %></h3>
       <div class="d-inline-flex flex-wrap justify-content-center">
 
+=======
+<%= paginate @feeds %>
+<% @feeds.each do |feed| %>
+  <% count = feed.week %>
+    <div class="container text-center">
+      <h3 class="p-2">Week <%= count %></h3>
+      <div class="d-inline-flex flex-wrap justify-content-center">
+>>>>>>> 2d625177905f04a830ef7834e9a558eaa990aaf7
         <% if feed.article %>
           <div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
             <div class="card-body d-flex justify-content-between flex-column align-items-center">
@@ -20,7 +29,10 @@
             </div>
           </div>
         <% end %>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2d625177905f04a830ef7834e9a558eaa990aaf7
         <% if feed.podcast %>
           <div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
             <div class="card-body d-flex justify-content-between flex-column align-items-center">
@@ -34,8 +46,11 @@
             </div>
           </div>
         <% end %>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 2d625177905f04a830ef7834e9a558eaa990aaf7
         <% if feed.video %>
           <div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
             <div class="card-body d-flex justify-content-between flex-column align-items-center">
@@ -47,7 +62,10 @@
             </div>
           </div>
         <% end %>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2d625177905f04a830ef7834e9a558eaa990aaf7
       <% if feed.project %>
         <div class="card rounded shadow-lg m-2" style="width: 14.5rem;">
           <div class="card-body d-flex justify-content-between flex-column align-items-center">
@@ -78,6 +96,7 @@
           </div>
         </div>
       <% end %>
+<<<<<<< HEAD
 
     </div>
   </div>
@@ -91,3 +110,16 @@
 	})
 
 </script>
+=======
+    </div>
+  </div>
+  <hr>
+<% end %>
+<%= paginate @feeds %>
+
+<script>
+    $(".card-link").click(function (e){
+        $("#" + e.target.dataset.check).removeClass("d-none")
+    })
+</script>
+>>>>>>> 2d625177905f04a830ef7834e9a558eaa990aaf7

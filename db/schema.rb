@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_08_003227) do
+ActiveRecord::Schema.define(version: 2019_02_11_021102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -37,22 +37,15 @@ ActiveRecord::Schema.define(version: 2019_02_08_003227) do
     t.index ["user_id"], name: "index_authentications_on_user_id"
   end
 
-  create_table "courses", force: :cascade do |t|
-    t.string "title"
-    t.string "link"
-    t.text "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "tags", default: [], array: true
-    t.string "parent_url"
-  end
-
   create_table "feeds", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "article_id"
     t.bigint "podcast_id"
     t.bigint "project_id"
     t.bigint "video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "week"
     t.index ["article_id"], name: "index_feeds_on_article_id"
     t.index ["podcast_id"], name: "index_feeds_on_podcast_id"
     t.index ["project_id"], name: "index_feeds_on_project_id"
@@ -78,12 +71,6 @@ ActiveRecord::Schema.define(version: 2019_02_08_003227) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "puzzles", force: :cascade do |t|
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -96,7 +83,7 @@ ActiveRecord::Schema.define(version: 2019_02_08_003227) do
     t.string "avatar"
     t.string "developer_type", default: [], array: true
     t.string "interest", default: [], array: true
-    t.hstore "user_languages_skill", default: {}
+    t.hstore "user_languages_skill", default: {"ruby"=>"beginner", "python"=>"beginner", "javascript"=>"beginner"}
     t.integer "roles", default: 0
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"

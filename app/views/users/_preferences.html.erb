@@ -4,78 +4,58 @@
         <%# ––––––––––––––– Ruby –––––––––––––– %>
         <%= label_tag("Choose your language and skill level") %>
         <div class="input-group mb-3">
-        <%# Check to see if user has alread selected Ruby %>
-        <% if current_user.user_languages_skill.has_key?("ruby") %>
-            <% if current_user.user_languages_skill.value?("beginner")%>
-                <script>
-                    $('.ruby').addClass('active');
-                    $('.ruby-beginner').addClass('active');
-                </script>
-                <% elsif current_user.user_languages_skill.value?("intermediate") %>
-                <script>
-                    $('.ruby').addClass('active');
-                    $('.ruby-intermediate').addClass('active');
-                </script> 
-            <% end %>
-        <% end %>
-        <%= button_to "Ruby", action='#', class:'ruby btn btn-outline-success', :disabled => true %>
-        <%= button_to "Beginner", action='#', class:'ruby-beginner btn btn-outline-info'%>
-        <%= button_to "Intermediate", action='#', class:'ruby-intermediate btn btn-outline-info'%>
+            <%= button_to "Ruby", action='#', class:'ruby btn btn-outline-success', :disabled => true %>
+            <%= button_to "Beginner", action='#', class:'ruby-beginner btn btn-outline-info'%>
+            <%= button_to "Intermediate", action='#', class:'ruby-intermediate btn btn-outline-info btn-outline-info'%>
+            <%= button_to "Clear", action='#', class:'ruby-clear btn btn-danger'%>
         </div>
+            <%# Check to see if user has already selected a language %>
+            <% if current_user.user_languages_skill['ruby'] == 'beginner' %>
+              <script>
+                    $('.ruby-beginner').addClass('active');
+              </script>
+            <% elsif current_user.user_languages_skill['ruby'] == 'intermediate' %>
+              <script>
+                    $('.ruby-intermediate').addClass('active');
+              </script>
+            <% end %>
+        
         <%# ––––––––––––––– Javascript –––––––––––––– %>
         <div class="input-group mb-3">
-        <%# Check to see if user has alread selected Javascript %>
-        <% if current_user.user_languages_skill.has_key?("javascript") %>
-            <% if current_user.user_languages_skill.value?("beginner")%>
-                <script>
-                    $('.javascript').addClass('active');
-                    $('.javascript-beginner').addClass('active');
-                </script>
-                <% elsif current_user.user_languages_skill.value?("intermediate") %>
-                <script>
-                    $('.javascript').addClass('active');
-                    $('.javascript-intermediate').addClass('active');
-                </script> 
-            <% end %>
-        <% end %>
-        <% if current_user.user_languages_skill.has_key?("javascript") %>
-            <% if current_user.user_languages_skill.value?("beginner")%>
-                <script>
-                    $('.javascript').addClass('active');
-                    $('.javascript-beginner').addClass('active');
-                </script>
-                <% elsif current_user.user_languages_skill.value?("intermediate") %>
-                <script>
-                    $('.javascript').addClass('active');
-                    $('.javascript-intermediate').addClass('active');
-                </script> 
-            <% end %>
-        <% end %>
-        <%= button_to "Javascript", action='#', class:'javascript btn btn-outline-success',:disabled => true %>
-        <%= button_to "Beginner", action='#', class:'javascript-beginner btn btn-outline-info'%>
-        <%= button_to "Intermediate", action='#', class:'javascript-intermediate btn btn-outline-info'%>
+            <%= button_to "Javascript", action='#', class:'javascript btn btn-outline-success',:disabled => true %>
+            <%= button_to "Beginner", action='#', class:'javascript-beginner btn btn-outline-info'%>
+            <%= button_to "Intermediate", action='#', class:'javascript-intermediate btn btn-outline-info'%>
+            <%= button_to "Clear", action='#', class:'javascript-clear btn btn-danger'%>
         </div>
+        <%# Check to see if user has alread selected Javascript %>
+        <% if current_user.user_languages_skill['javascript'] == 'beginner' %>
+          <script>
+                $('.javascript-beginner').addClass('active');
+          </script>
+        <% elsif current_user.user_languages_skill['javascript'] == 'intermediate' %>
+          <script>
+                $('.javascript-intermediate').addClass('active');
+          </script>
+        <% end %>
         <%# ––––––––––––––– Python –––––––––––––– %>
         <div class="input-group mb-3">
-        <%# Check to see if user has alread selected Ruby %>
-        <% if current_user.user_languages_skill.has_key?("python") %>
-            <% if current_user.user_languages_skill.value?("beginner")%>
-                <script>
-                    $('.python').addClass('active');
-                    $('.python-beginner').addClass('active');
-                </script>
-                <% elsif current_user.user_languages_skill.value?("intermediate") %>
-                <script>
-                    $('.python').addClass('active');
-                    $('.python-intermediate').addClass('active');
-                </script> 
-            <% end %>
-        <% end %>
         <%= button_to "Python", action='#', class:'python btn btn-outline-success',:disabled => true %>
         <%= button_to "Beginner", action='#', class:'python-beginner btn btn-outline-info'%>
         <%= button_to "Intermediate", action='#', class:'python-intermediate btn btn-outline-info'%>
+        <%= button_to "Clear", action='#', class:'python-clear btn btn-danger'%>
+        <%# Check to see if user has alread selected Ruby %>
         </div>
-        </br>
+        <% if current_user.user_languages_skill['python'] == 'beginner' %>
+          <script>
+                $('.python-beginner').addClass('active');
+          </script>
+        <% elsif current_user.user_languages_skill['python'] == 'intermediate' %>
+          <script>
+                $('.python-intermediate').addClass('active');
+          </script>
+        <% end %>
+        
+        <br/>
         <%# Select developer type %>
         <%= label_tag("What kind of developer are you?")%>
         <br/>
@@ -85,6 +65,31 @@
             <%= button_to "Full-Stack", action='#', class:'full-stack btn btn-outline-success' %>
             <%= button_to "Mobile", action='#', class:'mobile btn btn-outline-success' %>
         </div>
+        <%# Check to see if user has already selected developer type %>
+        <% if current_user.developer_type.include?("front end") %>
+            <script>
+                $(".front-end").addClass('active');
+            </script>  
+        <% else %>
+            <script>
+                $(".front-end").removeClass('active');
+            </script>
+        <% end %>
+        <% if current_user.developer_type.include?("back end") %>
+            <script>
+                $(".back-end").addClass('active');
+            </script>
+        <% end %>
+        <% if current_user.developer_type.include?("full stack") %>
+            <script>
+                $(".full-stack").addClass('active');
+            </script>
+        <% end %>
+        <% if current_user.developer_type.include?("mobile") %>
+            <script>
+                $(".mobile").addClass('active');
+            </script>
+        <% end %>
         <br/>
         <%# Select developer type %>
         <%= label_tag("What's your current interest?")%>
@@ -95,5 +100,26 @@
             <%= button_to "Cybersecurity", action='#', class:'cybersecurity btn btn-outline-success' %>
             <%= button_to "Motion UI", action='#', class:'motionui btn btn-outline-success' %>
         </div>
+        <%# Check to see if user has already selected interest %>
+        <% if current_user.interest.include?("progressive web apps") %>
+            <script>
+                $(".pgw").addClass('active');
+            </script>  
+        <% end %>
+        <% if current_user.interest.include?("chatbot") %>
+            <script>
+                $(".chatbot").addClass('active');
+            </script>
+        <% end %>
+        <% if current_user.interest.include?("cybersecurity") %>
+            <script>
+                $(".cybersecurity").addClass('active');
+            </script>
+        <% end %>
+        <% if current_user.interest.include?("motionui") %>
+            <script>
+                $(".motionui").addClass('active');
+            </script>
+        <% end %>
     </div>
 </div>

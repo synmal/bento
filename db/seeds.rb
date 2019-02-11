@@ -90,19 +90,20 @@ def get_project
   end
 end
 
-# get_project
 
-# get_article('front-end')
-# get_article('back-end')
-# get_article('web-development')
-# get_article('mobile-development')
-# get_article('ruby')
-# get_article('javascript')
-# get_article('python')
+get_project
 
-# get_podcast('http://feeds.5by5.tv/rubyonrails', 'ruby')
-# get_podcast('https://feeds.feedwrench.com/JavaScriptJabber.rss', 'javascript')
-# get_podcast('https://talkpython.fm/episodes/rss', 'python')
+get_article('front-end')
+get_article('back-end')
+get_article('web-development')
+get_article('mobile-development')
+get_article('ruby')
+get_article('javascript')
+get_article('python')
+
+get_podcast('http://feeds.5by5.tv/rubyonrails', 'ruby')
+get_podcast('https://feeds.feedwrench.com/JavaScriptJabber.rss', 'javascript')
+get_podcast('https://talkpython.fm/episodes/rss', 'python')
 
 channel_ids = [['UCxJaNyXCQw0mghY0hA1wA9w', 'ruby'], ['UCyU5wkjgQYGRB0hIHMwm2Sg', 'javascript'], ['UCRjTEkDLPREZNlREZMlotMQ', 'python']]
 channel_ids.each do |channel_id|
@@ -111,12 +112,21 @@ channel_ids.each do |channel_id|
   video_ids = videos.map &:id
   video_titles = videos.map &:title
   video_ids.each_with_index do |video_id, i|
-    # next if Video.where(url: "https://www.youtube.com/watch?v=#{video_id}")
+
+    next if Video.find_by(url: "https://www.youtube.com/watch?v=#{video_id}")
+
     video = Video.new(title: video_titles[i], channel: channel.title, url: "https://www.youtube.com/watch?v=#{video_id}")
     video.tags << channel_id[1]
     video.save
   end
   sleep(15)
 end
+
+# User.all.each do |user|
+#   30.times do
+#     feed = user.feeds.new(article_id: Article.all.sample.id, podcast_id: Podcast.all.sample.id, video_id: Video.all.sample.id, project_id: Project.all.sample.id, week: user.feeds.count + 1)
+#     feed.save
+#   end
+# end
 
 puts 'Done'

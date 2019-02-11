@@ -18,7 +18,17 @@
    background-color: #F3F3F3;
  }
 
- .login-icon {
- 	width: 25px;
+ .bg-white{
+   height:100%;
  }
 
+footer a:hover {
+  color: goldenrod;
+}
+
+footer {
+  height:5%;
+  position:absolute;
+  widows: 100%;
+  bottom:0;
+}

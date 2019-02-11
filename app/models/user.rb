@@ -98,6 +98,7 @@ class User < ApplicationRecord
       
       project = Project.all.sample
       feed['project_id'] = project.id
+      feed['week'] = self.feeds.count + 1
 
       if feed.save
       else

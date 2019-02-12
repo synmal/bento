@@ -311,7 +311,7 @@ $(document).ready(function() {
             url: '/user/<%= current_user.id %>/update_current_interest',
             method: "POST",
             dataType: "JSON",
-            data: {interest: "motionui"},
+            data: {interest: "motion ui"},
             success: (result) => {
                 console.log(result)
                 if ($(".motionui").hasClass('active')) {

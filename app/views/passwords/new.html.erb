@@ -1,4 +1,4 @@
-<div class='bg-white rounded'>
+<div class='bg-white'>
   <div id="clearance" class="password-reset w-75 p-3 align-center mx-auto">
 
     <h2 class='text-center'>Can't Sign In?</h2>
@@ -11,7 +11,7 @@
       </div>
       <div class="submit-field form-inline d-flex justify-content-center">
         <%= form.submit class:'reset-password btn btn-primary m-2' %> 
-        <%= form.submit 'Cancel', class:'cancel btn btn-danger m-2'%>
+        <%= link_to 'Cancel', root_path, class:'cancel btn btn-danger m-2' %>
       </div>
     <% end %>
     

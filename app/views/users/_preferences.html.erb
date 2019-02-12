@@ -6,8 +6,8 @@
         <div class="input-group mb-3">
             <button type='button' class='ruby btn btn-success active'>Ruby</button>
             <%#= button_to "Ruby", action='#', class:'ruby btn btn-outline-success', :disabled => true %>
-            <%= button_to "Beginner", action='#', class:'ruby-beginner btn btn-info'%>
-            <%= button_to "Intermediate", action='#', class:'ruby-intermediate btn btn-info btn-info'%>
+            <%= button_to "Beginner", action='#', class:'ruby-beginner btn btn-outline-info'%>
+            <%= button_to "Intermediate", action='#', class:'ruby-intermediate btn btn-outline-info'%>
             <%= button_to "Clear", action='#', class:'ruby-clear btn btn-danger'%>
         </div>
             <%# Check to see if user has already selected a language %>
@@ -25,8 +25,8 @@
         <div class="input-group mb-3">
             <button type='button' class='ruby btn btn-success active'>Javascript</button>
             <%#= button_to "Javascript", action='#', class:'javascript btn btn-outline-success',:disabled => true %>
-            <%= button_to "Beginner", action='#', class:'javascript-beginner btn btn-info'%>
-            <%= button_to "Intermediate", action='#', class:'javascript-intermediate btn btn-info'%>
+            <%= button_to "Beginner", action='#', class:'javascript-beginner btn btn-outline-info'%>
+            <%= button_to "Intermediate", action='#', class:'javascript-intermediate btn btn-outline-info'%>
             <%= button_to "Clear", action='#', class:'javascript-clear btn btn-danger'%>
         </div>
         <%# Check to see if user has alread selected Javascript %>
@@ -43,8 +43,8 @@
         <div class="input-group mb-3">
         <button type='button' class='ruby btn btn-success active'>Python</button>
         <%#= button_to "Python", action='#', class:'python btn btn-outline-success',:disabled => true %>
-        <%= button_to "Beginner", action='#', class:'python-beginner btn btn-info'%>
-        <%= button_to "Intermediate", action='#', class:'python-intermediate btn btn-info'%>
+        <%= button_to "Beginner", action='#', class:'python-beginner btn btn-outline-info'%>
+        <%= button_to "Intermediate", action='#', class:'python-intermediate btn btn-outline-info'%>
         <%= button_to "Clear", action='#', class:'python-clear btn btn-danger'%>
         <%# Check to see if user has alread selected Ruby %>
         </div>
@@ -63,10 +63,10 @@
         <%= label_tag("What kind of developer are you?")%>
         <br/>
         <div class="input-group mb-3">
-            <%= button_to "Front-End", action='#', class:'front-end btn btn-success' %>
-            <%= button_to "Back-End", action='#', class:'back-end btn btn-success' %>
-            <%= button_to "Full-Stack", action='#', class:'full-stack btn btn-success' %>
-            <%= button_to "Mobile", action='#', class:'mobile btn btn-success' %>
+            <%= button_to "Front-End", action='#', class:'front-end btn btn-outline-success' %>
+            <%= button_to "Back-End", action='#', class:'back-end btn btn-outline-success' %>
+            <%= button_to "Full-Stack", action='#', class:'full-stack btn btn-outline-success' %>
+            <%= button_to "Mobile", action='#', class:'mobile btn btn-outline-success' %>
         </div>
         <%# Check to see if user has already selected developer type %>
         <% if current_user.developer_type.include?("front end") %>
@@ -98,10 +98,10 @@
         <%= label_tag("What's your current interest?")%>
         <br/>
         <div class="input-group mb-3">
-            <%= button_to "Progressive Web Apps", action='#', class:'pgw btn btn-success' %>
-            <%= button_to "Chatbot", action='#', class:'chatbot btn btn-success' %>
-            <%= button_to "Cybersecurity", action='#', class:'cybersecurity btn btn-success' %>
-            <%= button_to "Motion UI", action='#', class:'motionui btn btn-success' %>
+            <%= button_to "Progressive Web Apps", action='#', class:'pgw btn btn-outline-success' %>
+            <%= button_to "Chatbot", action='#', class:'chatbot btn btn-outline-success' %>
+            <%= button_to "Cybersecurity", action='#', class:'cybersecurity btn btn-outline-success' %>
+            <%= button_to "Motion UI", action='#', class:'motionui btn btn-outline-success' %>
         </div>
         <%# Check to see if user has already selected interest %>
         <% if current_user.interest.include?("progressive web apps") %>

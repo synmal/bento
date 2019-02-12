@@ -1,16 +1,18 @@
-<div id="clearance" class="password-reset">
-  <h2><%= t(".title") %></h2>
+<div id="clearance" class="password-reset w-75 p-3 vh-100 align-center mx-auto">
 
-  <p><%= t(".description") %></p>
+  <h2 class='text-center'>Can't Sign In?</h2>
+
+  <p class='text-center'>Enter your email address to receive a link to reset your password.</p>
 
   <%= form_for :password, url: passwords_path do |form| %>
-    <div class="text-field">
-      <%= form.label :email %>
-      <%= form.text_field :email, type: 'email' %>
+    <div class="form-group">
+      <%= form.text_field :email, type: 'email', placeholder: 'Enter your email address', class: 'form-control align-centre'%>
     </div>
-
-    <div class="submit-field">
-      <%= form.submit %>
+    <div class="submit-field form-inline d-flex justify-content-center">
+      <%= form.submit class:'reset-password btn btn-primary m-2' %> 
+      <%= form.submit 'Cancel', class:'cancel btn btn-danger m-2'%>
     </div>
   <% end %>
+  
 </div>
+

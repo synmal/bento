@@ -32,3 +32,16 @@ footer {
 button:focus {
   outline:none;
 }
+
+body {
+  background: url('background2.jpeg') center center no-repeat;
+  background-size: cover;
+}
+
+.navbar {
+  background-color: rgba(147,147,147,0.35);
+}
+
+.bg-white {
+  background-color: rgba(255, 255, 255, 0.6)!important;
+}

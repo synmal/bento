@@ -9,7 +9,13 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   enum programming_level: [:beginner, :intermediate]
   enum roles: [:user, :admin]
-  
+
+  # validations
+  validates :password, presence: true
+  validates :password, format: { with: /[A-Za-z0-9]/, message: "Insert a password of 8 characters with a combination of letters, numbers and special characters like ? or !" }
+  validates :password, length: { minimum:8 }
+  validates :email, uniqueness: true
+
   # allows access to the hash in the migration
   store_accessor :user_languages_skill
 

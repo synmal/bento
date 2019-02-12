@@ -36,6 +36,11 @@ class User < ApplicationRecord
     return x.token unless x.nil?
   end
 
+  def github_token
+    x = self.authentications.find_by(provider: 'github')
+    return x.token unless x.nil?
+  end
+
   def full_name
     "#{self.first_name} #{self.last_name}"
   end
@@ -67,13 +72,31 @@ class User < ApplicationRecord
           video << i
         end
       end
-
-      # Put in hash
-      podcast_article_video['podcast'] = podcast
-      podcast_article_video['article'] = article
-      podcast_article_video['video'] = video
-      podcast_article_video
     end
+
+    if !self.developer_type.empty?
+      self.developer_type.each do |dev_type|
+        dev_type = dev_type.split.join('-')
+        Article.where(tags: [dev_type], published_at: ((Time.now-7.day)..Time.now)).each do |i|
+          article << i
+        end
+      end
+    end
+
+    if !self.interest.empty?
+      self.interest.each do |interest|
+        interest = interest.split.join('-')
+        Article.where(tags: [interest], published_at: ((Time.now-7.day)..Time.now)).each do |i|
+          article << i
+        end
+      end
+    end
+
+    podcast_article_video['podcast'] = podcast
+    podcast_article_video['article'] = article
+    podcast_article_video['video'] = video
+    podcast_article_video
+
   end
 
   def feed_count
@@ -98,6 +121,7 @@ class User < ApplicationRecord
       
       project = Project.all.sample
       feed['project_id'] = project.id
+      feed['week'] = self.feeds.count + 1
 
       if feed.save
       else

@@ -32,3 +32,7 @@ footer {
   widows: 100%;
   bottom:0;
 }
+
+button:focus {
+  outline:none;
+}

@@ -75,8 +75,10 @@
       <% end %>
     </div>
   </div>
+  <% if feed != @feeds.last %>
   <hr>
+  <% end %>
 <% end %>
-<div class=" d-flex justify-content-center">
+<div class="my-4 d-flex justify-content-center">
  <%= paginate @feeds, remote: true %>
 </div>

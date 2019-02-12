@@ -18,10 +18,6 @@
    background-color: #F3F3F3;
  }
 
- .bg-white{
-   height:100%;
- }
-
 footer a:hover {
   color: goldenrod;
 }
@@ -35,9 +31,4 @@ footer {
 
 button:focus {
   outline:none;
-}
-
-a {
-  color: rgba(255, 255, 255, 0);
-  text-decoration: none;
 }

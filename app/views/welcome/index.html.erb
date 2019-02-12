@@ -77,6 +77,7 @@
       </div>
    
     <script type="text/javascript">
+    $(document).ready(function() {
       const left = document.querySelector(".left");
       const right = document.querySelector(".right");
       const container = document.querySelector(".container");
@@ -92,6 +93,7 @@
       right.addEventListener("mouseleave", () => {
         container.classList.remove("hover-right");
       });
+    });
     </script>
   </body>
 </html>

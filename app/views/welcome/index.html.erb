@@ -62,11 +62,17 @@
                   </div>
               </div>
               <div class="split right">
-                <h1 class="welcome">About</h1>
+                <h1 class="welcome">This is BENTO</h1>
                 <!-- <a href="#" class="button">Read More</a> -->
                   <div id="rightbox" class="col-xs-6 col-md-6 d-flex flex-column justify-content-center align-items-center text-danger" >
                     <img src="./images/bento-box.png" style="width:50%" class="shine">
-                    <h3 class="text-center text-white" style="font-size: 2rem">This</br>is</br>BENTO</h3>
+                    <%= link_to about_bento_path do %>
+                              <div class="glow bg-transparent border-0 mt-4" >
+                                <h3>
+                                  About
+                                </h3>
+                              </div>
+                            <% end %>
                   </div>
       </div>
    

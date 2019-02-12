@@ -36,3 +36,8 @@ footer {
 button:focus {
   outline:none;
 }
+
+a {
+  color: rgba(255, 255, 255, 0);
+  text-decoration: none;
+}

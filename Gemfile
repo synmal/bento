@@ -104,3 +104,6 @@ gem 'sendgrid-ruby'
 
 # To start rails server and sidekiq
 gem 'foreman'
+
+# Admin dashboard
+gem "administrate"

@@ -1,9 +1,22 @@
 Rails.application.routes.draw do
+  
   require 'sidekiq/web'
   require 'sidekiq/cron/web'
   
   constraints Clearance::Constraints::SignedIn.new { |user| user.admin? } do
     mount Sidekiq::Web, at: '/sidekiq'
+
+    namespace :admin do
+      resources :articles
+      resources :authentications
+      resources :feeds
+      resources :podcasts
+      resources :projects
+      resources :users
+      resources :videos
+
+      root to: "articles#index"
+    end
   end
   
   # ––––––––––––– Clearance Stuff ––––––––––––––––––––––
@@ -30,7 +43,6 @@ Rails.application.routes.draw do
   # For Oauth routing
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
-
   delete "/sign_out" => "sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -44,9 +56,9 @@ Rails.application.routes.draw do
   end
   # Landing Page 
   resources :welcome, only: [:index]
-
-  # path to update users programming_languages
-  # post '/user/:id/update_user_languages' => 'users#update_user_language'
+  
+  # path to 'About'
+  get "/about_bento" => "about_bento#show"
   # path to update users programming_language_skill
   post '/user/:id/update_language_skill' => 'users#update_user_language_skill'
   # path to update users developer_type

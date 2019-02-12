@@ -7,13 +7,11 @@
     <title>Bento</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%# bootstrap css %>
     <%= favicon_link_tag asset_path('bento-box.png') %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
     <%# JS from bootstrap and jQuery CDN %>
     <%# jQuery must come first! %>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
@@ -22,81 +20,78 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<body>
-    <% flash.each do |key, value| %>
-      <div class="<%= flash_class(key) %>">
-            <%= value %>
+  <body>
+      <div class="container">
+              <div class="split left text">
+                <h1 class="welcome">Welcome to Bento</h1>
+                <!-- <a href="#" class="button">Read More</a> -->
+                  <div class="col-xs-6 col-md-6 d-flex flex-column justify-content-center align-items-center mt-4" id="leftbox" >
+
+                          <div id="clearance" class="sign-in">
+                            <%= render partial: 'login' %>
+                          </div>
+                          <div class="d-flex justify-content-center flex-column position-absolute " >
+                            <button  class="glow bg-transparent border-0 " data-toggle="modal" data-target="#exampleModal" >
+                              <h3>
+                                <%= image_tag "bento-box.png", style: 'width:10%' %> Log In to Bento
+                              </h3>
+                            </button>
+                            <%= link_to "/auth/github" do %>
+                              <div class="glow bg-transparent border-0 " >
+                                <h3>
+                                  <img style="width:10%;" src="https://cdn.iconscout.com/icon/free/png-256/github-88-437389.png" class=""> Sign in with Github
+                                </h3>
+                              </div>
+                            <% end %>
+                            <%= link_to "/auth/google_oauth2" do %>
+                              <div class="glow bg-transparent border-0" >
+                                <h3>
+                                  <img style="width:10%;" src="https://www.appythings.nl/wp-content/uploads/2018/06/google-logo-icon-PNG-Transparent-Background.png" class=""> Sign in with Google
+                                </h3>
+                              </div>
+                            <% end %>
+                            <hr>
+                            <h2 class="d-flex justify-content-center text-white" >Don't have an account?</h2>
+                            <h3>
+                              <form action="/sign_up">
+                                <input type="submit" value="Sign up with Bento" class="glow bg-transparent border-0 w3-block">
+                              </form>
+                            </h3>
+                          </div>
+
+                  </div>
+              </div>
+              <div class="split right">
+                <h1 class="welcome">This is BENTO</h1>
+                <!-- <a href="#" class="button">Read More</a> -->
+                  <div id="rightbox" class="col-xs-6 col-md-6 d-flex flex-column justify-content-center align-items-center text-danger" >
+                    <img src="./images/bento-box.png" style="width:50%" class="shine">
+                    <%= link_to about_bento_path do %>
+                              <div class="glow bg-transparent border-0 mt-4" >
+                                <h3>
+                                  About
+                                </h3>
+                              </div>
+                            <% end %>
+                  </div>
       </div>
-    <% end %>
-
-    <div class="container mt-3">
-        <div class="bg-white">
-            <%= yield %>
-        </div>
-    </div>
-
-    <div class="container-fluid text-center">
-
-      <div class="row">
-          
-          <div class="col-xs-6 col-md-6" id="rightbox">
-            <div class="containerright">
-              <h1 class="display-3">Welcome to Bento</h1>
-                <% if !signed_in? %>
-                  <div id="clearance" class="sign-in">
-                    <%= render partial: 'login' %>
-                  </div>
-                <div class="buttoncontainer">
-                <button type="button" class="w3-button w3-white w3-block w3-hover-bluegray"
-                data-toggle="modal" data-target="#exampleModal" >
-                 <H2><%= image_tag "bento-box.png",
-                 class: 'logo', style: 'width:7%' %>
-                  Log In to Bento</H2>
-                </button>
-
-                <%= link_to "/auth/github" do %>
-                   <div class="w3-button w3-white w3-block w3-hover-bluegray" a href="/auth/github">
-                  <H2><img style="width:7%;" src="https://www.techgirlz.org/wp-content/uploads/2016/12/github-logo.png"
-                  class="logo">
-                  Sign in with Github</H2>
-                  </div>
-                <% end %>
-
-                <%= link_to "/auth/google_oauth2" do %>
-                   <div class="w3-button w3-white w3-block w3-hover-bluegray" a href="/auth/google_oauth2">
-                  <H2><img style="width:7%;" src="https://www.appythings.nl/wp-content/uploads/2018/06/google-logo-icon-PNG-Transparent-Background.png"
-                  class="logo">
-                  Sign in with Google</H2>
-                  </div>
-                <% end %>
-
-                    <br><H4>Don't have an account?</H4>
-
-                    <H2><form action="/sign_up">
-                    <input type="submit" value="Sign up with Bento" class="w3-button w3-white w3-block w3-hover-bluegray">
-                    </form></H2>
-                  </div>
-
-              <% else %>
-                    <div class="buttoncontainer">
-                    <H2><%= link_to 'Dashboard', user_dashboard_path(current_user.id), class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %></H2>
-                    <H2><%= link_to "Edit Profile", edit_user_path(current_user.id), class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %></H2>
-                    <H2><%= link_to "Sign Out", sign_out_path, method: :delete, class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %></H2>
-                    </div>
-              <% end %>
-            </div>
-          </div>
-
-          <div class="col-xs-6 col-md-6" id="leftbox">
-            <div class="containerleft">
-              <img src="./images/bento-box.png" style="width:50%">
-              <H2 class="mt-3" style=>This</H2>
-              <H2 class="mt-3">Is</H2>
-              <H2 class="mt-3">Bento</H2>
-            </div>
-          </div>
-      </div>
-    </div>
-        <%#= render "layouts/footer" %>
-</body>
+   
+    <script type="text/javascript">
+      const left = document.querySelector(".left");
+      const right = document.querySelector(".right");
+      const container = document.querySelector(".container");
+      left.addEventListener("mouseenter", () => {
+        container.classList.add("hover-left");
+      });
+      left.addEventListener("mouseleave", () => {
+        container.classList.remove("hover-left");
+      });
+      right.addEventListener("mouseenter", () => {
+        container.classList.add("hover-right");
+      });
+      right.addEventListener("mouseleave", () => {
+        container.classList.remove("hover-right");
+      });
+    </script>
+  </body>
 </html>

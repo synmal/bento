@@ -19,13 +19,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
   <body>
       <div class="container">
               <div class="split left text">
                 <h1 class="welcome">Welcome to Bento</h1>
                 <!-- <a href="#" class="button">Read More</a> -->
                   <div class="col-xs-6 col-md-6 d-flex flex-column justify-content-center align-items-center mt-4" id="leftbox" >
-                      <% if !signed_in? %>
+
                           <div id="clearance" class="sign-in">
                             <%= render partial: 'login' %>
                           </div>
@@ -57,13 +58,7 @@
                               </form>
                             </h3>
                           </div>
-                      <% else %>
-                            <div class="buttoncontainer">
-                              <H2><%= link_to 'Dashboard', user_dashboard_path(current_user.id), class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %></H2>
-                              <H2><%= link_to "Edit Profile", edit_user_path(current_user.id), class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %></H2>
-                              <H2><%= link_to "Sign Out", sign_out_path, method: :delete, class: "w3-button w3-white w3-block w3-hover-brown w3-padding-16" %></H2>
-                            </div>
-                      <% end %>
+
                   </div>
               </div>
               <div class="split right">
@@ -73,7 +68,6 @@
                     <img src="./images/bento-box.png" style="width:50%" class="shine">
                     <h3 class="text-center text-white" style="font-size: 2rem">This</br>is</br>BENTO</h3>
                   </div>
-              </div>
       </div>
    
     <script type="text/javascript">

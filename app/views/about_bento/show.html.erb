@@ -1,16 +1,61 @@
-<div class='rounded bg-white'>
+    <%# ====header image==== %>
+    <div class="header">
+        <img src="./images/bento-about.png", style="width:100%;">
+    </div>
+
+<div class='rounded bg-white mt-5'>
+    <%# ====PROBLEM==== %>
   <div class='container-fluid mx-auto'>
-      <h1 class='text-center'>- The Problem -</h1>
-      <p>Congratulations! You've taken your first steps in learning to code. You've done the tutorials, you know the fundamentals of programming such as functions and loops and maybe you've built a simple game such as Boggle Board. But still you have your doubts and questions...</p>
-      <ul>
-          <li>What do I learn next?</li>
-          <li>How do I keep up to date?</li>
-          <li>What projects can I do to sharpen my skills?</li>
-      </ul>
-      <p>With the massive amount of articles, videos, podcasts and tutorials floating around the Internet, it can be hard to choose the right direction.</p>
-      <h1 class='text-center'>- The Solution? -<br/> Bento</h1>
-      <p>Inspired by the aesthetically pleasing and nutritious bento meals from Family Mart, 'Bento' aims to provide a similar service for the programmer's mind. Every week, a curated 'bento' containing a relevent article, podcast, video and project will be sent to your inbox. How do we curate all this content for you? Simple! Just tell us what programming language you're learning, what kind of developer you are or want to be and what programming topic you're currently interested in.</p>
+      <h1 class='text-center'>- Your Problem -</h1>
+      <blockquote class="blockquote text-center">
+      <p class="mb-0"><strong>Congratulations!</strong> You've taken your first steps in learning to code.
+        <br>You've done the tutorials, you know the fundamentals of programming such as 
+        <br>functions and loops and maybe you've built a simple game such as Boggle Board. 
+        <br>But still you have your doubts and questions...</p>
+      </blockquote>
+      
+      <%# ====list=== %>
+      <blockquote class="blockquote">
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-3">
+      - What do I learn next?
+    </div>
   </div>
+ <div class="row justify-content-center">
+    <div class="col-3">
+      - How do I keep up to date?
+    </div>
+  </div>
+ <div class="row justify-content-center">
+    <div class="col-3">
+      - Where can I find projects?
+    </div>
+  </div>
+</div>
+
+      </blockquote>
+
+      <blockquote class="blockquote text-center">
+      <p>With the massive amount of articles, videos, podcasts and tutorials floating around the Internet,
+      <br>it can be hard to choose the right direction.</p>
+      </blockquote>
+
+      <%# ====Solution==== %>
+      <h1 class='text-center'>- Our Solution -<br/> <strong>Bento</strong></h1>
+      <blockquote class="blockquote text-center">
+      <p>Inspired by the aesthetically pleasing and nutritious bento meals from Family Mart, 
+        'Bento' aims to provide a similar service for the programmer's mind. 
+        <br>Every week, a curated 'bento' containing a relevent article, podcast, 
+        video and project will be sent to your inbox.
+        <br>How do we curate all this content for you?
+        <br>Simple! Just tell us what programming language you're learning, 
+        what kind of developer you are or want to be and what programming topic you're currently interested in.</p>
+        <div class="blockquote-footer">Dave from <cite title="Source Title">Next Academy</cite><div>
+      </blockquote>
+      </div>
+      
 
   <div class='sign-up d-flex justify-content-center'>
       <%= button_to 'Sign Up Now', sign_up_path, :method => :get, class:'btn btn-primary btn-lg mb-3' %>

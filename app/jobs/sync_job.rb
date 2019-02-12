@@ -3,7 +3,7 @@ class SyncJob < ApplicationJob
 
   def perform(*args)
     # Do something later
-    all_topics = ['front-end', 'back-end', 'web-development', 'mobile-development', 'ruby', 'javascript', 'python']
+    all_topics = ['front-end', 'back-end', 'web-development', 'mobile', 'ruby', 'javascript', 'python', 'progressive-web-apps', 'chatbot', 'cybersecurity', 'motion-ui']
     all_topics.each do |topic|
       get_article(topic)
     end

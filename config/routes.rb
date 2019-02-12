@@ -1,9 +1,22 @@
 Rails.application.routes.draw do
+  
   require 'sidekiq/web'
   require 'sidekiq/cron/web'
   
   constraints Clearance::Constraints::SignedIn.new { |user| user.admin? } do
     mount Sidekiq::Web, at: '/sidekiq'
+
+    namespace :admin do
+      resources :articles
+      resources :authentications
+      resources :feeds
+      resources :podcasts
+      resources :projects
+      resources :users
+      resources :videos
+
+      root to: "articles#index"
+    end
   end
   
   # ––––––––––––– Clearance Stuff ––––––––––––––––––––––

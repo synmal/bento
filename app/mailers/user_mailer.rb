@@ -1,7 +1,11 @@
 class UserMailer < ApplicationMailer
 
-	def newsletter(user)
-	    @user = user
+	def newsletter(user, article, podcast, video, project)
+      @user = user
+      @article = article
+      @podcast = podcast
+      @video = video
+      @project = project
 	    mail(to: @user.email, subject: 'Your Weekly Bento is Here')
 	end
 

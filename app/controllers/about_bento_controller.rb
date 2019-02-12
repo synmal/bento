@@ -1,0 +1,2 @@
+class AboutBentoController < ApplicationController
+end

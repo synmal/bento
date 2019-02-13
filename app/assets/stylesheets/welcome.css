@@ -48,8 +48,6 @@
  
  /*---------------------------------------------*/
  
- 
- 
  :root {
   --left-bg-color: rgba(223, 39, 39, 0.2);
   --left-button-hover-color: rgba(161, 11, 11, 0.3);
@@ -92,7 +90,73 @@
   height: 100%;
   overflow: hidden;
  }
+
+
+
+
+
+
+
+ @media (max-width: 767.98px) {
+  .split{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .left{
+    top: 0rem;
+    left: 0rem;
+    width: 100%;
+    height: 70%;
+  }
+
+  .right{
+    bottom: 0rem;
+    right: 0rem;
+    width: 100%;
+    height: 30%;
+  }
+
+  #rightbox{
+    top: 20%;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #leftbox{
+    left: 0%;
+    top: 22%;
+    white-space: nowrap;
+
+  }
+
+  .welcome {
+    font-size: 180%;
+    left: 50%;
+    top: 8%;
+    transform: translateX(-50%);
+    /*z-index: 3;*/
+   }
+
+  .sm {
+    font-size: 18%;
+   }
+
+  .h2-sm {
+    font-size: 24%;
+   }
+
+ }
  
+
+
+
+
+
+
+
  .split.left {
   left:0;
   background: url('https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80') center center no-repeat;
@@ -122,6 +186,10 @@
   background: var(--right-bg-color);
  }
  
+
+
+
+ @media (min-width: 767.99px) {
  .split.left, .split.right, .split.right:before, .split.left:before {
   transition: var(--speed) all ease-in-out;
  }
@@ -150,7 +218,10 @@
  .hover-right .left:before {
   z-index: 2;
  }
- 
+}
+
+
+
  a:hover {
   color: rgba(255, 105, 180, 0);
  }

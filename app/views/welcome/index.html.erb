@@ -27,29 +27,29 @@
                     <div id="clearance" class="sign-in">
                       <%= render partial: 'login' %>
                     </div>
-                    <div class="d-flex justify-content-center flex-column position-absolut mod-left">
-                      <button  class="glow bg-transparent border-0 " data-toggle="modal" data-target="#exampleModal" >
-                        <h3>
+                    <div class="d-flex justify-content-center flex-column mod-left">
+                      <button  class="glow bg-transparent border-0" data-toggle="modal" data-target="#exampleModal" >
+                        <h3 class="sm">
                           <%= image_tag "bento-box.png", style: 'width:10%' %> Log In to Bento
                         </h3>
                       </button>
                       <%= link_to "/auth/github" do %>
                         <div class="glow bg-transparent border-0 " >
-                          <h3>
-                            <img style="width:10%;" src="https://cdn.iconscout.com/icon/free/png-256/github-88-437389.png" class=""> Sign in with Github
+                          <h3 class="sm">
+                            <img style="width:10%;" src="https://cdn.iconscout.com/icon/free/png-256/github-88-437389.png"> Sign in with Github
                           </h3>
                         </div>
                       <% end %>
                       <%= link_to "/auth/google_oauth2" do %>
                         <div class="glow bg-transparent border-0" >
-                          <h3>
+                          <h3 class="sm">
                             <img style="width:10%;" src="https://www.appythings.nl/wp-content/uploads/2018/06/google-logo-icon-PNG-Transparent-Background.png" class=""> Sign in with Google
                           </h3>
                         </div>
                       <% end %>
                       <hr>
-                      <h2 class="d-flex justify-content-center text-white" >Don't have an account?</h2>
-                      <h3>
+                      <h2 class="d-flex justify-content-center glow h2-sm" >Don't have an account?</h2>
+                      <h3 class="sm">
                         <form action="/sign_up">
                           <input type="submit" value="Sign up with Bento" class="glow bg-transparent border-0 w3-block ">
                         </form>

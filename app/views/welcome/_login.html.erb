@@ -10,7 +10,7 @@
        </div>
 
        <div class="modal-body">
-         <%= form_for :session, url: session_path do |form| %>
+         <%= form_for :session, url: session_path, html: {id: "login_form"} do |form| %>
            <div class="text-field" style="height: 4rem;">
              <%= form.text_field :email, type: 'email', class:'form-control ', placeholder:'Email'%>
            </div>
@@ -18,14 +18,14 @@
            <div class="password-field" style="height: 4rem;">
              <%= form.password_field :password, class:'form-control ', placeholder:'Password'%>
            </div>
+         <% end %>
         </div>
 
        <div class="modal-footer d-inline-flex" style="height: 5rem;">
          <div class="form-group ">
-           <%= form.submit class:'btn btn-primary ' %>
+          <button class="btn btn-primary" id="login_button">Sign in</button>
            <%= link_to t(".forgot_password"), new_password_path, class:'btn btn-outline-danger ' %>
          </div>
-         <% end %>
        </div>
 
    </div>
@@ -39,5 +39,8 @@
    $('#myInput').trigger('focus')
  })
 
+ $("#login_button").on("click", function() {
+  $("#login_form").submit()
+ })
 
 </script>

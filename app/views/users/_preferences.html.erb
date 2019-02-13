@@ -4,9 +4,10 @@
         <%# ––––––––––––––– Ruby –––––––––––––– %>
         <%= label_tag("Choose your language and skill level") %>
         <div class="input-group mb-3">
-            <%= button_to "Ruby", action='#', class:'ruby btn btn-outline-success', :disabled => true %>
+            <button type='button' class='ruby btn btn-success active'>Ruby</button>
+            <%#= button_to "Ruby", action='#', class:'ruby btn btn-outline-success', :disabled => true %>
             <%= button_to "Beginner", action='#', class:'ruby-beginner btn btn-outline-info'%>
-            <%= button_to "Intermediate", action='#', class:'ruby-intermediate btn btn-outline-info btn-outline-info'%>
+            <%= button_to "Intermediate", action='#', class:'ruby-intermediate btn btn-outline-info'%>
             <%= button_to "Clear", action='#', class:'ruby-clear btn btn-danger'%>
         </div>
             <%# Check to see if user has already selected a language %>
@@ -22,7 +23,8 @@
         
         <%# ––––––––––––––– Javascript –––––––––––––– %>
         <div class="input-group mb-3">
-            <%= button_to "Javascript", action='#', class:'javascript btn btn-outline-success',:disabled => true %>
+            <button type='button' class='ruby btn btn-success active'>Javascript</button>
+            <%#= button_to "Javascript", action='#', class:'javascript btn btn-outline-success',:disabled => true %>
             <%= button_to "Beginner", action='#', class:'javascript-beginner btn btn-outline-info'%>
             <%= button_to "Intermediate", action='#', class:'javascript-intermediate btn btn-outline-info'%>
             <%= button_to "Clear", action='#', class:'javascript-clear btn btn-danger'%>
@@ -39,7 +41,8 @@
         <% end %>
         <%# ––––––––––––––– Python –––––––––––––– %>
         <div class="input-group mb-3">
-        <%= button_to "Python", action='#', class:'python btn btn-outline-success',:disabled => true %>
+        <button type='button' class='ruby btn btn-success active'>Python</button>
+        <%#= button_to "Python", action='#', class:'python btn btn-outline-success',:disabled => true %>
         <%= button_to "Beginner", action='#', class:'python-beginner btn btn-outline-info'%>
         <%= button_to "Intermediate", action='#', class:'python-intermediate btn btn-outline-info'%>
         <%= button_to "Clear", action='#', class:'python-clear btn btn-danger'%>

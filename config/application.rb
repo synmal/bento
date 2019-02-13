@@ -18,5 +18,10 @@ module Bento
 
     # Using sidekiq as background job
     config.active_job.queue_adapter = :sidekiq
+    config.to_prepare do
+      # Clearance::PasswordsController.layout new_password_path
+      # Clearance::SessionsController.layout "my_sessions_layout"
+      # Clearance::UsersController.layout "my_admin_layout"
+    end
   end
 end

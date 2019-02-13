@@ -20,21 +20,7 @@
           </div>
         <% end %>
        </div>
-
-
-       <div class="modal-body">
-         <%= form_for :session, url: session_path, html: {id: "login_form"} do |form| %>
-           <div class="text-field" style="height: 4rem;">
-             <%= form.text_field :email, type: 'email', class:'form-control ', placeholder:'Email'%>
-           </div>
-
-           <div class="password-field" style="height: 4rem;">
-             <%= form.password_field :password, class:'form-control ', placeholder:'Password'%>
-           </div>
-         <% end %>
-        </div>
-      </div>
-
+       
        <div class="modal-footer d-inline-flex" style="height: 5rem;">
          <div class="form-group ">
           <button class="btn btn-primary" id="login_button">Sign in</button>

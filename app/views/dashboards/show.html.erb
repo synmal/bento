@@ -4,10 +4,13 @@
 <div id="feed-container">
   <%= render "dashboards/show" %>
 </div>
+
 </div>
+
 
 <script>
     $(".card-link").click(function (e){
         $("#" + e.target.dataset.check).removeClass("d-none")
     })
 </script>
+

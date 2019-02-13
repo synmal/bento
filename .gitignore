@@ -30,4 +30,10 @@
 /config/application.yml
 
 # Ignore dump.rdb
+
+/dump.rdb
+
+/public/uploads/*
+
 dump.rdb
+
